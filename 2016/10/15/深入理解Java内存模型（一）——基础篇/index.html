@@ -129,7 +129,7 @@
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-9@2x.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-8@2x.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-10@2x.png">
-<meta property="og:updated_time" content="2017-04-21T06:18:59.000Z">
+<meta property="og:updated_time" content="2017-07-07T15:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java内存模型（一）——基础篇">
 <meta name="twitter:description" content="深入理解Java内存模型（一）——基础篇">
@@ -543,7 +543,8 @@
 <li>线程终结规则：线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、Thread.isAlive()的返回值手段检测到线程已经终止执行</li>
 <li>对象终结规则：一个对象的初始化完成先行发生于他的finalize()方法的开始</li>
 </ol>
-<p>注意，<strong><em>两个操作之间具有 happens-before 关系，并不意味着前一个操作必须要在 后一个操作之前执行！happens-before 仅仅要求前一个操作执行的结果对后 一个操作可见</em></strong>，且前一个操作按顺序排在第二个操作之前（the first is visible to and ordered before the second）。happens- before 的定义很微妙，后文会具 体说明 happens-before 为什么要这么定义。<br>这8条原则摘自《深入理解Java虚拟机》。这8条规则中，前4条规则是比较重要的，后4条规则都是显而易见的。下面我们来解释一下前4条规则：<br>　　第一条规则，程序次序规则，就是一段程序代码的执行在单个线程中看起来是有序的，不管虚拟机或处理器如何对程序代码进行指令重排序，<strong><em>前一个操作的执行结果对后续操作可见</em></strong>。虽然进行重排序，但是最终执行的结果是与程序顺序执行的结果一致的，而且它只会对不存在数据依赖性的指令进行重排序。因此，在单个线程中，程序执行看起来是有序执行的，这一点要注意理解。事实上，这个规则是用来保证程序在单线程中执行结果的正确性，但无法保证程序在多线程中执行的正确性。</p>
+<p>注意，<strong><em>两个操作之间具有 happens-before 关系，并不意味着前一个操作必须要在 后一个操作之前执行！happens-before 仅仅要求前一个操作执行的结果对后 一个操作可见</em></strong>，且前一个操作按顺序排在第二个操作之前（the first is visible to and ordered before the second）。happens- before 的定义很微妙，后文会具 体说明 happens-before 为什么要这么定义。</p>
+<p>这8条原则摘自《深入理解Java虚拟机》。这8条规则中，前4条规则是比较重要的，后4条规则都是显而易见的。下面我们来解释一下前4条规则：<br>　　第一条规则，程序次序规则，就是一段程序代码的执行在单个线程中看起来是有序的，不管虚拟机或处理器如何对程序代码进行指令重排序，<strong><em>前一个操作的执行结果对后续操作可见</em></strong>。虽然进行重排序，但是最终执行的结果是与程序顺序执行的结果一致的，而且它只会对不存在数据依赖性的指令进行重排序。因此，在单个线程中，程序执行看起来是有序执行的，这一点要注意理解。事实上，这个规则是用来保证程序在单线程中执行结果的正确性，但无法保证程序在多线程中执行的正确性。</p>
 <p>　　第二条规则也比较容易理解，也就是说无论在单线程中还是多线程中，监视器或锁释放以后，如果后续再获得同一个监视器或锁，那么锁释放之前所作的操作，对获得锁以后的代码可见。</p>
 <p>　　第三条规则是一条比较重要的规则，也是后文将要重点讲述的内容。直观地解释就是，如果一个线程先去写一个volatile变量，然后另一个线程去进行读取，那么写入操作的执行结果肯定会对后续的读操作可见。</p>
 <p>　　第四条规则实际上就是体现happens-before原则具备传递性。</p>
@@ -908,7 +909,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共57.6k字</span>
+  <span class="post-count">共57.8k字</span>
 </div>
 
 

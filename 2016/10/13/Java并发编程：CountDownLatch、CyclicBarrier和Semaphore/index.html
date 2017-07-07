@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2016/10/13/Java并发编程：CountDownLatch、CyclicBarrier和Semaphore/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="Java并发编程：CountDownLatch、CyclicBarrier和Semaphore">
-<meta property="og:updated_time" content="2017-04-21T06:18:59.000Z">
+<meta property="og:updated_time" content="2017-07-07T15:13:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程：CountDownLatch、CyclicBarrier和Semaphore">
 <meta name="twitter:description" content="Java并发编程：CountDownLatch、CyclicBarrier和Semaphore">
@@ -484,7 +484,8 @@
       
 
       
-        <p>在Java 1.5中，提供了一些非常有用的辅助类来帮助我们进行并发编程，比如CountDownLatch，CyclicBarrier和Semaphore，今天我们就来学习一下这三个辅助类的用法。<br><a id="more"></a></p>
+        <hr>
+<p>在Java 1.5中，提供了一些非常有用的辅助类来帮助我们进行并发编程，比如CountDownLatch，CyclicBarrier和Semaphore，今天我们就来学习一下这三个辅助类的用法。<br><a id="more"></a></p>
 <h2 id="CountDownLatch用法">0.1. CountDownLatch用法</h2><p>直译过来就是倒计数(CountDown)门闩(Latch)。倒计数不用说，门闩的意思顾名思义就是阻止前进。在这里就是指 CountDownLatch.await() 方法在倒计数为0之前会阻塞当前线程。</p>
 <p>CountDownLatch 的作用和 Thread.join() 方法类似，可用于一组线程和另外一组线程的协作。例如，主线程在做一项工作之前需要一系列的准备工作，只有这些准备工作都完成，主线程才能继续它的工作。这些准备工作彼此独立，所以可以并发执行以提高速度。在这个场景下就可以使用 CountDownLatch 协调线程之间的调度了。在直接创建线程的年代（Java 5.0 之前），我们可以使用 Thread.join()。在 JUC 出现后，因为线程池中的线程不能直接被引用，所以就必须使用 CountDownLatch 了。</p>
 <h3 id="CountDownLatch接口">0.1.1. CountDownLatch接口</h3><hr>
@@ -896,7 +897,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共57.6k字</span>
+  <span class="post-count">共57.8k字</span>
 </div>
 
 
