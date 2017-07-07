@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wxweven.win/2016/10/13/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACountDownLatch%E3%80%81CyclicBarrier%E5%92%8CSemaphore/</loc>
+    <lastmod>2017-07-07T15:30:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</title>
+        <pubTime>2016-10-13T06:30:56.000Z</pubTime>
+        
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2017-07-07T15:17:28.000Z</lastmod>
     <data>
@@ -119,26 +139,6 @@
            
              
               <breadCrumb title="Java" url="http://wxweven.win/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/13/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACountDownLatch%E3%80%81CyclicBarrier%E5%92%8CSemaphore/</loc>
-    <lastmod>2017-07-07T15:13:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</title>
-        <pubTime>2016-10-13T06:30:56.000Z</pubTime>
-        
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
