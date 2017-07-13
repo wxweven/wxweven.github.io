@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wxweven.win/2016/02/22/Android-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2017-07-07T15:33:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 数据库操作</title>
+        <pubTime>2016-02-22T04:02:07.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2016/10/13/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACountDownLatch%E3%80%81CyclicBarrier%E5%92%8CSemaphore/</loc>
     <lastmod>2017-07-07T15:30:22.000Z</lastmod>
     <data>
@@ -509,27 +529,6 @@
     
     
   <url>
-    <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
-    <lastmod>2017-04-21T06:18:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>魔方教程</title>
-        <pubTime>2016-03-10T09:57:45.000Z</pubTime>
-        
-        <tag>魔方</tag>
-         
-         
-           
-             
-              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
     <loc>http://wxweven.win/2015/12/07/%E5%90%AF%E5%8A%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99/</loc>
     <lastmod>2017-04-21T06:18:59.000Z</lastmod>
     <data>
@@ -550,22 +549,23 @@
 
     
   <url>
-    <loc>http://wxweven.win/2016/02/22/Android-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</loc>
+    <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
     <lastmod>2017-04-21T06:18:59.000Z</lastmod>
     <data>
         <display>
-        <title>Android 数据库操作</title>
-        <pubTime>2016-02-22T04:02:07.000Z</pubTime>
+        <title>魔方教程</title>
+        <pubTime>2016-03-10T09:57:45.000Z</pubTime>
         
-        <tag>Android</tag>
+        <tag>魔方</tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
+              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
           
         </display>
     </data>
     </url>
 
+    
 </urlset>
