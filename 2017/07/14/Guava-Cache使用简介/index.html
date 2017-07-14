@@ -1,0 +1,1426 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="FI8PcIsw2IdZu1dwbSA4PcUEtkixmT8h9bdaHPNj3f0" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda, "PingFang SC", "Microsoft YaHei", sans-serif:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Guava,缓存," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/siteimages/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1. 概述缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。">
+<meta name="keywords" content="Guava,缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Guava Cache使用简介">
+<meta property="og:url" content="http://wxweven.win/2017/07/14/Guava-Cache使用简介/index.html">
+<meta property="og:site_name" content="wxweven 梦想之家">
+<meta property="og:description" content="1. 概述缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。">
+<meta property="og:updated_time" content="2017-07-14T16:05:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guava Cache使用简介">
+<meta name="twitter:description" content="1. 概述缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wxweven.win/2017/07/14/Guava-Cache使用简介/"/>
+
+
+
+
+
+  <title>Guava Cache使用简介 | wxweven 梦想之家</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8ec7d1011b77278406340e0f4c3e281e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1262687214&web_id=1262687214" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wxweven 梦想之家</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术成就梦想 | 做一个有梦想的程序猿</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wxweven.win/2017/07/14/Guava-Cache使用简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wxweven">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/siteimages/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wxweven 梦想之家">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Guava Cache使用简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T23:28:38+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,528 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="概述">1. 概述</h1><p>缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。<br><a id="more"></a></p>
+<p>Cache（缓存）在很广泛的场景下都是很有用的。比如，当一个值的计算或者检索的代价很大，并且在稍后的特定输入发生后，你将不止一次的需要这个值的时候，就应当考虑使用Cache了。</p>
+<p>Cache是和ConcurrentMap很相像的东西。最本质的不同就是，ConcurrentMap持有所有被添加进的元素，直到它们专门被移除。从另一方面来说，为了使得内存的使用可控，Cache通常来说是可配置来自动回收元素的。在一些情况下，即使LoadingCache也会很有用，虽然由于他的自动缓存加载机制，它不回收元素。</p>
+<blockquote>
+<p><strong>注意：</strong>如果你不需要Cache的一些特性，那么ConcurrentHashMap是更加有内存效率的－－但是使用任何旧的ConcurrentMap都会很难或者几乎不可能去完成Cache所支持的一些特性。</p>
+</blockquote>
+<p>通常，Guava Cache组件在下面的场景中适用：</p>
+<ul>
+<li>你想花费一些内存来提高速度。</li>
+<li>你预期到一些key的值将被不止一次地被查询。</li>
+<li>你的缓存将不会需要比内存能够存储的数据更多。（Guava Cache对于一个单独运行的应用来说是本地的。它们不回将数据存储在文件中或者外部服务器上。如果这不适合你的需求，那么考虑使用其它的工具，比如Memcached）</li>
+</ul>
+<p>如果上面的这些都符合你的需要，那么Guava Cache组件将适合你！</p>
+<h1 id="Guava-Cache的使用示例">2. Guava Cache的使用示例</h1><p>使用缓存时，最常遇到的场景需要就是：<br><div class="note primary"><p>“获取缓存-如果没有-则计算”,即[get-if-absent-compute]的原子语义 </p>
+</div></p>
+<p><strong>具体含义：</strong></p>
+<ol>
+<li>从缓存中取；</li>
+<li>缓存中存在该数据，直接返回。</li>
+<li>缓存中不存在该数据，从数据源中取；</li>
+<li>数据源中存在该数据，放入缓存，并返回。</li>
+<li>数据源中不存在该数据，返回空。</li>
+</ol>
+<p>Guava Cache有两种方式实现，一种是CacheLoader在定义的时候就设置好缓存的源，另一种是Callable在调用缓存的时候指定如果缓存中没有的获取的方式，长话短说，我们直接进入正题。</p>
+<h2 id="准备工作">2.1. 准备工作</h2><p>预先准备好一个MockDB类，用来模拟缓存中没有的时候在数据库中获取。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MockDB</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, String&gt; mockPersistence = <span class="keyword">new</span> HashMap&lt;String, String&gt;() &#123;&#123;</div><div class="line">        <span class="keyword">this</span>.put(<span class="string">"github"</span>, <span class="string">"codedrinker"</span>);</div><div class="line">    &#125;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">loadFromPersistence</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"load key from persistence : "</span> + key);</div><div class="line">        <span class="keyword">return</span> mockPersistence.get(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="使用CacheLoader">2.2. 使用CacheLoader</h2><p>下面是使用CacheLoader的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.cache.guavatest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.google.common.cache.CacheBuilder;</div><div class="line"><span class="keyword">import</span> com.google.common.cache.CacheLoader;</div><div class="line"><span class="keyword">import</span> com.google.common.cache.LoadingCache;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Optional;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * CacheLoader demo</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/7/13</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaLoadingCache</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        LoadingCache&lt;String, Optional&lt;String&gt;&gt; loadingCache = CacheBuilder</div><div class="line">                .newBuilder()</div><div class="line">                .expireAfterWrite(<span class="number">3</span>, TimeUnit.SECONDS)</div><div class="line">                .removalListener(notification -&gt; System.out.println(<span class="string">"cache expired, remove key : "</span> + notification.getKey()))</div><div class="line">                .build(<span class="keyword">new</span> CacheLoader&lt;String, Optional&lt;String&gt;&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> Optional&lt;String&gt; <span class="title">load</span><span class="params">(String key)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">                        <span class="keyword">return</span> Optional.ofNullable(MockDB.loadFromPersistence(key));</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(<span class="string">"load from cache once : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load from cache twice : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load from cache third : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load not exist key from cache : "</span> + loadingCache.get(<span class="string">"email"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">        &#125; <span class="keyword">catch</span> (ExecutionException | InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们逐行进行解释：</p>
+<ul>
+<li><code>expireAfterWrite(3, TimeUnit.SECONDS)</code>：定义缓存3秒过期；</li>
+<li><code>removalListener</code>：用来监听当缓存里面的key被移除时候触发的事件；</li>
+<li><code>build(new CacheLoader&lt;String, Optional&lt;String&gt;&gt;()</code>：传入一个CacheLoader类，指定缓存中没有的时候调用 CacheLoader 类的load方法（所以一般需要重写该方法）；</li>
+<li>Optional：当CacheLoader尝试获取数据库中不存在的数据会抛出异常，所以我们这里使用Optional可空对象处理一下。</li>
+<li>Thread.sleep(2000)：缓存我们设置3秒过期，所以两次Sleep以后就会重新获取数据库。 </li>
+</ul>
+<p>运行输出结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">load key from persistence : github</div><div class="line">load from cache once : codedrinker</div><div class="line">load from cache twice : codedrinker</div><div class="line">cache expired, remove key : github</div><div class="line">load key from persistence : github</div><div class="line">load from cache third : codedrinker</div><div class="line">load key from persistence : email</div><div class="line">load not exist key from cache : Nothing</div></pre></td></tr></table></figure></p>
+<p>证明了再第三次获取的时候因为缓存过期了，所以需要重新在MockDB获取数据。</p>
+<h2 id="使用Callable">2.3. 使用Callable</h2><p>这里我们依然需要使用上面的MockDB类，具体代码如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.cache.guavatest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.google.common.cache.Cache;</div><div class="line"><span class="keyword">import</span> com.google.common.cache.CacheBuilder;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Optional;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * CallableCache demo</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/7/13</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaCallableCache</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> String key = <span class="string">"github"</span>;</div><div class="line">        Cache&lt;String, Optional&lt;String&gt;&gt; cache = CacheBuilder.newBuilder()</div><div class="line">                                                            .expireAfterWrite(<span class="number">3</span>, TimeUnit.SECONDS)</div><div class="line">                                                            .removalListener(notification -&gt;</div><div class="line">                                                                    System.out.println(<span class="string">"cache expired, remove key : "</span> + notification.getKey())).build();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Optional&lt;String&gt; optional;</div><div class="line"></div><div class="line">            System.out.println(<span class="string">"load from cache once : "</span> + cache.get(key, () -&gt; Optional.ofNullable(MockDB.loadFromPersistence(key))).orElse(<span class="string">"empty"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line"></div><div class="line"></div><div class="line">            System.out.println(<span class="string">"load from cache twice : "</span> + cache.get(key, () -&gt; Optional.ofNullable(MockDB.loadFromPersistence(key))).orElse(<span class="keyword">null</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line"></div><div class="line"></div><div class="line">            System.out.println(<span class="string">"load from cache third : "</span> + cache.get(key, () -&gt; Optional.ofNullable(MockDB.loadFromPersistence(key))).orElse(<span class="keyword">null</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line"></div><div class="line">            <span class="keyword">final</span> String nullKey = <span class="string">"email"</span>;</div><div class="line">            optional = cache.get(nullKey, () -&gt; Optional.ofNullable(MockDB.loadFromPersistence(nullKey)));</div><div class="line">            System.out.println(<span class="string">"load not exist key from cache : "</span> + optional.orElse(<span class="keyword">null</span>));</div><div class="line">        &#125; <span class="keyword">catch</span> (ExecutionException | InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>下面我们对程序进行解释:</p>
+<ul>
+<li>与上面例子唯一的不同就是没有在build的时候传入CacheLoader，而是在cache.get使用Cache的时候用传入Callable对象。</li>
+<li>这样做可以灵活配置每次获取的缓存源不一样，但是两种方案都各有好处，还是在使用的时候斟酌。 </li>
+</ul>
+<p>运行程序数据结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">load key from persistence : github</div><div class="line">load from cache once : codedrinker</div><div class="line">load from cache twice : codedrinker</div><div class="line">cache expired, remove key : github</div><div class="line">load key from persistence : github</div><div class="line">load from cache third : codedrinker</div><div class="line">load key from persistence : email</div><div class="line">load not exist key from cache : <span class="keyword">null</span></div></pre></td></tr></table></figure></p>
+<h1 id="总结">3. 总结</h1><p>在设计Java分布式应用程序的时候，针对一些基本不变的数据，或者是变化不大然而使用非常频繁的数据可以考虑采用Guava Cache实现Java应用内存级别缓存。</p>
+
+      
+    </div>
+
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/07/14/Guava-Cache使用简介/">Guava Cache使用简介</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
+  <p><span>发布时间:</span>2017年07月14日 - 23:07</p>
+  <p><span>最后更新:</span>2017年07月15日 - 00:07</p>
+  <p><span>原始链接:</span><a href="/2017/07/14/Guava-Cache使用简介/" title="Guava Cache使用简介">http://wxweven.win/2017/07/14/Guava-Cache使用简介/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/07/14/Guava-Cache使用简介/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+          
+    </div>
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;"/>
+    <div>分享技术，分享生活，来吧，为了生活，扫码撩我！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Guava/" rel="tag"># Guava</a>
+          
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/14/Major-GC和Full-GC的区别/" rel="next" title="Major GC和Full GC的区别">
+                <i class="fa fa-chevron-left"></i> Major GC和Full GC的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/siteimages/avatar.png"
+               alt="wxweven" />
+          <p class="site-author-name" itemprop="name">wxweven</p>
+           
+              <p class="site-description motion-element" itemprop="description">分享技术 享受生活</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wxweven" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/wxweven" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1958118930" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/wxweven" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-douban"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" title="码农圈" target="_blank">码农圈</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tool.lu, 各种工具" title="王大神的博客" target="_blank">王大神的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guava-Cache的使用示例"><span class="nav-text">2. Guava Cache的使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-text">2.1. 准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CacheLoader"><span class="nav-text">2.2. 使用CacheLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Callable"><span class="nav-text">2.3. 使用Callable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">3. 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wxweven</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动 <span> | Hosted by <a href='https://pages.coding.me'>Coding Pages</a></span>
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">共72.4k字</span>
+</div>
+
+
+
+   <span style="margin-left:8px;">
+    <div class="powered-by"></div>
+   <script src="https://s19.cnzz.com/z_stat.php?id=1262687214&web_id=1262687214" language="JavaScript"></script>
+   </span>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2138247"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
