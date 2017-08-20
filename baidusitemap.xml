@@ -4,8 +4,48 @@
 
     
   <url>
+    <loc>http://wxweven.win/2016/03/04/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90ThreadLocal/</loc>
+    <lastmod>2017-08-20T08:36:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java并发编程：深入剖析ThreadLocal</title>
+        <pubTime>2016-03-04T05:29:45.000Z</pubTime>
+        
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/13/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACountDownLatch%E3%80%81CyclicBarrier%E5%92%8CSemaphore/</loc>
+    <lastmod>2017-08-20T08:32:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</title>
+        <pubTime>2016-10-13T06:30:56.000Z</pubTime>
+        
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2017/07/06/Executor%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2017-08-20T08:31:17.000Z</lastmod>
+    <lastmod>2017-08-20T08:32:47.000Z</lastmod>
     <data>
         <display>
         <title>Executor详解</title>
@@ -20,7 +60,7 @@
          
            
              
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
           
         </display>
     </data>
@@ -125,26 +165,6 @@
            
              
               <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/13/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACountDownLatch%E3%80%81CyclicBarrier%E5%92%8CSemaphore/</loc>
-    <lastmod>2017-07-07T15:30:22.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java并发编程：CountDownLatch、CyclicBarrier和Semaphore</title>
-        <pubTime>2016-10-13T06:30:56.000Z</pubTime>
-        
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -583,26 +603,6 @@
            
              
               <breadCrumb title="网络" url="http://wxweven.win/categories/%E7%BD%91%E7%BB%9C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/03/04/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90ThreadLocal/</loc>
-    <lastmod>2017-07-07T07:33:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java并发编程：深入剖析ThreadLocal</title>
-        <pubTime>2016-03-04T05:29:45.000Z</pubTime>
-        
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
