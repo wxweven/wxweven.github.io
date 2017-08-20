@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://wxweven.win/2017/07/06/Executor%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2017-08-20T08:31:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>Executor详解</title>
+        <pubTime>2017-07-06T04:09:51.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2017/07/14/Guava-Cache%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2017-07-15T05:00:00.000Z</lastmod>
     <data>
@@ -285,30 +309,6 @@
            
              
               <breadCrumb title="Java集合" url="http://wxweven.win/categories/Java%E9%9B%86%E5%90%88/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2017/07/06/Executor%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2017-07-07T15:12:57.000Z</lastmod>
-    <data>
-        <display>
-        <title>Executor详解</title>
-        <pubTime>2017-07-06T04:09:51.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-        <tag>多线程</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
           
         </display>
     </data>
