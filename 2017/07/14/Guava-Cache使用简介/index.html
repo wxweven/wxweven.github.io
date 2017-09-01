@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2017/07/14/Guava-Cache使用简介/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="1. 概述缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。">
-<meta property="og:updated_time" content="2017-07-15T05:00:00.000Z">
+<meta property="og:updated_time" content="2017-08-26T06:25:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Guava Cache使用简介">
 <meta name="twitter:description" content="1. 概述缓存是我们日常开发中是必不可少的一种解决性能问题的方法。早期缓存只应用在CPU和内存之间，现在遍布在每一个角落：内存和磁盘，磁盘和网路都存在缓存。缓存同样是做Java应用必不可少的元素。">
@@ -512,7 +512,7 @@
 <p>通过这两种方式创建的cache，和通常用map来缓存的做法比，不同在于，这两种方法都实现了一种逻辑：<br><div class="note success"><p>从缓存中取key 的值，如果该值已经缓存过了，则返回缓存中的值，如果没有缓存过，可以通过某个方法来获取这个值。</p>
 </div></p>
 <p>但不同的在于cacheloader的定义比较宽泛，是针对整个cache定义的，可以认为是统一的根据key值load value的方法。而callable的方式较为灵活，允许你在每次get的时候自定义获取Value的方式。 </p>
-<h2 id="准备工作">2.1. 准备工作</h2><p>预先准备好一个MockDB类，用来模拟缓存中没有的时候在数据库中获取。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MockDB</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, String&gt; mockPersistence = <span class="keyword">new</span> HashMap&lt;String, String&gt;() &#123;&#123;</div><div class="line">        <span class="keyword">this</span>.put(<span class="string">"github"</span>, <span class="string">"codedrinker"</span>);</div><div class="line">    &#125;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">loadFromPersistence</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"load key from persistence : "</span> + key);</div><div class="line">        <span class="keyword">return</span> mockPersistence.get(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="准备工作">2.1. 准备工作</h2><p>预先准备好一个MockDB类，用来模拟缓存中没有的时候在数据库中获取。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MockDB</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, String&gt; mockPersistence = <span class="keyword">new</span> HashMap&lt;String, String&gt;() &#123;&#123;</div><div class="line">        <span class="keyword">this</span>.put(<span class="string">"github"</span>, <span class="string">"codedrinker"</span>);</div><div class="line">     &#125;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">loadFromPersistence</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"load key from persistence : "</span> + key);</div><div class="line">        <span class="keyword">return</span> mockPersistence.get(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="使用CacheLoader">2.2. 使用CacheLoader</h2><p>下面是使用CacheLoader的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.cache.guavatest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.google.common.cache.CacheBuilder;</div><div class="line"><span class="keyword">import</span> com.google.common.cache.CacheLoader;</div><div class="line"><span class="keyword">import</span> com.google.common.cache.LoadingCache;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Optional;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * CacheLoader demo</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/7/13</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaLoadingCache</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        LoadingCache&lt;String, Optional&lt;String&gt;&gt; loadingCache = CacheBuilder</div><div class="line">                .newBuilder()</div><div class="line">                .expireAfterWrite(<span class="number">3</span>, TimeUnit.SECONDS)</div><div class="line">                .removalListener(notification -&gt; System.out.println(<span class="string">"cache expired, remove key : "</span> + notification.getKey()))</div><div class="line">                .build(<span class="keyword">new</span> CacheLoader&lt;String, Optional&lt;String&gt;&gt;() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> Optional&lt;String&gt; <span class="title">load</span><span class="params">(String key)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">                        <span class="keyword">return</span> Optional.ofNullable(MockDB.loadFromPersistence(key));</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(<span class="string">"load from cache once : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load from cache twice : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load from cache third : "</span> + loadingCache.get(<span class="string">"github"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(<span class="string">"load not exist key from cache : "</span> + loadingCache.get(<span class="string">"email"</span>).orElse(<span class="string">"Nothing"</span>));</div><div class="line">        &#125; <span class="keyword">catch</span> (ExecutionException | InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们逐行进行解释：</p>
@@ -608,7 +608,7 @@
   <p><span>本文标题:</span><a href="/2017/07/14/Guava-Cache使用简介/">Guava Cache使用简介</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
   <p><span>发布时间:</span>2017年07月14日 - 23:07</p>
-  <p><span>最后更新:</span>2017年07月15日 - 13:07</p>
+  <p><span>最后更新:</span>2017年08月26日 - 14:08</p>
   <p><span>原始链接:</span><a href="/2017/07/14/Guava-Cache使用简介/" title="Guava Cache使用简介">http://wxweven.win/2017/07/14/Guava-Cache使用简介/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/07/14/Guava-Cache使用简介/"  aria-label="复制成功！"></i></span>
   </p>
@@ -706,6 +706,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/01/hexo功能测试/" rel="prev" title="hexo功能测试">
+                hexo功能测试 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -817,7 +821,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -828,7 +832,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -839,7 +843,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -977,7 +981,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共75.6k字</span>
+  <span class="post-count">共79.5k字</span>
 </div>
 
 
