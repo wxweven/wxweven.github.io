@@ -97,7 +97,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="JVM,invokespecial,invokevirtual,指令集," />
 
 
 
@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="1. clone1git clone git远程仓库地址">
-<meta name="keywords" content="Git">
+<meta name="description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：  invokestatic：调用静态方法； invokespecial：调用实例构造方法，私有方法和父类方法（super关键字调用）； invokeinterface：调用接口方法，在运行时再确定一个实现此接口的对象； invokevirtual：调用虚方法（就是除了上述三种情况之外的方法）； invokedynam">
+<meta name="keywords" content="JVM,invokespecial,invokevirtual,指令集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用操作">
-<meta property="og:url" content="http://wxweven.win/2017/07/14/Git常用操作/index.html">
+<meta property="og:title" content="JVM invokespecial和invokevirtual">
+<meta property="og:url" content="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
-<meta property="og:description" content="1. clone1git clone git远程仓库地址">
-<meta property="og:updated_time" content="2017-09-09T10:45:38.000Z">
+<meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：  invokestatic：调用静态方法； invokespecial：调用实例构造方法，私有方法和父类方法（super关键字调用）； invokeinterface：调用接口方法，在运行时再确定一个实现此接口的对象； invokevirtual：调用虚方法（就是除了上述三种情况之外的方法）； invokedynam">
+<meta property="og:updated_time" content="2017-09-15T11:09:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用操作">
-<meta name="twitter:description" content="1. clone1git clone git远程仓库地址">
+<meta name="twitter:title" content="JVM invokespecial和invokevirtual">
+<meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：  invokestatic：调用静态方法； invokespecial：调用实例构造方法，私有方法和父类方法（super关键字调用）； invokeinterface：调用接口方法，在运行时再确定一个实现此接口的对象； invokevirtual：调用虚方法（就是除了上述三种情况之外的方法）； invokedynam">
 
 
 
@@ -151,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://wxweven.win/2017/07/14/Git常用操作/"/>
+  <link rel="canonical" href="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/"/>
 
 
 
 
 
-  <title>Git常用操作 | wxweven 梦想之家</title>
+  <title>JVM invokespecial和invokevirtual | wxweven 梦想之家</title>
   
 
 
@@ -356,7 +356,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wxweven.win/2017/07/14/Git常用操作/">
+    <link itemprop="mainEntityOfPage" href="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wxweven">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git常用操作</h1>
+          <h1 class="post-title" itemprop="name headline">JVM invokespecial和invokevirtual</h1>
         
 
         <div class="post-meta">
@@ -385,8 +385,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:26:08+08:00">
-                2017-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T18:05:16+08:00">
+                2017-09-15
               </time>
             
 
@@ -408,8 +408,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  321 字
+                  1,241 字
                 </span>
               
 
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -481,16 +481,44 @@
 
       
         <hr>
-<h1 id="clone">1. clone</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git远程仓库地址</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="分支">2. 分支</h1><p>分支是Git的重要特性。</p>
-<h2 id="本地分支">2.1. 本地分支</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 1. 新建分支</div><div class="line">git branch 分支名</div><div class="line"></div><div class="line">// 2. 切换到分支</div><div class="line">git checkout 分支名</div><div class="line"></div><div class="line">// 3. 删除分支</div><div class="line">git branch -D 分支名</div></pre></td></tr></table></figure>
-<h2 id="远程分支">2.2. 远程分支</h2><h3 id="新建远程分支">2.2.1. 新建远程分支</h3><p>可以直接在仓库里面新建远程分支，也可以直接将本地分支推送到远程分支，如果本地分支对应的远程分支不存在，会自动创建同名的远程分支，如下所示：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin server_branch</div></pre></td></tr></table></figure></p>
-<p>运行上面的命令，会在远程仓库创建server_branch分支，同时将本地分支推送到远程仓库的server_branch。</p>
-<h3 id="本地分支跟踪远程分支">2.2.2. 本地分支跟踪远程分支</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch --set-upstream-to=origin/远程分支名 本地分支名</div></pre></td></tr></table></figure>
-<p>将本地分支跟踪远程分支后，就可以直接在当前分支使用 <code>git push</code> / <code>git pull</code> 来 <code>推送</code> / <code>拉取</code> 代码了。</p>
-<p>反之，如果没有跟踪远程分支，则需要手动指定远程仓库和分支：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git push origin 分支名</div><div class="line">git pull ogigin 分支名</div></pre></td></tr></table></figure></p>
-<p>当然，git clone 后，会自动将master分支跟踪 <code>origin/master</code>，所以如果是master分支，则可以直接使用 <code>git push</code> / <code>git pull</code>。</p>
+<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：</p>
+<ul>
+<li>invokestatic：调用静态方法；</li>
+<li>invokespecial：调用实例构造方法<init>，私有方法和父类方法（super关键字调用）；</init></li>
+<li>invokeinterface：调用接口方法，在运行时再确定一个实现此接口的对象；</li>
+<li>invokevirtual：调用虚方法（就是除了上述三种情况之外的方法）；</li>
+<li>invokedynamic：在运行时动态解析出调用点限定符所引用的方法之后，调用该方法；</li>
+</ul>
+<p>本文主要介绍invokespecial和invokevirtual指令。<br><a id="more"></a></p>
+<h1 id="举个栗子">2. 举个栗子</h1><p>下面我们来看一个具体的例子。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.jvm.zzm.jvminvoke;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/9/15</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InvokeVirtualTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Father test = <span class="keyword">new</span> Son();</div><div class="line">        test.say();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am fater"</span>);</div><div class="line">        System.out.println(<span class="keyword">this</span>);</div><div class="line">        <span class="keyword">this</span>.hello();</div><div class="line">        <span class="keyword">this</span>.hi();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hi"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么列为看官来分析下，这段代码的输出会是什么？</p>
+<p>如果能够很清楚地知道代码的输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i am fater</div><div class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</div><div class="line">father say hello</div><div class="line">son say hi</div></pre></td></tr></table></figure></p>
+<p>那么本文的阅读请就此打住，没必要再往下看了，再往下看也是浪费各位大神的时间。如果还有点小疑惑的话，不妨跟着我来一起分析分析。</p>
+<h1 id="栗子逻辑分析">3. 栗子逻辑分析</h1><h2 id="从main方法开始">3.1. 从main方法开始</h2><p><code>main</code>方法很简单，就两行：</p>
+<ul>
+<li>第一行定义了一个 <code>Father</code> 类的变量 test, 并让它指向了具体的实例 <code>Son</code>;</li>
+<li>第二行调用了test变量的 say() 方法</li>
+</ul>
+<h2 id="say方法">3.2. say方法</h2><p>那么我们接着来看看 say() 方法的内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"i am fater"</span>);</div><div class="line">    System.out.println(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.hello();</div><div class="line">    <span class="keyword">this</span>.hi();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也很简单：</p>
+<ul>
+<li>第一行输出了一句 “i am fater”；</li>
+<li>第二行打印了当前 this 代表的实际类型；</li>
+<li>第三行调用了 this 对象的 hello() 方法；</li>
+<li>第四行调用了 this 对象的 hi() 方法；</li>
+</ul>
+<p>无论是 <code>Father</code> 类的 hello() / hi() 方法，还是 Son 类的 hello() / hi() 方法都很简单，不再继续展开。</p>
+<p>我们直接来看 say() 方法运行时的结果。<br>第一行输出 i am fater，这个没有什么疑问；接着在输出 this 对象的时候，系统告诉我们这是一个Son类的实例。</p>
+<p>当我们调用 <code>this.hello()</code> 的时候，输出的却是 “father say hello”，也就是说实际调用的是父类的hello方法，当我们调用<code>this.hi()</code> 的时候，输出的才是 “son say hi”。</p>
+<p>为什么会出现这种情况，运行时的this明明指向的是Son实例，两次方法调用中，一次调用的是Father的方法而另一次调用的却是Son的方法。是Java程序执行出bug还是我们的理解没到位？</p>
+<p>首先可以肯定的是，程序执行本身没有bug。</p>
+<p>要解开这个谜题，我们只好用 <code>javap</code> 指令来查看编译后的字节码，看看虚拟机到底是如何执行这段代码的。</p>
+<h1 id="javap指令">4. javap指令</h1><h2 id="InvokeVirtualTest类的指令集">4.1. InvokeVirtualTest类的指令集</h2><p>执行命令<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javap -v com.wxweven.jvm.zzm.jvminvoke.InvokeVirtualTest</div></pre></td></tr></table></figure></p>
+<p>得到InvokeVirtualTest类的字节码，截取有用的main方法的指令集如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(java.lang.String[]);</div><div class="line">    descriptor: ([Ljava/lang/String;)V</div><div class="line">    flags: ACC_PUBLIC, ACC_STATIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=2, args_size=1</div><div class="line">         0: new           #2                  // class com/wxweven/jvm/zzm/jvminvoke/Son</div><div class="line">         3: dup</div><div class="line">         4: invokespecial #3                  // Method com/wxweven/jvm/zzm/jvminvoke/Son."&lt;init&gt;":()V</div><div class="line">         7: astore_1</div><div class="line">         8: aload_1</div><div class="line">         9: invokevirtual #4                  // Method com/wxweven/jvm/zzm/jvminvoke/Father.say:()V</div><div class="line">        12: return</div></pre></td></tr></table></figure>
+<p>这段指令集很简单（main方法本身就很简单），先new一个Son类的实例，然后调用Son实例的构造函数，然后再调用say方法。</p>
+<p>这段指令集中已经出现了invokespecial和invokevirtual指令，先卖个关子，等后面分析。</p>
+<h2 id="Father类的指令集">4.2. Father类的指令集</h2><p>再来看下Father类的指令集。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public void say();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PUBLIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #3                  // String i am fater</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">        11: aload_0</div><div class="line">        12: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V</div><div class="line">        15: aload_0</div><div class="line">        16: invokespecial #6                  // Method hello:()V</div><div class="line">        19: aload_0</div><div class="line">        20: invokevirtual #7                  // Method hi:()V</div><div class="line">        23: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 16: 0</div><div class="line">        line 17: 8</div><div class="line">        line 18: 15</div><div class="line">        line 19: 19</div><div class="line">        line 20: 23</div><div class="line">      LocalVariableTable:</div><div class="line">        Start  Length  Slot  Name   Signature</div><div class="line">            0      24     0  this   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</div><div class="line"></div><div class="line">  private void hello();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PRIVATE</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #8                  // String father say hello</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 23: 0</div><div class="line">        line 24: 8</div><div class="line">      LocalVariableTable:</div><div class="line">        Start  Length  Slot  Name   Signature</div><div class="line">            0       9     0  this   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</div><div class="line"></div><div class="line">  public void hi();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PUBLIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #8                  // String father say hello</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 27: 0</div><div class="line">        line 28: 8</div><div class="line">      LocalVariableTable:</div><div class="line">        Start  Length  Slot  Name   Signature</div><div class="line">            0       9     0  this   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -505,12 +533,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2017/07/14/Git常用操作/">Git常用操作</a></p>
+  <p><span>本文标题:</span><a href="/2017/09/15/JVM-invokespecial和invokevirtual/">JVM invokespecial和invokevirtual</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
-  <p><span>发布时间:</span>2017年07月14日 - 14:07</p>
-  <p><span>最后更新:</span>2017年09月09日 - 18:09</p>
-  <p><span>原始链接:</span><a href="/2017/07/14/Git常用操作/" title="Git常用操作">http://wxweven.win/2017/07/14/Git常用操作/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/07/14/Git常用操作/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2017年09月15日 - 18:09</p>
+  <p><span>最后更新:</span>2017年09月15日 - 19:09</p>
+  <p><span>原始链接:</span><a href="/2017/09/15/JVM-invokespecial和invokevirtual/" title="JVM invokespecial和invokevirtual">http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -582,7 +610,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+            <a href="/tags/invokespecial/" rel="tag"># invokespecial</a>
+          
+            <a href="/tags/invokevirtual/" rel="tag"># invokevirtual</a>
+          
+            <a href="/tags/指令集/" rel="tag"># 指令集</a>
           
         </div>
       
@@ -595,8 +629,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/07/debug/" rel="next" title="debug">
-                <i class="fa fa-chevron-left"></i> debug
+              <a href="/2017/09/15/Java8-Stream常用操作/" rel="next" title="Java8 Stream常用操作">
+                <i class="fa fa-chevron-left"></i> Java8 Stream常用操作
               </a>
             
           </div>
@@ -604,10 +638,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/14/Git分支/" rel="prev" title="Git分支">
-                Git分支 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -836,7 +866,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#clone"><span class="nav-text">1. clone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分支"><span class="nav-text">2. 分支</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本地分支"><span class="nav-text">2.1. 本地分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程分支"><span class="nav-text">2.2. 远程分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建远程分支"><span class="nav-text">2.2.1. 新建远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地分支跟踪远程分支"><span class="nav-text">2.2.2. 本地分支跟踪远程分支</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM提供的方法调用指令集"><span class="nav-text">1. JVM提供的方法调用指令集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#举个栗子"><span class="nav-text">2. 举个栗子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栗子逻辑分析"><span class="nav-text">3. 栗子逻辑分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从main方法开始"><span class="nav-text">3.1. 从main方法开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#say方法"><span class="nav-text">3.2. say方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javap指令"><span class="nav-text">4. javap指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#InvokeVirtualTest类的指令集"><span class="nav-text">4.1. InvokeVirtualTest类的指令集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Father类的指令集"><span class="nav-text">4.2. Father类的指令集</span></a></li></ol></li></ol></div>
             
 
           </div>

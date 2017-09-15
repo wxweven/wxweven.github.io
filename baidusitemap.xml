@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://wxweven.win/2017/09/15/JVM-invokespecial%E5%92%8Cinvokevirtual/</loc>
+    <lastmod>2017-09-15T11:09:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM invokespecial和invokevirtual</title>
+        <pubTime>2017-09-15T10:05:16.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+        <tag>invokespecial</tag>
+         
+        <tag>invokevirtual</tag>
+         
+        <tag>指令集</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://wxweven.win/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2017-09-15T04:03:22.000Z</lastmod>
     <data>
@@ -762,7 +788,6 @@
     
     
     
-    
   <url>
     <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
     <lastmod>2017-04-21T06:18:59.000Z</lastmod>
@@ -802,4 +827,5 @@
     </data>
     </url>
 
+    
 </urlset>
