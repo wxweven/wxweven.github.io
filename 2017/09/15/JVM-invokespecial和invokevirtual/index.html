@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
-<meta property="og:updated_time" content="2017-09-15T15:56:14.000Z">
+<meta property="og:updated_time" content="2017-09-15T15:57:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">
 <meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
@@ -555,8 +555,8 @@
 </ul>
 <p>而造成两个方法实际执行指令不同的根本原因又是因为：</p>
 <ul>
-<li>在<code>Father</code>类中，hello 定义为私有方法，使用<code>invokespecial</code>指令调用；</li>
-<li>hi 定义为共有方法(即JVM所理解的虚方法)，使用<code>invokevirtual</code>指令调用。</li>
+<li>在<code>Father</code>类中，<code>hello</code> 定义为私有方法，使用<code>invokespecial</code>指令调用；</li>
+<li><code>hi</code> 定义为公有方法(即JVM所理解的虚方法)，使用<code>invokevirtual</code>指令调用。</li>
 </ul>
 <p>关于这点，感兴趣的看官，可以把 <code>Father</code>类中的hello方法也改为public，再运行代码，就会看到实际调用也是<code>Son</code> 类的hello方法，对应的输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i am fater</div><div class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</div><div class="line">son say hello</div><div class="line">son say hi</div></pre></td></tr></table></figure></p>
 <h1 id="总结">5. 总结</h1><p>好久没有这么认真的写博客了，博客也是长草好一段时间了。最近在看周志明大大的《深入理解Java虚拟机》，这篇算是一个读书笔记，总结得有不对的地方，欢迎留言或邮件探讨。</p>
