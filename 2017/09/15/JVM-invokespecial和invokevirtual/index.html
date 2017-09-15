@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
-<meta property="og:updated_time" content="2017-09-15T15:49:40.000Z">
+<meta property="og:updated_time" content="2017-09-15T15:53:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">
 <meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
@@ -534,7 +534,7 @@
 <p>接着我们来看say方法指令集的第三段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">15: aload_0</div><div class="line">16: invokespecial #6                  // Method hello:()V</div></pre></td></tr></table></figure></p>
 <p>注意这里很明显的<code>invokespecial</code>指令，周志明大大的《深入理解Java虚拟机》第二版中讲到：<br><div class="note warning"><p><code>invokespecial</code>指令调用的方法，在类加载的时候就会把符号引用解析为该方法的直接引用。</p>
 </div></p>
-<p>也就是说，当JVM在使用<code>invokespecial</code>指令时，在类加载时就能确定需要调用的具体方法，而不需要等到运行时去根据实际的对象值去调用改对象的方法。（不知道的这样解释大家有没有看懂。。。）</p>
+<p>也就是说，当JVM在使用<code>invokespecial</code>指令时，在类加载时就能确定需要调用的具体方法，而不需要等到运行时去根据实际的对象值去调用该对象的方法。（不知道的这样解释大家有没有看懂。。。）</p>
 <p>所以这里调用的就是父类的hello方法。所以程序才会输出 <code>&quot;father say hello&quot;</code>。</p>
 <p>接着我们来看say方法指令集的第四段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">19: aload_0</div><div class="line">20: invokevirtual #7                  // Method hi:()V</div></pre></td></tr></table></figure></p>
 <p>注意这里调用的是<code>invokevirtual</code>指令，同样，周志明大大的《深入理解Java虚拟机》第二版中讲到（哈，我就是这么崇拜周志明大大，当然还有R大）：<br><div class="note warning"><p><code>invokevirtual</code>指令的调用依赖于运行时解析，其解析过程大致分为以下几个步骤：</p>
