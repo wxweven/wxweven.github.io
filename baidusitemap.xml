@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://wxweven.win/2017/09/15/JVM-invokespecial%E5%92%8Cinvokevirtual/</loc>
-    <lastmod>2017-09-15T11:09:50.000Z</lastmod>
+    <lastmod>2017-09-15T15:48:36.000Z</lastmod>
     <data>
         <display>
-        <title>JVM invokespecial和invokevirtual</title>
+        <title>通过实例一行一行分析JVM的invokespecial和invokevirtual指令</title>
         <pubTime>2017-09-15T10:05:16.000Z</pubTime>
         
         <tag>JVM</tag>

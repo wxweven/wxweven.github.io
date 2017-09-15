@@ -1800,7 +1800,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/15/JVM-invokespecial和invokevirtual/" itemprop="url">JVM invokespecial和invokevirtual</a></h1>
+                <a class="post-title-link" href="/2017/09/15/JVM-invokespecial和invokevirtual/" itemprop="url">通过实例一行一行分析JVM的invokespecial和invokevirtual指令</a></h1>
         
 
         <div class="post-meta">
@@ -1868,7 +1868,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,241 字
+                  2,662 字
                 </span>
               
 
@@ -1884,7 +1884,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  11 分钟
                 </span>
               
             </div>
@@ -1904,15 +1904,8 @@
       
         
           <hr>
-<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：</p>
-<ul>
-<li>invokestatic：调用静态方法；</li>
-<li>invokespecial：调用实例构造方法<init>，私有方法和父类方法（super关键字调用）；</init></li>
-<li>invokeinterface：调用接口方法，在运行时再确定一个实现此接口的对象；</li>
-<li>invokevirtual：调用虚方法（就是除了上述三种情况之外的方法）；</li>
-<li>invokedynamic：在运行时动态解析出调用点限定符所引用的方法之后，调用该方法；</li>
-</ul>
-<p>本文主要介绍invokespecial和invokevirtual指令。<br></p>
+<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：<br><div class="note success"><p>invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；</p>
+</div></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/15/JVM-invokespecial和invokevirtual/#more" rel="contents">
@@ -2323,7 +2316,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共89.8k字</span>
+  <span class="post-count">共91.2k字</span>
 </div>
 
 
