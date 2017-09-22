@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java8对读写锁的改进：StampedLock]]></title>
+    <url>%2F2017%2F09%2F22%2FJava8%E5%AF%B9%E8%AF%BB%E5%86%99%E9%94%81%E7%9A%84%E6%94%B9%E8%BF%9B%EF%BC%9AStampedLock%2F</url>
+    <content type="text"><![CDATA[Java8中的StampedLock是对原有的ReentrantReadWriteLock的改进，它的思想是读写锁中的读操作不应该阻塞其他读操作，同时也不应该阻塞其他写操作。 1. 读不阻塞写的实现思想StampedLock中，读操作不阻塞写操作的实现思想如下：在读的时候如果发生了写，则应当重读而不是在读的时候直接阻塞写! 因为在读线程非常多而写线程比较少的情况下，写线程可能发生饥饿现象，也就是因为大量的读线程存在并且读线程都阻塞写线程， 因此写线程可能几乎很少被调度成功！当读执行的时候另一个线程执行了写，则读线程发现数据不一致则执行重读即可。所以读写都存在的情况下， 使用StampedLock就可以实现一种无障碍操作，即读写之间不会阻塞对方，但是写和写之间还是阻塞的！ 程序举例：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061public class Point &#123; /** * Stamped类似一个时间戳的作用，每次写的时候对其+1来改变被操作对象的Stamped值 * &lt;p&gt; * 这样其它线程读的时候发现目标对象的Stamped改变，则执行重读 */ private final StampedLock stampedLock = new StampedLock(); //一个点的x，y坐标 private double x, y; // an exclusively locked method void move(double deltaX, double deltaY) &#123; /**stampedLock调用writeLock和unlockWrite时候都会导致stampedLock的stamp值的变化 * 即每次+1，直到加到最大值，然后从0重新开始 */ long stamp = stampedLock.writeLock(); //写锁 try &#123; x += deltaX; y += deltaY; &#125; finally &#123; stampedLock.unlockWrite(stamp);//释放写锁 &#125; &#125; double distanceFromOrigin() &#123; // A read-only method /** * tryOptimisticRead是一个乐观的读，使用这种锁的读不阻塞写 * 每次读的时候得到一个当前的stamp值（类似时间戳的作用） */ long stamp = stampedLock.tryOptimisticRead(); // 这里就是读操作，读取x和y，因为读取x时，y可能被写了新的值，所以下面需要判断 double currentX = x, currentY = y; /** * 如果读取的时候发生了写，则stampedLock的stamp属性值会变化，此时需要重读， * 再重读的时候需要加读锁（并且重读时使用的应当是悲观的读锁，即阻塞写的读锁） * 当然重读的时候还可以使用tryOptimisticRead，此时需要结合循环了，即类似CAS方式 * 读锁又重新返回一个stampe值 */ if (!stampedLock.validate(stamp)) &#123; stamp = stampedLock.readLock(); //读锁 try &#123; currentX = x; currentY = y; &#125; finally &#123; stampedLock.unlockRead(stamp);//释放读锁 &#125; &#125; //读锁验证成功后才执行计算，即读的时候没有发生写 return Math.sqrt(currentX * currentX + currentY * currentY); &#125;&#125; 2. StampedLock的实现思想在StampedLock中使用了CLH自旋锁，如果发生了读失败，不立刻把读线程挂起，锁当中维护了一个等待线程队列。 所有申请锁但是没有成功的线程都会记录到这个队列中，每一个节点（一个节点表示一个线程）保存一个标记位（locked），用于判断当前线程是否已经释放锁。当一个未标记到队列中的线程试图获得锁时，会取得当前等待队列尾部的节点作为其前序节点， 并使用类似如下代码（一个空的死循环）判断前序节点是否已经成功的释放了锁：1while(pred.locked)&#123;&#125; 解释：pred表示当前试图获取锁的线程的前序节点，如果前序节点没有释放锁，则当前线程就执行该空循环并不断判断前序节点的锁释放，即类似一个自旋锁的效果，避免被系统挂起。当循环一定次数后，前序节点还没有释放锁，则当前线程就被挂起而不再自旋， 因为空的死循环执行太多次比挂起更消耗资源。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git分支开发流程]]></title>
     <url>%2F2017%2F09%2F18%2FGit%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[主要介绍下Git多分支开发时，避免多分支冲突的一种方法，详见下图：]]></content>

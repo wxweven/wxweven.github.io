@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
-<meta property="og:updated_time" content="2017-09-15T15:57:50.000Z">
+<meta property="og:updated_time" content="2017-09-22T06:04:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">
 <meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
@@ -481,16 +481,16 @@
 
       
         <hr>
-<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：<br><div class="note success"><p>invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；</p>
+<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：<br><div class="note primary"><p>invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；</p>
 </div></p>
 <a id="more"></a>
-<div class="note success"><p>invokespecial：该指令用于三种场景：调用实例构造方法<init>，调用私有方法（即private关键字修饰的方法）和父类方法（即super关键字调用的方法）；</init></p>
+<div class="note primary"><p>invokespecial：该指令用于三种场景：调用实例构造方法<init>，调用私有方法（即private关键字修饰的方法）和父类方法（即super关键字调用的方法）；</init></p>
 </div>
-<div class="note success"><p>invokeinterface：该指令用于调用接口方法，在运行时再确定一个实现此接口的对象；</p>
+<div class="note primary"><p>invokeinterface：该指令用于调用接口方法，在运行时再确定一个实现此接口的对象；</p>
 </div>
-<div class="note success"><p>invokevirtual：该指令用于调用虚方法（就是除了上述三种情况之外的方法）；</p>
+<div class="note primary"><p>invokevirtual：该指令用于调用虚方法（就是除了上述三种情况之外的方法）；</p>
 </div>
-<div class="note success"><p>invokedynamic：在运行时动态解析出调用点限定符所引用的方法之后，调用该方法；在JDK1.7中推出，主要用于支持JVM上的动态脚本语言（如Groovy，Jython等）。</p>
+<div class="note primary"><p>invokedynamic：在运行时动态解析出调用点限定符所引用的方法之后，调用该方法；在JDK1.7中推出，主要用于支持JVM上的动态脚本语言（如Groovy，Jython等）。</p>
 </div>
 <p>本文主要介绍<code>invokespecial</code>和<code>invokevirtual</code>指令。</p>
 <h1 id="举个栗子">2. 举个栗子</h1><p>下面我们来看一个具体的例子。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.jvm.zzm.jvminvoke;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/9/15</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InvokeVirtualTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Father test = <span class="keyword">new</span> Son();</div><div class="line">        test.say();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am fater"</span>);</div><div class="line">        System.out.println(<span class="keyword">this</span>);</div><div class="line">        <span class="keyword">this</span>.hello();</div><div class="line">        <span class="keyword">this</span>.hi();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hi"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hi"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -583,7 +583,7 @@
   <p><span>本文标题:</span><a href="/2017/09/15/JVM-invokespecial和invokevirtual/">通过实例一行一行分析JVM的invokespecial和invokevirtual指令</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
   <p><span>发布时间:</span>2017年09月15日 - 18:09</p>
-  <p><span>最后更新:</span>2017年09月15日 - 23:09</p>
+  <p><span>最后更新:</span>2017年09月22日 - 14:09</p>
   <p><span>原始链接:</span><a href="/2017/09/15/JVM-invokespecial和invokevirtual/" title="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/"  aria-label="复制成功！"></i></span>
   </p>
@@ -800,7 +800,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -960,7 +960,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共91.3k字</span>
+  <span class="post-count">共92.3k字</span>
 </div>
 
 
