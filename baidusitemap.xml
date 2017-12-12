@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%94%81/</loc>
+    <lastmod>2017-12-12T07:24:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（五）——锁</title>
+        <pubTime>2016-10-17T12:01:23.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2017-09-28T08:31:24.000Z</lastmod>
     <data>
@@ -425,28 +447,6 @@
            
              
               <breadCrumb title="mybatis" url="http://wxweven.win/categories/mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%94%81/</loc>
-    <lastmod>2017-07-07T15:15:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（五）——锁</title>
-        <pubTime>2016-10-17T12:01:23.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
