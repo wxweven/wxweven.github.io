@@ -123,13 +123,12 @@
 <meta property="og:image" content="http://wxweven.win/img/20161017123444.png">
 <meta property="og:image" content="http://wxweven.win/img/20161017123455.png">
 <meta property="og:image" content="http://wxweven.win/img/3-2016101712345.png">
-<meta property="og:image" content="http://wxweven.win/img/QQ20161017-0.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-1.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-2.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-3.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-4.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-5.png">
-<meta property="og:updated_time" content="2017-08-20T08:33:34.000Z">
+<meta property="og:updated_time" content="2018-02-03T10:00:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java内存模型（四）——volatile">
 <meta name="twitter:description" content="深入理解Java内存模型（四）——volatile">
@@ -456,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,457 字
+                  3,486 字
                 </span>
               
 
@@ -472,7 +471,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  12 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -546,7 +545,43 @@
 </ul>
 </blockquote>
 <h2 id="volatile内存语义的实现">0.4. volatile内存语义的实现</h2><p>下面，让我们来看看JMM如何实现volatile写/读的内存语义。</p>
-<p>前文我们提到过重排序分为编译器重排序和处理器重排序。为了实现volatile内存语义，JMM会分别限制这两种类型的重排序类型。下面是JMM针对编译器制定的volatile重排序规则表：<br><img src="/img/QQ20161017-0.png" alt=""></p>
+<p>前文我们提到过重排序分为编译器重排序和处理器重排序。为了实现volatile内存语义，JMM会分别限制这两种类型的重排序类型。下面是JMM针对编译器制定的volatile重排序规则表：</p>
+<table>
+<thead>
+<tr>
+<th>能否重排序</th>
+<th>第二个操作</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一个操作</td>
+<td>普通读/写</td>
+<td>volatile读</td>
+<td>volatile写</td>
+</tr>
+<tr>
+<td>普通读/写</td>
+<td></td>
+<td></td>
+<td>NO</td>
+</tr>
+<tr>
+<td>volatile读</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>volatile写</td>
+<td></td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
 <p>举例来说，第三行最后一个单元格的意思是：在程序顺序中，当第一个操作为普通变量的读或写时，如果第二个操作为volatile写，则编译器不能重排序这两个操作。</p>
 <p>从上表我们可以看出：</p>
 <ul>
@@ -922,7 +957,7 @@
 <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -940,7 +975,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共92.6k字</span>
+  <span class="post-count">共93.0k字</span>
 </div>
 
 

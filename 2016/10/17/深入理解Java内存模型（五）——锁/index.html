@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-7-2-1.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-7.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161017-8989.png">
-<meta property="og:updated_time" content="2017-12-12T07:24:03.000Z">
+<meta property="og:updated_time" content="2017-12-12T08:28:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java内存模型（五）——锁">
 <meta name="twitter:description" content="深入理解Java内存模型（五）——锁">
@@ -526,9 +526,7 @@
 <p>从上面的源代码我们可以看出，在释放锁的最后写volatile变量state。</p>
 <p>公平锁在释放锁的最后写volatile变量state；在获取锁时首先读这个volatile变量。根据volatile的happens-before规则，释放锁的线程在写volatile变量之前可见的共享变量，在获取锁的线程读取同一个volatile变量后将立即变的对获取锁的线程可见。</p>
 <h2 id="非公平锁">3.2. 非公平锁</h2><hr>
-<p>现在我们分析非公平锁的内存语义的实现。</p>
-<p>非公平锁的释放和公平锁完全一样，所以这里仅仅分析非公平锁的获取。</p>
-<p>使用公平锁时，加锁方法lock()的方法调用轨迹如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ReentrantLock : lock()</div><div class="line">NonfairSync : lock()</div><div class="line">AbstractQueuedSynchronizer : compareAndSetState(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</div></pre></td></tr></table></figure></p>
+<p>现在我们分析非公平锁的内存语义的实现。<br>非公平锁的释放和公平锁完全一样，所以这里仅仅分析非公平锁的获取。<br>使用公平锁时，加锁方法lock()的方法调用轨迹如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ReentrantLock : lock()</div><div class="line">NonfairSync : lock()</div><div class="line">AbstractQueuedSynchronizer : compareAndSetState(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</div></pre></td></tr></table></figure></p>
 <p>在第3步真正开始加锁，下面是该方法的源代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSetState</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, stateOffset, expect, update);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>该方法以原子操作的方式更新state变量，本文把java的compareAndSet()方法调用简称为CAS。JDK文档对该方法的说明如下：如果当前状态值等于预期值，则以原子方式将同步状态设置为给定的更新值。此操作具有 volatile 读和写的内存语义。</p>
 <p>这里我们分别从编译器和处理器的角度来分析,CAS如何同时具有volatile读和volatile写的内存语义。</p>
@@ -545,7 +543,7 @@
 <p>intel的手册对lock前缀的说明如下：</p>
 <blockquote>
 <ol>
-<li><p>确保对内存的读-改-写操作原子执行。在Pentium及Pentium之前的处理器中，带有lock前缀的指令在执行期间会锁住总线，使得其他处理器暂时无法通过总线访问内存。很显然，这会带来昂贵的开销。从Pentium 4，Intel Xeon及P6处理器开始，intel在原有总线锁的基础上做了一个很有意义的优化：如果要访问的内存区域（area of memory）在lock前缀指令执行期间已经在处理器内部的缓存中被锁定（即包含该内存区域的缓存行当前处于独占或以修改状态），并且该内存区域被完全包含在单个缓存行（cache line）中，那么处理器将直接执行该指令。由于在指令执行期间该缓存行会一直被锁定，其它处理器无法读/写该指令要访问的内存区域，因此能保证指令执行的原子性。这个操作过程叫做缓存锁定（cache locking），缓存锁定将大大降低lock前缀指令的执行开销，但是当多处理器之间的竞争程度很高或者指令访问的内存地址未对齐时，仍然会锁住总线。</p>
+<li><p>确保对内存的读-改-写操作原子执行。在Pentium及Pentium之前的处理器中，带有lock前缀的指令在执行期间会锁住总线，使得其他处理器暂时无法通过总线访问内存。很显然，这会带来昂贵的开销。从Pentium 4，Intel Xeon及P6处理器开始，intel在原有总线锁的基础上做了一个很有意义的优化：如果要访问的内存区域（area of memory）在lock前缀指令执行期间已经在处理器内部的缓存中被锁定（即包含该内存区域的缓存行当前处于独占或已修改状态），并且该内存区域被完全包含在单个缓存行（cache line）中，那么处理器将直接执行该指令。由于在指令执行期间该缓存行会一直被锁定，其它处理器无法读/写该指令要访问的内存区域，因此能保证指令执行的原子性。这个操作过程叫做缓存锁定（cache locking），缓存锁定将大大降低lock前缀指令的执行开销，但是当多处理器之间的竞争程度很高或者指令访问的内存地址未对齐时，仍然会锁住总线。</p>
 </li>
 <li><p>禁止该指令与之前和之后的读和写指令重排序。</p>
 </li>
@@ -557,9 +555,9 @@
 <p>经过上面的这些分析，现在我们终于能明白为什么JDK文档说CAS同时具有volatile读和volatile写的内存语义了。</p>
 <p>现在对公平锁和非公平锁的内存语义做个总结：</p>
 <ul>
-<li>公平锁和非公平锁释放时，最后都要写一个volatile变量state。</li>
-<li>公平锁获取时，首先会去读这个volatile变量。</li>
-<li>非公平锁获取时，首先会用CAS更新这个volatile变量,这个操作同时具有volatile读和volatile写的内存语义。</li>
+<li>公平锁和非公平锁释放时，最后都要写一个<code>volatile</code>变量<code>state</code>。</li>
+<li>公平锁获取时，首先会去读这个<code>volatile</code>变量。</li>
+<li>非公平锁获取时，首先会用<code>CAS</code>更新这个<code>volatile</code>变量，这个操作同时具有<code>volatile</code>读和<code>volatile</code>写的内存语义。</li>
 </ul>
 <p>从本文对ReentrantLock的分析可以看出，锁释放-获取的内存语义的实现至少有下面两种方式：</p>
 <ol>
@@ -575,9 +573,9 @@
 </ol>
 <p>Java的CAS会使用现代处理器上提供的高效机器级别原子指令，这些原子指令以原子方式对内存执行读-改-写操作，这是在多处理器中实现同步的关键（从本质上来说，能够支持原子性读-改-写指令的计算机器，是顺序计算图灵机的异步等价机器，因此任何现代的多处理器都会去支持某种能对内存执行原子性读-改-写操作的原子指令）。同时，volatile变量的读/写和CAS可以实现线程之间的通信。把这些特性整合在一起，就形成了整个concurrent包得以实现的基石。如果我们仔细分析concurrent包的源代码实现，会发现一个通用化的实现模式：</p>
 <ol>
-<li>首先，声明共享变量为volatile；</li>
-<li>然后，使用CAS的原子条件更新来实现线程之间的同步；</li>
-<li>同时，配合以volatile的读/写和CAS所具有的volatile读和写的内存语义来实现线程之间的通信。</li>
+<li><strong>首先，声明共享变量为volatile；</strong></li>
+<li><strong>然后，使用CAS的原子条件更新来实现线程之间的同步；</strong></li>
+<li><strong>同时，配合以volatile的读/写和CAS所具有的volatile读和写的内存语义来实现线程之间的通信。</strong></li>
 </ol>
 <p>AQS，非阻塞数据结构和原子变量类（java.util.concurrent.atomic包中的类），这些concurrent包中的基础类都是使用这种模式来实现的，而concurrent包中的高层类又是依赖于这些基础类来实现的。从整体来看，concurrent包的实现示意图如下：<br><img src="/img/QQ20161017-8989.png" alt=""></p>
 
@@ -921,7 +919,7 @@
 <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -939,7 +937,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共92.6k字</span>
+  <span class="post-count">共93.0k字</span>
 </div>
 
 

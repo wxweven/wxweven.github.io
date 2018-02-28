@@ -126,10 +126,8 @@
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-3@2x.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-4@2x.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-5@2x.png">
-<meta property="og:image" content="http://wxweven.win/img/QQ20161015-9@2x.png">
-<meta property="og:image" content="http://wxweven.win/img/QQ20161015-8@2x.png">
 <meta property="og:image" content="http://wxweven.win/img/QQ20161015-10@2x.png">
-<meta property="og:updated_time" content="2017-07-07T15:09:54.000Z">
+<meta property="og:updated_time" content="2018-02-03T10:27:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java内存模型（一）——基础篇">
 <meta name="twitter:description" content="深入理解Java内存模型（一）——基础篇">
@@ -456,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,658 字
+                  3,762 字
                 </span>
               
 
@@ -528,7 +526,38 @@
 <li>注 3：由于 ARM 处理器的内存模型与 PowerPC 处理器的内存模型非常类似，本文将忽 略它。</li>
 <li>注 4：数据依赖性后文会专门说明。</li>
 </ul>
-<p>为了保证内存可见性，java 编译器在生成指令序列的适当位置会插入内存屏障指令 来禁止特定类型的处理器重排序。JMM 把内存屏障指令分为下列四类：<br><img src="/img/QQ20161015-9@2x.png" alt=""><br><img src="/img/QQ20161015-8@2x.png" alt=""></p>
+<p>为了保证内存可见性，java 编译器在生成指令序列的适当位置会插入内存屏障指令 来禁止特定类型的处理器重排序。JMM 把内存屏障指令分为下列四类：</p>
+<table>
+<thead>
+<tr>
+<th>屏障类型</th>
+<th>指令示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StoreStore</td>
+<td>Store a; StoreStore; Store b;</td>
+<td>确保a变量的写（刷新到内存）之前于b变量的写</td>
+</tr>
+<tr>
+<td>StoreLoad</td>
+<td>Store a; StoreLoad; Load b;</td>
+<td>确保a变量的写（刷新到内存）之前于b变量的加载</td>
+</tr>
+<tr>
+<td>LoadLoad</td>
+<td>Load a; LoadLoad; Load b;</td>
+<td>确保a变量的加载之前于b变量的加载</td>
+</tr>
+<tr>
+<td>LoadStore</td>
+<td>Load a; LoadStore; Store b;</td>
+<td>确保a变量的加载之前于b变量的写（刷新到内存）</td>
+</tr>
+</tbody>
+</table>
 <p>StoreLoad Barriers 是一个“全能型”的屏障，它同时具有其他三个屏障的效果。现代的多处理器大都支持该屏障（其他类型的屏障不一定被所有处理器支持）。执 行该屏障开销会很昂贵，因为当前处理器通常要把写缓冲区中的数据全部刷新到内 存中（buffer fully flush）。</p>
 <h2 id="happens-before">0.5. happens-before</h2><p>从 JDK5 开始，java 使用新的 JSR-133 内存模型（本文除非特别说明，针对的都是 JSR-133 内存模型）。JSR-133 使用 happens-before 的概念来阐述操作之间的内存可见性。在 JMM 中，如果一个操作执行的结果需要对另一个操作可见，那么这两个操作之间必须要存在 happens-before 关系。</p>
 <p>另外，如果两个操作的执行次序无法从happens-before原则推导出来，那么它们就不能保证它们的有序性，虚拟机可以随意地对它们进行重排序。</p>
@@ -891,7 +920,7 @@
 <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -909,7 +938,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共92.6k字</span>
+  <span class="post-count">共93.0k字</span>
 </div>
 
 
