@@ -124,9 +124,9 @@
 <meta property="og:image" content="http://wxweven.win/img/15207387415630.jpg">
 <meta property="og:image" content="http://wxweven.win/img/15207500053074.png">
 <meta property="og:image" content="http://wxweven.win/img/15207551785678.jpg">
-<meta property="og:image" content="http://wxweven.win/img/15207552243279.jpg">
+<meta property="og:image" content="http://wxweven.win/img/15207685731521.jpg">
 <meta property="og:image" content="http://wxweven.win/img/15207598329849.png">
-<meta property="og:updated_time" content="2018-03-11T11:34:33.000Z">
+<meta property="og:updated_time" content="2018-03-11T11:42:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal源码深度解析">
 <meta name="twitter:description" content="想必很多朋友对ThreadLocal并不陌生，今天我们就来一起探讨下ThreadLocal实现原理和相关源码。首先，本文先介绍一下ThreadLocal以及底层结构，然后从ThreadLocal相关的API入手，详细分析ThreadLocal源码和使用时需要注意的地方，最后分析下ThreadLocal中的内存泄露问题。">
@@ -613,7 +613,7 @@
 <h3 id="ThreadLocalMap的remove方法">3.2.4. ThreadLocalMap的remove方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Remove the entry for key.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ThreadLocal&lt;?&gt; key)</span> </span>&#123;</div><div class="line">    Entry[] tab = table;</div><div class="line">    <span class="keyword">int</span> len = tab.length;</div><div class="line">    </div><div class="line">    <span class="comment">// 1. 定位Hash桶位置</span></div><div class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</div><div class="line">    </div><div class="line">    <span class="comment">// 2. 遍历找出key对应的Entry，</span></div><div class="line">    <span class="keyword">for</span> (Entry e = tab[i]; e != <span class="keyword">null</span>; e = tab[i = nextIndex(i, len)]) &#123;</div><div class="line">        <span class="keyword">if</span> (e.get() == key) &#123;</div><div class="line">            <span class="comment">// 3. 找到对应的Entry后，清理该Entry的弱引用</span></div><div class="line">            e.clear();</div><div class="line">            <span class="comment">// 4. 特殊处理：清除过期的Entry</span></div><div class="line">            expungeStaleEntry(i);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>remove方法，根据key去删除map中的元素。这一过程中的特殊处理，也是跟内存泄露相关，会在内存泄露章节介绍。</p>
 <h1 id="ThreadLocal的内存泄露">4. ThreadLocal的内存泄露</h1><h2 id="内存泄露原理分析">4.1. 内存泄露原理分析</h2><p>我们再回过头来看看ThreadLocal的底层实现：<br><img src="/img/15207551785678.jpg" alt=""></p>
-<p>在 ThreadLocal 的生命周期中，都存在这些引用。如下图：实线代表强引用，虚线代表弱引用。<br><img src="/img/15207552243279.jpg" alt=""></p>
+<p>在 ThreadLocal 的生命周期中，都存在这些引用。如下图：实线代表强引用，虚线代表弱引用。<br><img src="/img/15207685731521.jpg" alt=""></p>
 <p>ThreadLocal 的实现是这样的：每个 Thread 维护一个 ThreadLocalMap 映射表，这个映射表的 key 是 ThreadLocal实例本身，value 是真正需要存储的 Object。</p>
 <p>也就是说 ThreadLocal 本身并不存储值，它只是作为一个 key 来让线程从 ThreadLocalMap 获取 value。值得注意的是图中的虚线，表示 ThreadLocalMap 是使用 ThreadLocal 的弱引用作为 Key 的，弱引用的对象在 GC 时会被回收。</p>
 <blockquote>
