@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://wxweven.win/img/15207551785678.jpg">
 <meta property="og:image" content="http://wxweven.win/img/15207685731521.jpg">
 <meta property="og:image" content="http://wxweven.win/img/15207598329849.png">
-<meta property="og:updated_time" content="2018-03-11T11:49:57.000Z">
+<meta property="og:updated_time" content="2018-03-23T05:58:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal源码深度解析">
 <meta name="twitter:description" content="想必很多朋友对ThreadLocal并不陌生，今天我们就来一起探讨下ThreadLocal实现原理和相关源码。首先，本文先介绍一下ThreadLocal以及底层结构，然后从ThreadLocal相关的API入手，详细分析ThreadLocal源码和使用时需要注意的地方，最后分析下ThreadLocal中的内存泄露问题。">
@@ -453,7 +453,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  9,608 字
+                  9,617 字
                 </span>
               
 
@@ -494,7 +494,7 @@
 <p>This class provides thread-local variables. These variables differ from their normal counterparts in that each thread that accesses one (via its get or set method) has its own, independently initialized copy of the variable. ThreadLocal instances are typically private static fields in classes that wish to associate state with a thread (e.g.a user ID or Transaction ID).<br>Each thread holds an implicit reference to its copy of a thread-local variable as long as the thread is alive and the ThreadLocal instance is accessible; after a thread goes away, all of its copies of thread-local instances are subject to garbage collection (unless other references to these copies exist)</p>
 </blockquote>
 <p>也就是说这个类给线程提供了一个本地变量，这个变量是该线程自己拥有的。在该线程存活和ThreadLocal实例能访问的时候，保存了对这个变量副本的引用。当线程消失的时候，所有的线程本地实例都会交由GC接管。</p>
-<h2 id="举个栗子">1.1. 举个栗子</h2><p>我们先来看一个简单的demo，了解下如何在代码中使用ThreadLocal：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ThreadLocal&lt;List&lt;String&gt;&gt; threadLocal = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setThreadLocal</span><span class="params">(List&lt;String&gt; values)</span> </span>&#123;</div><div class="line">        threadLocal.set(values);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getThreadLocal</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(Thread.currentThread().getName());</div><div class="line">        threadLocal.get().forEach(name -&gt; System.out.println(name));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line"> </div><div class="line">        <span class="keyword">final</span> ThreadLocalDemo threadLocal = <span class="keyword">new</span> ThreadLocalDemo();</div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            List&lt;String&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">3</span>);</div><div class="line">            params.add(<span class="string">"张三"</span>);</div><div class="line">            params.add(<span class="string">"李四"</span>);</div><div class="line">            params.add(<span class="string">"王五"</span>);</div><div class="line">            threadLocal.setThreadLocal(params);</div><div class="line">            threadLocal.getThreadLocal();</div><div class="line">        &#125;).start();</div><div class="line"> </div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">1000</span>);</div><div class="line">                List&lt;String&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">2</span>);</div><div class="line">                params.add(<span class="string">"Chinese"</span>);</div><div class="line">                params.add(<span class="string">"English"</span>);</div><div class="line">                threadLocal.setThreadLocal(params);</div><div class="line">                threadLocal.getThreadLocal();</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="举个栗子">1.1. 举个栗子</h2><p>我们先来看一个简单的demo，了解下如何在代码中使用ThreadLocal：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</div><div class="line">    <span class="comment">// ThreadLocal instances are typically private static fields in classes</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;List&lt;String&gt;&gt; threadLocal = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setThreadLocal</span><span class="params">(List&lt;String&gt; values)</span> </span>&#123;</div><div class="line">        threadLocal.set(values);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getThreadLocal</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(Thread.currentThread().getName());</div><div class="line">        threadLocal.get().forEach(name -&gt; System.out.println(name));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line"> </div><div class="line">        <span class="keyword">final</span> ThreadLocalDemo threadLocal = <span class="keyword">new</span> ThreadLocalDemo();</div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            List&lt;String&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">3</span>);</div><div class="line">            params.add(<span class="string">"张三"</span>);</div><div class="line">            params.add(<span class="string">"李四"</span>);</div><div class="line">            params.add(<span class="string">"王五"</span>);</div><div class="line">            threadLocal.setThreadLocal(params);</div><div class="line">            threadLocal.getThreadLocal();</div><div class="line">        &#125;).start();</div><div class="line"> </div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">1000</span>);</div><div class="line">                List&lt;String&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">2</span>);</div><div class="line">                params.add(<span class="string">"Chinese"</span>);</div><div class="line">                params.add(<span class="string">"English"</span>);</div><div class="line">                threadLocal.setThreadLocal(params);</div><div class="line">                threadLocal.getThreadLocal();</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>运行结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Thread-<span class="number">0</span></div><div class="line">张三</div><div class="line">李四</div><div class="line">王五</div><div class="line">Thread-<span class="number">1</span></div><div class="line">Chinese</div><div class="line">English</div></pre></td></tr></table></figure></p>
 <p>可以，看出虽然多个线程对同一个变量进行访问，但是由于threadLocal变量由ThreadLocal 修饰，则不同的线程访问的就是该线程设置的值，这里也就体现出来ThreadLocal的作用。</p>
 <p>当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。</p>
@@ -708,7 +708,7 @@
   <p><span>本文标题:</span><a href="/2018/03/11/ThreadLocal源码深度解析/">ThreadLocal源码深度解析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
   <p><span>发布时间:</span>2018年03月11日 - 11:03</p>
-  <p><span>最后更新:</span>2018年03月11日 - 19:03</p>
+  <p><span>最后更新:</span>2018年03月23日 - 13:03</p>
   <p><span>原始链接:</span><a href="/2018/03/11/ThreadLocal源码深度解析/" title="ThreadLocal源码深度解析">http://wxweven.win/2018/03/11/ThreadLocal源码深度解析/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2018/03/11/ThreadLocal源码深度解析/"  aria-label="复制成功！"></i></span>
   </p>
@@ -806,6 +806,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/15/Mac下brew设置国内源/" rel="prev" title="Mac下brew设置国内源">
+                Mac下brew设置国内源 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -917,7 +921,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -939,7 +943,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1077,7 +1081,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共102.6k字</span>
+  <span class="post-count">共103.1k字</span>
 </div>
 
 

@@ -120,10 +120,12 @@
 <meta property="og:url" content="http://wxweven.win/2017/09/15/Java8-Stream常用操作/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
-<meta property="og:updated_time" content="2017-09-28T08:31:24.000Z">
+<meta property="og:image" content="http://wxweven.win/img/15242019939236.jpg">
+<meta property="og:updated_time" content="2018-04-20T05:38:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8 Stream常用操作">
 <meta name="twitter:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
+<meta name="twitter:image" content="http://wxweven.win/img/15242019939236.jpg">
 
 
 
@@ -446,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  758 字
+                  916 字
                 </span>
               
 
@@ -535,6 +537,10 @@
 <p>这个其实和MySQL中的语句是一样的功能：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> city, <span class="keyword">count</span>(*) <span class="keyword">from</span> Person <span class="keyword">group</span> <span class="keyword">by</span> city</div></pre></td></tr></table></figure></p>
 <p>除了<code>counting</code>之外，Stream也支持其他类型的聚合函数，如<code>averagingInt</code>（求平均值）、<code>summingInt</code>（求和）、<code>maxBy</code>（最大值）、<code>minBy</code>（最小值）等MySQL中支持的聚合函数。</p>
 <h1 id="Map转化">3. Map转化</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Map&lt;Integer, List&gt; maps = getMap();</div><div class="line">Map&lt;Integer, String&gt; maps2 = maps.entrySet()</div><div class="line">                                 .stream()</div><div class="line">                                 .collect(Collectors.toMap(</div><div class="line">                                    Map.Entry::getKey,</div><div class="line">                                    entry -&gt; entry.getValue(),</div><div class="line">                                    (v1, v2) -&gt; v2</div><div class="line">                             ));</div></pre></td></tr></table></figure>
+<h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><img src="/img/15242019939236.jpg" alt=""></p>
+<p>假设我们有两个List：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">List&lt;Integer&gt; list2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</div></pre></td></tr></table></figure></p>
+<p>如果我们想把list1和list2合并成一个List，新的List值为：<code>[1, 2, 3, 4, 5, 6]</code>, 那么可以用 <code>flatMap</code> 来实现。完整例子如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFlatMap</span><span class="params">()</span> </span>&#123;</div><div class="line">    List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">    List&lt;Integer&gt; list2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</div><div class="line">    List&lt;Integer&gt; list3 = Arrays.asList(<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line"></div><div class="line">    List&lt;Integer&gt; newList = Stream.of(list1, list2, list3)</div><div class="line">                                  .flatMap(Collection::stream)</div><div class="line">                                  .distinct() <span class="comment">// 去重</span></div><div class="line">                                  .collect(Collectors.toList());</div><div class="line"></div><div class="line">    System.out.println(<span class="string">"newList="</span> + newList);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">newList=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -552,7 +558,7 @@
   <p><span>本文标题:</span><a href="/2017/09/15/Java8-Stream常用操作/">Java8 Stream常用操作</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 wxweven 的个人博客">wxweven</a></p>
   <p><span>发布时间:</span>2017年09月15日 - 11:09</p>
-  <p><span>最后更新:</span>2017年09月28日 - 16:09</p>
+  <p><span>最后更新:</span>2018年04月20日 - 13:04</p>
   <p><span>原始链接:</span><a href="/2017/09/15/Java8-Stream常用操作/" title="Java8 Stream常用操作">http://wxweven.win/2017/09/15/Java8-Stream常用操作/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wxweven.win/2017/09/15/Java8-Stream常用操作/"  aria-label="复制成功！"></i></span>
   </p>
@@ -765,7 +771,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -787,7 +793,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -882,7 +888,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-text">1. List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重"><span class="nav-text">1.1. 去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组转List"><span class="nav-text">1.2. 数组转List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转数组"><span class="nav-text">1.3. List转数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转Map"><span class="nav-text">1.4. List转Map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-text">2. 分组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分组聚合"><span class="nav-text">2.1. 分组聚合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组后聚合计算"><span class="nav-text">2.2. 分组后聚合计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map转化"><span class="nav-text">3. Map转化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-text">1. List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重"><span class="nav-text">1.1. 去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组转List"><span class="nav-text">1.2. 数组转List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转数组"><span class="nav-text">1.3. List转数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转Map"><span class="nav-text">1.4. List转Map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-text">2. 分组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分组聚合"><span class="nav-text">2.1. 分组聚合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组后聚合计算"><span class="nav-text">2.2. 分组后聚合计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map转化"><span class="nav-text">3. Map转化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flatMap"><span class="nav-text">4. flatMap</span></a></li></ol></div>
             
 
           </div>
@@ -925,7 +931,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共102.6k字</span>
+  <span class="post-count">共103.1k字</span>
 </div>
 
 
