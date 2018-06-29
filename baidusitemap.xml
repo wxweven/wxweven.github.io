@@ -919,26 +919,6 @@
     
     
   <url>
-    <loc>http://wxweven.win/2015/12/07/%E5%90%AF%E5%8A%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99/</loc>
-    <lastmod>2017-04-21T06:18:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>启动android模拟器报错</title>
-        <pubTime>2015-12-07T05:36:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android工具" url="http://wxweven.win/categories/Android%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
     <lastmod>2017-04-21T06:18:59.000Z</lastmod>
     <data>
@@ -952,6 +932,26 @@
            
              
               <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2015/12/07/%E5%90%AF%E5%8A%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99/</loc>
+    <lastmod>2017-04-21T06:18:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>启动android模拟器报错</title>
+        <pubTime>2015-12-07T05:36:01.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android工具" url="http://wxweven.win/categories/Android%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
