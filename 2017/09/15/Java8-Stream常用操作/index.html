@@ -121,7 +121,7 @@
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
 <meta property="og:image" content="http://wxweven.win/img/15242019939236.jpg">
-<meta property="og:updated_time" content="2018-04-20T05:38:12.000Z">
+<meta property="og:updated_time" content="2018-07-03T05:28:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8 Stream常用操作">
 <meta name="twitter:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  916 字
+                  981 字
                 </span>
               
 
@@ -464,7 +464,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -490,7 +490,7 @@
 <p>去重的核心代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oldList.stream().distinct().collect(Collectors.toList())</div></pre></td></tr></table></figure></p>
 <h2 id="数组转List">1.2. 数组转List</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// int数组转List</span></div><div class="line"><span class="keyword">int</span>[] ints = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line">List&lt;Integer&gt; list = IntStream.of(ints).boxed().collect(Collectors.toList());</div><div class="line"></div><div class="line"><span class="comment">// String数组转List</span></div><div class="line">String[] arrays = <span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;;  </div><div class="line">List&lt;String&gt; listStrings = Stream.of(arrays).collector(Collectors.toList());</div></pre></td></tr></table></figure>
 <h2 id="List转数组">1.3. List转数组</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String[] ss = listStrings.stream().toArray(String[]::<span class="keyword">new</span>);</div></pre></td></tr></table></figure>
-<h2 id="List转Map">1.4. List转Map</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, Person&gt; cityMap = persons.stream()</div><div class="line">                                     .collect(Collectors.toMap(</div><div class="line">                                             Person::getCity,</div><div class="line">                                             Function.identity(),</div><div class="line">                                             (v1, v2) -&gt; v2</div><div class="line">                                     ));</div><div class="line">System.out.println(<span class="string">"city map："</span> + cityMap);</div></pre></td></tr></table></figure>
+<h2 id="List转Map">1.4. List转Map</h2><p>数据集见下节<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, Person&gt; cityMap = persons.stream()</div><div class="line">                                     .collect(Collectors.toMap(</div><div class="line">                                             Person::getCity,</div><div class="line">                                             Function.identity(),</div><div class="line">                                             (v1, v2) -&gt; v2</div><div class="line">                                     ));</div><div class="line">System.out.println(<span class="string">"city map："</span> + cityMap);</div></pre></td></tr></table></figure></p>
 <p>以上输出：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">city map: &#123;</div><div class="line">    basailuona = Person &#123;</div><div class="line">        name = <span class="string">'meixiaoxi'</span>,</div><div class="line">        job = <span class="string">'足球员'</span>,</div><div class="line">        city = <span class="string">'basailuona'</span></div><div class="line">    &#125;,</div><div class="line">    beijing = Person &#123;</div><div class="line">        name = <span class="string">'meidaxi'</span>,</div><div class="line">        job = <span class="string">'教师'</span>,</div><div class="line">        city = <span class="string">'beijing'</span></div><div class="line">    &#125;,</div><div class="line">    huangshi = Person &#123;</div><div class="line">        name = <span class="string">'wxweven'</span>,</div><div class="line">        job = <span class="string">'程序员'</span>,</div><div class="line">        city = <span class="string">'huangshi'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="分组">2. 分组</h1><p>假设我们有如下数据：</p>
 <table>
@@ -536,6 +536,11 @@
 <p>输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">每个城市的人数：&#123;basailuona=<span class="number">1</span>, beijing=<span class="number">2</span>, huangshi=<span class="number">1</span>&#125;</div></pre></td></tr></table></figure></p>
 <p>这个其实和MySQL中的语句是一样的功能：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> city, <span class="keyword">count</span>(*) <span class="keyword">from</span> Person <span class="keyword">group</span> <span class="keyword">by</span> city</div></pre></td></tr></table></figure></p>
 <p>除了<code>counting</code>之外，Stream也支持其他类型的聚合函数，如<code>averagingInt</code>（求平均值）、<code>summingInt</code>（求和）、<code>maxBy</code>（最大值）、<code>minBy</code>（最小值）等MySQL中支持的聚合函数。</p>
+<h2 id="分组后汇总">2.3. 分组后汇总</h2><p>我们来看Stack Overflow上的一个问题：</p>
+<blockquote>
+<p>If the input was<br>[(1, “one”), (1, “eins”), (1, “uno”), (2, “two”), (3, “three”)]<br>the output would be<br>{ 1 = [“one”, “eins”, “uno”], 2 = [“two”], 3 = [“three”] }</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tuples.stream()</div><div class="line">      .collect(Collectors.groupingBy(Tuple::getFirst,</div><div class="line">                Collectors.mapping(</div><div class="line">                    Tuple::getSecond,</div><div class="line">                    Collectors.toSet())));</div></pre></td></tr></table></figure>
 <h1 id="Map转化">3. Map转化</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Map&lt;Integer, List&gt; maps = getMap();</div><div class="line">Map&lt;Integer, String&gt; maps2 = maps.entrySet()</div><div class="line">                                 .stream()</div><div class="line">                                 .collect(Collectors.toMap(</div><div class="line">                                    Map.Entry::getKey,</div><div class="line">                                    entry -&gt; entry.getValue(),</div><div class="line">                                    (v1, v2) -&gt; v2</div><div class="line">                             ));</div></pre></td></tr></table></figure>
 <h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><img src="/img/15242019939236.jpg" alt=""></p>
 <p>假设我们有两个List：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">List&lt;Integer&gt; list2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</div></pre></td></tr></table></figure></p>
@@ -850,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-text">1. List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重"><span class="nav-text">1.1. 去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组转List"><span class="nav-text">1.2. 数组转List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转数组"><span class="nav-text">1.3. List转数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转Map"><span class="nav-text">1.4. List转Map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-text">2. 分组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分组聚合"><span class="nav-text">2.1. 分组聚合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组后聚合计算"><span class="nav-text">2.2. 分组后聚合计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map转化"><span class="nav-text">3. Map转化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flatMap"><span class="nav-text">4. flatMap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-text">1. List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去重"><span class="nav-text">1.1. 去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组转List"><span class="nav-text">1.2. 数组转List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转数组"><span class="nav-text">1.3. List转数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List转Map"><span class="nav-text">1.4. List转Map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-text">2. 分组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分组聚合"><span class="nav-text">2.1. 分组聚合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组后聚合计算"><span class="nav-text">2.2. 分组后聚合计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组后汇总"><span class="nav-text">2.3. 分组后汇总</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map转化"><span class="nav-text">3. Map转化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flatMap"><span class="nav-text">4. flatMap</span></a></li></ol></div>
             
 
           </div>
@@ -893,7 +898,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共104.7k字</span>
+  <span class="post-count">共104.8k字</span>
 </div>
 
 
