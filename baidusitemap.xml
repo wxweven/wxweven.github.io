@@ -4,41 +4,19 @@
 
     
   <url>
-    <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2018-12-21T03:56:43.000Z</lastmod>
+    <loc>http://wxweven.win/2019/10/25/2019%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95/</loc>
+    <lastmod>2019-10-25T08:11:40.130Z</lastmod>
     <data>
         <display>
-        <title>Java8 Stream常用操作</title>
-        <pubTime>2017-09-15T03:25:28.000Z</pubTime>
+        <title>2019读书清单</title>
+        <pubTime>2019-10-25T08:11:10.000Z</pubTime>
         
-        <tag>Java8</tag>
-         
-        <tag>Stream</tag>
+        <tag>Java</tag>
          
          
            
              
-              <breadCrumb title="Java8" url="http://wxweven.win/categories/Java8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2018/08/10/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2018-08-10T10:00:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>学习</title>
-        <pubTime>2018-08-10T09:53:08.000Z</pubTime>
-        
-        <tag>娱乐</tag>
-         
-         
-           
-             
-              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
+              <breadCrumb title="Java" url="http://wxweven.win/categories/Java/"/>
           
         </display>
     </data>
@@ -47,7 +25,7 @@
     
   <url>
     <loc>http://wxweven.win/2018/05/01/MySQL-Explain%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-08-10T09:52:40.000Z</lastmod>
+    <lastmod>2019-10-25T08:08:57.161Z</lastmod>
     <data>
         <display>
         <title>MySQL Explain详解</title>
@@ -67,7 +45,7 @@
     
   <url>
     <loc>http://wxweven.win/2017/09/08/2017%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92/</loc>
-    <lastmod>2018-08-10T09:52:33.000Z</lastmod>
+    <lastmod>2019-10-25T07:14:42.730Z</lastmod>
     <data>
         <display>
         <title>2017读书计划</title>
@@ -79,6 +57,68 @@
            
              
               <breadCrumb title="学习计划" url="http://wxweven.win/categories/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2018/08/10/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2019-10-25T07:02:23.684Z</lastmod>
+    <data>
+        <display>
+        <title>学习</title>
+        <pubTime>2018-08-10T09:53:08.000Z</pubTime>
+        
+        <tag>娱乐</tag>
+         
+         
+           
+             
+              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/03/01/Activity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    <lastmod>2019-10-25T06:38:52.397Z</lastmod>
+    <data>
+        <display>
+        <title>Activity 生命周期</title>
+        <pubTime>2016-03-01T07:49:41.000Z</pubTime>
+        
+        <tag>Activity</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-12-21T03:56:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java8 Stream常用操作</title>
+        <pubTime>2017-09-15T03:25:28.000Z</pubTime>
+        
+        <tag>Java8</tag>
+         
+        <tag>Stream</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java8" url="http://wxweven.win/categories/Java8/"/>
           
         </display>
     </data>
@@ -265,9 +305,9 @@
         <title>Java要求</title>
         <pubTime>2016-09-22T03:25:54.000Z</pubTime>
         
-        <tag>面经</tag>
-         
         <tag>Java</tag>
+         
+        <tag>面经</tag>
          
          
            
@@ -800,26 +840,6 @@
         <pubTime>2016-02-11T12:14:39.000Z</pubTime>
         
         <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/03/01/Activity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
-    <lastmod>2017-07-07T15:11:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>Activity 生命周期</title>
-        <pubTime>2016-03-01T07:49:41.000Z</pubTime>
-        
-        <tag>Activity</tag>
          
          
            

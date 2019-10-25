@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -19,16 +19,12 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
-  <meta name="google-site-verification" content="FI8PcIsw2IdZu1dwbSA4PcUEtkixmT8h9bdaHPNj3f0" />
-
-
-
-
+  <meta name="google-site-verification" content="FI8PcIsw2IdZu1dwbSA4PcUEtkixmT8h9bdaHPNj3f0">
 
 
 
@@ -38,38 +34,24 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
   
   
-  
-  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
 
   
-    
-    
+  
+  
   
 
   
     
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
     
   
 
@@ -82,9 +64,27 @@
   
 
   
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda, "PingFang SC", "Microsoft YaHei", sans-serif:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda, " pingfang="" sc",="" "microsoft="" yahei",="" sans-serif:300,300italic,400,400italic,700,700italic|lobster="" two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset="latin,latin-ext"" rel="stylesheet" type="text/css">
   
 
 
@@ -92,38 +92,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="JVM,invokespecial,invokevirtual,指令集," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="JVM,invokespecial,invokevirtual,指令集,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/siteimages/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/siteimages/favicon.ico?v=5.1.1">
 
 
 
 
 
 
-<meta name="description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
+<meta name="description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下： invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
 <meta name="keywords" content="JVM,invokespecial,invokevirtual,指令集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">
 <meta property="og:url" content="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
-<meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
+<meta property="og:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下： invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-22T06:04:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过实例一行一行分析JVM的invokespecial和invokevirtual指令">
-<meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下：invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
+<meta name="twitter:description" content="1. JVM提供的方法调用指令集JVM提供了5种方法调用指令，其作用列举如下： invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；">
 
 
 
@@ -151,7 +152,7 @@
 
 
 
-  <link rel="canonical" href="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/"/>
+  <link rel="canonical" href="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/">
 
 
 
@@ -191,7 +192,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -201,13 +202,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wxweven 梦想之家</span>
         <span class="logo-line-after"><i></i></span>
@@ -237,7 +238,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -247,7 +248,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -257,7 +258,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -267,7 +268,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -277,7 +278,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -287,7 +288,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -300,7 +301,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -321,9 +322,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -355,16 +354,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://wxweven.win/2017/09/15/JVM-invokespecial和invokevirtual/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wxweven">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/siteimages/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="wxweven 梦想之家">
     </span>
 
@@ -396,7 +395,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -407,7 +406,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/JVM/" itemprop="url" rel="index">
                     <span itemprop="name">JVM</span>
                   </a>
@@ -429,7 +428,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-eye"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
             </span>
           
 
@@ -446,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,662 字
+                  2,791 字
                 </span>
               
 
@@ -462,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  11 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -481,29 +480,44 @@
 
       
         <hr>
-<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：<br><div class="note primary"><p>invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；</p>
-</div></p>
+<h1 id="JVM提供的方法调用指令集">1. JVM提供的方法调用指令集</h1><p>JVM提供了5种方法调用指令，其作用列举如下：</p>
+<div class="note primary"><p>invokestatic：该指令用于调用静态方法，即使用 static 关键字修饰的方法；</p>
+</div>
+
 <a id="more"></a>
+
 <div class="note primary"><p>invokespecial：该指令用于三种场景：调用实例构造方法<init>，调用私有方法（即private关键字修饰的方法）和父类方法（即super关键字调用的方法）；</init></p>
 </div>
+
 <div class="note primary"><p>invokeinterface：该指令用于调用接口方法，在运行时再确定一个实现此接口的对象；</p>
 </div>
+
 <div class="note primary"><p>invokevirtual：该指令用于调用虚方法（就是除了上述三种情况之外的方法）；</p>
 </div>
+
 <div class="note primary"><p>invokedynamic：在运行时动态解析出调用点限定符所引用的方法之后，调用该方法；在JDK1.7中推出，主要用于支持JVM上的动态脚本语言（如Groovy，Jython等）。</p>
 </div>
+
 <p>本文主要介绍<code>invokespecial</code>和<code>invokevirtual</code>指令。</p>
-<h1 id="举个栗子">2. 举个栗子</h1><p>下面我们来看一个具体的例子。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.wxweven.jvm.zzm.jvminvoke;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> wxweven</div><div class="line"> * <span class="doctag">@date</span> 2017/9/15</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InvokeVirtualTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Father test = <span class="keyword">new</span> Son();</div><div class="line">        test.say();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am fater"</span>);</div><div class="line">        System.out.println(<span class="keyword">this</span>);</div><div class="line">        <span class="keyword">this</span>.hello();</div><div class="line">        <span class="keyword">this</span>.hi();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"father say hi"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hello"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"son say hi"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="举个栗子">2. 举个栗子</h1><p>下面我们来看一个具体的例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wxweven.jvm.zzm.jvminvoke;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wxweven</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017/9/15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InvokeVirtualTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Father test = <span class="keyword">new</span> Son();</span><br><span class="line">        test.say();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"i am fater"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.hello();</span><br><span class="line">        <span class="keyword">this</span>.hi();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"father say hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"father say hi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"son say hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"son say hi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>那么列为看官来分析下，这段代码的输出会是什么？</p>
-<p>如果能够很清楚地知道代码的输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i am fater</div><div class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</div><div class="line">father say hello</div><div class="line">son say hi</div></pre></td></tr></table></figure></p>
+<p>如果能够很清楚地知道代码的输出如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i am fater</span><br><span class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</span><br><span class="line">father say hello</span><br><span class="line">son say hi</span><br></pre></td></tr></table></figure>
+
 <p>那么本文的阅读请就此打住，没必要再往下看了，再往下看也是浪费各位大神的时间。如果还有点小疑惑的话，不妨跟着我来一起分析分析。</p>
-<h1 id="栗子逻辑分析">3. 栗子逻辑分析</h1><h2 id="main方法">3.1. main方法</h2><p>我们的分析从main方法开始，main方法的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Father test = <span class="keyword">new</span> Son();</div><div class="line">    test.say();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="栗子逻辑分析">3. 栗子逻辑分析</h1><h2 id="main方法">3.1. main方法</h2><p>我们的分析从main方法开始，main方法的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Father test = <span class="keyword">new</span> Son();</span><br><span class="line">    test.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>main方法很简单，就两行：</p>
 <ul>
 <li>第一行定义了一个 <code>Father</code> 类的变量 test, 并让它指向了具体的实例 <code>Son</code>;</li>
 <li>第二行调用了test变量的say方法</li>
 </ul>
-<h2 id="say方法">3.2. say方法</h2><p>那么我们接着来看看say方法的内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"i am fater"</span>);</div><div class="line">    System.out.println(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.hello();</div><div class="line">    <span class="keyword">this</span>.hi();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="say方法">3.2. say方法</h2><p>那么我们接着来看看say方法的内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"i am fater"</span>);</span><br><span class="line">    System.out.println(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.hello();</span><br><span class="line">    <span class="keyword">this</span>.hi();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>也很简单：</p>
 <ul>
 <li>第一行输出了一句 <code>&quot;i am fater&quot;</code>；</li>
@@ -519,33 +533,52 @@
 <p>为什么会出现这种情况，运行时的this明明指向的是<code>Son</code>实例，两次方法调用中，一次调用的是<code>Father</code>的方法而另一次调用的却是<code>Son</code>的方法。是Java程序执行出bug还是我们的理解没到位？</p>
 <p>首先可以肯定的是，程序执行本身没有bug。</p>
 <p>所以，肯定是我们的理解没到位喽。要解开这个谜题，我们只好用 <code>javap</code> 指令来查看编译后的字节码，看看虚拟机到底是如何执行这段代码的。</p>
-<h1 id="javap指令">4. javap指令</h1><h2 id="InvokeVirtualTest类的指令集">4.1. InvokeVirtualTest类的指令集</h2><p>执行命令<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javap -v com.wxweven.jvm.zzm.jvminvoke.InvokeVirtualTest</div></pre></td></tr></table></figure></p>
+<h1 id="javap指令">4. javap指令</h1><h2 id="InvokeVirtualTest类的指令集">4.1. InvokeVirtualTest类的指令集</h2><p>执行命令</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap -v com.wxweven.jvm.zzm.jvminvoke.InvokeVirtualTest</span><br></pre></td></tr></table></figure>
+
 <p>得到<code>InvokeVirtualTest</code>类的字节码，截取有用的main方法的指令集如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(java.lang.String[]);</div><div class="line">    descriptor: ([Ljava/lang/String;)V</div><div class="line">    flags: ACC_PUBLIC, ACC_STATIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=2, args_size=1</div><div class="line">         0: new           #2                  // class com/wxweven/jvm/zzm/jvminvoke/Son</div><div class="line">         3: dup</div><div class="line">         4: invokespecial #3                  // Method com/wxweven/jvm/zzm/jvminvoke/Son."&lt;init&gt;":()V</div><div class="line">         7: astore_1</div><div class="line">         8: aload_1</div><div class="line">         9: invokevirtual #4                  // Method com/wxweven/jvm/zzm/jvminvoke/Father.say:()V</div><div class="line">        12: return</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">2</span>, locals=<span class="number">2</span>, args_size=<span class="number">1</span></span><br><span class="line">         0: new           #2                  // class com/wxweven/jvm/zzm/jvminvoke/Son</span><br><span class="line">         <span class="number">3</span>: dup</span><br><span class="line">         4: invokespecial #3                  // Method com/wxweven/jvm/zzm/jvminvoke/Son."&lt;init&gt;":()V</span><br><span class="line">         <span class="number">7</span>: astore_1</span><br><span class="line">         <span class="number">8</span>: aload_1</span><br><span class="line">         9: invokevirtual #4                  // Method com/wxweven/jvm/zzm/jvminvoke/Father.say:()V</span><br><span class="line">        <span class="number">12</span>: <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
 <p>这段指令集很简单（main方法本身就很简单），先new一个<code>Son</code>类的实例，然后调用<code>Son</code>实例的构造函数，然后再调用say方法。</p>
 <p>这段指令集中已经出现了<code>invokespecial</code>和<code>invokevirtual</code>指令，先卖个关子，等后面分析。</p>
-<h2 id="Father类的指令集">4.2. Father类的指令集</h2><p>执行命令<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javap -<span class="keyword">private</span> -v com.wxweven.jvm.zzm.jvminvoke.Father</div></pre></td></tr></table></figure></p>
-<p>得到<code>Father</code>类的字节码，截取有用的say、hello、hi方法的指令集如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public void say();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PUBLIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #3                  // String i am fater</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">        11: aload_0</div><div class="line">        12: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V</div><div class="line">        15: aload_0</div><div class="line">        16: invokespecial #6                  // Method hello:()V</div><div class="line">        19: aload_0</div><div class="line">        20: invokevirtual #7                  // Method hi:()V</div><div class="line">        23: return</div><div class="line"></div><div class="line">private void hello();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PRIVATE</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #8                  // String father say hello</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 23: 0</div><div class="line">        line 24: 8</div><div class="line">      LocalVariableTable:</div><div class="line">        Start  Length  Slot  Name   Signature</div><div class="line">            0       9     0  this   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</div><div class="line"></div><div class="line">  public void hi();</div><div class="line">    descriptor: ()V</div><div class="line">    flags: ACC_PUBLIC</div><div class="line">    Code:</div><div class="line">      stack=2, locals=1, args_size=1</div><div class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">         3: ldc           #8                  // String father say hello</div><div class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">         8: return</div><div class="line">      LineNumberTable:</div><div class="line">        line 27: 0</div><div class="line">        line 28: 8</div><div class="line">      LocalVariableTable:</div><div class="line">        Start  Length  Slot  Name   Signature</div><div class="line">            0       9     0  this   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</div></pre></td></tr></table></figure></p>
+<h2 id="Father类的指令集">4.2. Father类的指令集</h2><p>执行命令</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap -<span class="keyword">private</span> -v com.wxweven.jvm.zzm.jvminvoke.Father</span><br></pre></td></tr></table></figure>
+
+<p>得到<code>Father</code>类的字节码，截取有用的say、hello、hi方法的指令集如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">2</span>, locals=<span class="number">1</span>, args_size=<span class="number">1</span></span><br><span class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">         3: ldc           #3                  // String i am fater</span><br><span class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">         8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">        <span class="number">11</span>: aload_0</span><br><span class="line">        12: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V</span><br><span class="line">        <span class="number">15</span>: aload_0</span><br><span class="line">        16: invokespecial #6                  // Method hello:()V</span><br><span class="line">        <span class="number">19</span>: aload_0</span><br><span class="line">        20: invokevirtual #7                  // Method hi:()V</span><br><span class="line">        <span class="number">23</span>: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PRIVATE</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">2</span>, locals=<span class="number">1</span>, args_size=<span class="number">1</span></span><br><span class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">         3: ldc           #8                  // String father say hello</span><br><span class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">         <span class="number">8</span>: <span class="keyword">return</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">23</span>: <span class="number">0</span></span><br><span class="line">        line <span class="number">24</span>: <span class="number">8</span></span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            <span class="number">0</span>       <span class="number">9</span>     <span class="number">0</span>  <span class="keyword">this</span>   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span></span>;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=<span class="number">2</span>, locals=<span class="number">1</span>, args_size=<span class="number">1</span></span><br><span class="line">         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">         3: ldc           #8                  // String father say hello</span><br><span class="line">         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">         <span class="number">8</span>: <span class="keyword">return</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">27</span>: <span class="number">0</span></span><br><span class="line">        line <span class="number">28</span>: <span class="number">8</span></span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            <span class="number">0</span>       <span class="number">9</span>     <span class="number">0</span>  <span class="keyword">this</span>   Lcom/wxweven/jvm/zzm/jvminvoke/Father;</span><br></pre></td></tr></table></figure>
+
 <p>Father类的指令集是我们分析的重点，首先我们来看say方法的指令集。</p>
-<h3 id="say方法指令集">4.2.1. say方法指令集</h3><p>say方法指令集的第一段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div><div class="line">3: ldc           #3                  // String i am fater</div><div class="line">5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</div><div class="line">8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</div></pre></td></tr></table></figure></p>
+<h3 id="say方法指令集">4.2.1. say方法指令集</h3><p>say方法指令集的第一段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">3: ldc           #3                  // String i am fater</span><br><span class="line">5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br></pre></td></tr></table></figure>
+
 <p>可以很明显的看出，这段代码调用 <code>System.out.println</code> 方法，并打印出了 <code>&quot;i am fater&quot;</code>;</p>
-<p>接着我们来看say方法指令集的第二段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">11: aload_0</div><div class="line">12: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V</div></pre></td></tr></table></figure></p>
+<p>接着我们来看say方法指令集的第二段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11: aload_0</span><br><span class="line">12: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V</span><br></pre></td></tr></table></figure>
+
 <p>其中 aload_0 用于将本地变量表的第0个slot的变量（也就是 <code>this</code> 对象）加载到栈顶，所以这里打印出来的this对象，即<code>Son</code>类的实例。</p>
-<p>接着我们来看say方法指令集的第三段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">15: aload_0</div><div class="line">16: invokespecial #6                  // Method hello:()V</div></pre></td></tr></table></figure></p>
-<p>注意这里很明显的<code>invokespecial</code>指令，周志明大大的《深入理解Java虚拟机》第二版中讲到：<br><div class="note warning"><p><code>invokespecial</code>指令调用的方法，在类加载的时候就会把符号引用解析为该方法的直接引用。</p>
-</div></p>
+<p>接着我们来看say方法指令集的第三段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">15: aload_0</span><br><span class="line">16: invokespecial #6                  // Method hello:()V</span><br></pre></td></tr></table></figure>
+
+<p>注意这里很明显的<code>invokespecial</code>指令，周志明大大的《深入理解Java虚拟机》第二版中讲到：</p>
+<div class="note warning"><p><code>invokespecial</code>指令调用的方法，在类加载的时候就会把符号引用解析为该方法的直接引用。</p>
+</div>
+
 <p>也就是说，当JVM在使用<code>invokespecial</code>指令时，在类加载时就能确定需要调用的具体方法，而不需要等到运行时去根据实际的对象值去调用该对象的方法。（不知道的这样解释大家有没有看懂。。。）</p>
 <p>所以这里调用的就是父类的hello方法。所以程序才会输出 <code>&quot;father say hello&quot;</code>。</p>
-<p>接着我们来看say方法指令集的第四段：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">19: aload_0</div><div class="line">20: invokevirtual #7                  // Method hi:()V</div></pre></td></tr></table></figure></p>
-<p>注意这里调用的是<code>invokevirtual</code>指令，同样，周志明大大的《深入理解Java虚拟机》第二版中讲到（哈，我就是这么崇拜周志明大大，当然还有R大）：<br><div class="note warning"><p><code>invokevirtual</code>指令的调用依赖于运行时解析，其解析过程大致分为以下几个步骤：</p>
+<p>接着我们来看say方法指令集的第四段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">19: aload_0</span><br><span class="line">20: invokevirtual #7                  // Method hi:()V</span><br></pre></td></tr></table></figure>
+
+<p>注意这里调用的是<code>invokevirtual</code>指令，同样，周志明大大的《深入理解Java虚拟机》第二版中讲到（哈，我就是这么崇拜周志明大大，当然还有R大）：</p>
+<div class="note warning"><p><code>invokevirtual</code>指令的调用依赖于运行时解析，其解析过程大致分为以下几个步骤：</p>
 <ol>
 <li>找到操作数栈顶的第一个元素(本例中就是 <code>this</code>)所指向的对象的实际类型，记作C(本例中就是<code>Son</code>对象实例)。</li>
 <li>如果在类型C中找到了与常量中的描述符和简单名称都相符的方法，则进行访问权限校验，如果通过则返回这个方法的直接引用，查找过程结束；如果不通过，则返回java.lang.IllegalAccessError异常(那么很明显，在本利中，类型C即<code>Son</code>对象实例存在方法hi，而且访问权限校验也通过)。</li>
 <li>否则，按照继承关系对C的父类进行第2步的搜索和校验过程(很明显，本利中不需要去父类查找)。</li>
 <li>如果始终都没有找到合适的方法，则抛出java.lang.AbstractMethodError异常。</li>
 </ol>
-</div></p>
-<p>注意：以上的引用，并非100%原封不动的引用了周志明大大的原书内容，因为根据R大在知乎上的回答，原书中这段描述是有些问题的(<a href="https://www.zhihu.com/question/40427344/answer/86545388" target="_blank" rel="external">https://www.zhihu.com/question/40427344/answer/86545388</a>) 。所以我在结合R大回答的基础上，自己做了些了解和更改。</p>
+</div>
+
+<p>注意：以上的引用，并非100%原封不动的引用了周志明大大的原书内容，因为根据R大在知乎上的回答，原书中这段描述是有些问题的(<a href="https://www.zhihu.com/question/40427344/answer/86545388" target="_blank" rel="noopener">https://www.zhihu.com/question/40427344/answer/86545388</a>) 。所以我在结合R大回答的基础上，自己做了些了解和更改。</p>
 <p>也就是说，当JVM在使用<code>invokevirtual</code>指令时，必须要在运行时，根据调用对象的实际值去调用对应的方法，跟<code>invokespecial</code>指令是不一样的。</p>
 <p>所以，在调用 <code>this.hi()</code> 方法时，运行时查找到 <code>this</code> 对象类型为 <code>Son</code>，而且 <code>Son</code> 类中存在对应的hi方法，访问权限校验也通过，所以这里调用的是 <code>Son</code> 类的hi方法，程序的输出为: <code>&quot;son say hi&quot;</code></p>
 <h2 id="小结">4.3. 小结</h2><p>到这里，例子中的输出问题，已经从 <code>javap</code> 的角度分析完毕了。小结一下，在<code>Father</code>类中的say方法中，调用 <code>&quot;this.hello()&quot;</code> 和 <code>&quot;this.hi()&quot;</code> 时，出现不一致的效果，其原因就是因为：</p>
@@ -558,13 +591,15 @@
 <li>在<code>Father</code>类中，<code>hello</code> 定义为私有方法，使用<code>invokespecial</code>指令调用；</li>
 <li><code>hi</code> 定义为公有方法(即JVM所理解的虚方法)，使用<code>invokevirtual</code>指令调用。</li>
 </ul>
-<p>关于这点，感兴趣的看官，可以把 <code>Father</code>类中的hello方法也改为public，再运行代码，就会看到实际调用也是<code>Son</code> 类的hello方法，对应的输出如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i am fater</div><div class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</div><div class="line">son say hello</div><div class="line">son say hi</div></pre></td></tr></table></figure></p>
+<p>关于这点，感兴趣的看官，可以把 <code>Father</code>类中的hello方法也改为public，再运行代码，就会看到实际调用也是<code>Son</code> 类的hello方法，对应的输出如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i am fater</span><br><span class="line">com.wxweven.jvm.zzm.jvminvoke.Son@<span class="number">816f</span>27d</span><br><span class="line">son say hello</span><br><span class="line">son say hi</span><br></pre></td></tr></table></figure>
+
 <h1 id="总结">5. 总结</h1><p>好久没有这么认真的写博客了，博客也是长草好一段时间了。最近在看周志明大大的《深入理解Java虚拟机》，这篇算是一个读书笔记，总结得有不对的地方，欢迎留言或邮件探讨。</p>
 <p>周志明大大这本书，实在是一本难得的好书！需要多读几遍！后面还会总结一些其他的读书心得，敬请期待！</p>
 <h1 id="参考">6. 参考</h1><ul>
 <li>《深入理解Java虚拟机》第二版，周志明大大</li>
-<li><a href="https://www.zhihu.com/question/40427344/answer/86545388" target="_blank" rel="external">R大在知乎上的回答</a></li>
-<li><a href="http://blog.xiaoxiaomo.com/2016/03/31/Java-%E5%B7%A5%E5%85%B7javap%E8%AE%B2%E8%A7%A3/" target="_blank" rel="external">Java-工具javap讲解</a></li>
+<li><a href="https://www.zhihu.com/question/40427344/answer/86545388" target="_blank" rel="noopener">R大在知乎上的回答</a></li>
+<li><a href="http://blog.xiaoxiaomo.com/2016/03/31/Java-%E5%B7%A5%E5%85%B7javap%E8%AE%B2%E8%A7%A3/" target="_blank" rel="noopener">Java-工具javap讲解</a></li>
 </ul>
 
       
@@ -574,7 +609,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
     <div>分享技术，分享生活，来吧，为了生活，扫码撩我！</div>
 </div>
 
@@ -593,13 +628,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay"/>
+          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay"/>
+          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -738,7 +773,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -748,10 +783,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/siteimages/avatar.png"
-               alt="wxweven" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/siteimages/avatar.png" alt="wxweven">
           <p class="site-author-name" itemprop="name">wxweven</p>
            
               <p class="site-description motion-element" itemprop="description">分享技术 享受生活</p>
@@ -762,7 +795,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -901,10 +934,10 @@
       <div class="footer-inner">
         <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright" >
+<div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -922,7 +955,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共104.9k字</span>
+  <span class="post-count">共108.6k字</span>
 </div>
 
 

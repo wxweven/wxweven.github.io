@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -19,16 +19,12 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
-  <meta name="google-site-verification" content="FI8PcIsw2IdZu1dwbSA4PcUEtkixmT8h9bdaHPNj3f0" />
-
-
-
-
+  <meta name="google-site-verification" content="FI8PcIsw2IdZu1dwbSA4PcUEtkixmT8h9bdaHPNj3f0">
 
 
 
@@ -38,38 +34,24 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
   
   
-  
-  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
 
   
-    
-    
+  
+  
   
 
   
     
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
     
   
 
@@ -82,9 +64,27 @@
   
 
   
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda, "PingFang SC", "Microsoft YaHei", sans-serif:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda, " pingfang="" sc",="" "microsoft="" yahei",="" sans-serif:300,300italic,400,400italic,700,700italic|lobster="" two:300,300italic,400,400italic,700,700italic|monaco:300,300italic,400,400italic,700,700italic&subset="latin,latin-ext"" rel="stylesheet" type="text/css">
   
 
 
@@ -92,21 +92,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="ThreadLocal 并发," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="ThreadLocal 并发,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/siteimages/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/siteimages/favicon.ico?v=5.1.1">
 
 
 
@@ -120,6 +120,7 @@
 <meta property="og:url" content="http://wxweven.win/2017/09/01/ThreadLocal源码分析解密/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="1. 什么是ThreadLocal我们来看看作者Doug Lea是怎么说的,下面是jdk7.x里面ThreadLocal注释">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-03-11T03:11:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal源码分析解密">
@@ -151,7 +152,7 @@
 
 
 
-  <link rel="canonical" href="http://wxweven.win/2017/09/01/ThreadLocal源码分析解密/"/>
+  <link rel="canonical" href="http://wxweven.win/2017/09/01/ThreadLocal源码分析解密/">
 
 
 
@@ -191,7 +192,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -201,13 +202,13 @@
   <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">wxweven 梦想之家</span>
         <span class="logo-line-after"><i></i></span>
@@ -237,7 +238,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -247,7 +248,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -257,7 +258,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -267,7 +268,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -277,7 +278,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -287,7 +288,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -300,7 +301,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -321,9 +322,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -355,16 +354,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://wxweven.win/2017/09/01/ThreadLocal源码分析解密/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wxweven">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/siteimages/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="wxweven 梦想之家">
     </span>
 
@@ -396,7 +395,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -407,7 +406,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Java并发/" itemprop="url" rel="index">
                     <span itemprop="name">Java并发</span>
                   </a>
@@ -429,7 +428,7 @@
           
             <span class="post-meta-divider">|</span>
             <span class="page-pv"><i class="fa fa-eye"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
             </span>
           
 
@@ -446,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,036 字
+                  3,246 字
                 </span>
               
 
@@ -462,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -481,30 +480,52 @@
 
       
         <hr>
-<h1 id="什么是ThreadLocal">1. 什么是ThreadLocal</h1><p>我们来看看作者Doug Lea是怎么说的,下面是jdk7.x里面ThreadLocal注释<br><a id="more"></a></p>
+<h1 id="什么是ThreadLocal">1. 什么是ThreadLocal</h1><p>我们来看看作者Doug Lea是怎么说的,下面是jdk7.x里面ThreadLocal注释</p>
+<a id="more"></a>
+
 <blockquote>
 <p>This class provides thread-local variables. These variables differ from their normal counterparts in that each thread that accesses one (via its get or set method) has its own, independently initialized copy of the variable. ThreadLocal instances are typically private static fields in classes that wish to associate state with a thread (e.g.a user ID or Transaction ID).<br>each thread holds an implicit reference to its copy of a thread-local variable as long as the thread is alive and the ThreadLocal instance is accessible; after a thread goes away, all of its copies of thread-local instances are subject to garbage collection (unless other references to these copies exist)</p>
 </blockquote>
 <p>也就是说这个类给线程提供了一个本地变量，这个变量是该线程自己拥有的。在该线程存活和ThreadLocal实例能访问的时候,保存了对这个变量副本的引用.当线程消失的时候，所有的本地实例都会被GC。并且建议我们ThreadLocal最好是 private static 修饰的成员</p>
 <h1 id="和Thread的关系">2. 和Thread的关系</h1><p>假设我们要设计一个和线程绑定的变量，我们会怎么做呢？很常见的一个思路就是把Thread和变量放在一个Map中(当然key可以是id或者其他能代表唯一Thread的东西)。但是jdk是怎么做的呢？当然不是这么做的，但是为什么要用其他的做法呢？这里我们先不思考这个问题,我们先来看看ThreadLocal#set方法做了些什么</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Sets the current thread's copy of this thread-local variable</div><div class="line"> * to the specified value.  Most subclasses will have no need to</div><div class="line"> * override this method, relying solely on the &#123;<span class="doctag">@link</span> #initialValue&#125;</div><div class="line"> * method to set the values of thread-locals.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> value the value to be stored in the current thread's copy of this thread-local.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    <span class="comment">//通过当前线程得到一个ThreadLocalMap</span></div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    <span class="comment">//map存在,则把value放入该ThreadLocalMap中</span></div><div class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</div><div class="line">        map.set(<span class="keyword">this</span>, value);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        createMap(t, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后,<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Get the map associated with a ThreadLocal. Overridden in</div><div class="line"> * InheritableThreadLocal.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span>  t the current thread</div><div class="line"> * <span class="doctag">@return</span> the map</div><div class="line"> */</div><div class="line"><span class="function">ThreadLocalMap <span class="title">getMap</span><span class="params">(Thread t)</span> </span>&#123;</div><div class="line">    <span class="comment">//返回Thread的一个成员变量</span></div><div class="line">    <span class="keyword">return</span> t.threadLocals;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>原来是把ThreadLocalMap和Thread绑定起来了，Thread类中有一个ThreadLocalMap为null的变量,那我们现在回到ThreadLocalMap来看，在我们Thread返回的引用来看，如果map为null的情况下，调用了createMap方法.这就为我们的Thread创建了一个能保存在本地线程的map.下面是Thread里面的字段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* ThreadLocal values pertaining to this thread. This map is maintained by the ThreadLocal class. */</span></div><div class="line"><span class="comment">//ThreadLocal帮助Thread赋值了该字段</span></div><div class="line">ThreadLocal.ThreadLocalMap threadLocals = <span class="keyword">null</span>;</div></pre></td></tr></table></figure></p>
-<h1 id="ThreadLocalMap">3. ThreadLocalMap</h1><p>那么当我们第一次使用ThreadLocal的时候,我们通过getMAP得到的ThreadLocalMap必然是null，我们来看看createMap方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Create the map associated with a ThreadLocal. Overridden in</div><div class="line"> * InheritableThreadLocal.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> t the current thread</div><div class="line"> * <span class="doctag">@param</span> firstValue value for the initial entry of the map</div><div class="line"> * <span class="doctag">@param</span> map the map to store.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">createMap</span><span class="params">(Thread t, T firstValue)</span> </span>&#123;</div><div class="line">    t.threadLocals = <span class="keyword">new</span> ThreadLocalMap(<span class="keyword">this</span>, firstValue);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Construct a new map initially containing(firstKey,firstValue).</div><div class="line"> * ThreadLocalMaps are constructed lazily, so we only create</div><div class="line"> * one when we have at least one entry to put in it.</div><div class="line"> */</div><div class="line">ThreadLocalMap(ThreadLocal firstKey, Object firstValue) &#123;</div><div class="line">    table = <span class="keyword">new</span> Entry[INITIAL_CAPACITY];</div><div class="line">    <span class="keyword">int</span> i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - <span class="number">1</span>);</div><div class="line">    table[i] = <span class="keyword">new</span> Entry(firstKey, firstValue);</div><div class="line">    size = <span class="number">1</span>;</div><div class="line">    setThreshold(INITIAL_CAPACITY);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sets the current thread's copy of this thread-local variable</span></span><br><span class="line"><span class="comment"> * to the specified value.  Most subclasses will have no need to</span></span><br><span class="line"><span class="comment"> * override this method, relying solely on the &#123;<span class="doctag">@link</span> #initialValue&#125;</span></span><br><span class="line"><span class="comment"> * method to set the values of thread-locals.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value the value to be stored in the current thread's copy of this thread-local.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    <span class="comment">//通过当前线程得到一个ThreadLocalMap</span></span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="comment">//map存在,则把value放入该ThreadLocalMap中</span></span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Get the map associated with a ThreadLocal. Overridden in</span></span><br><span class="line"><span class="comment"> * InheritableThreadLocal.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  t the current thread</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the map</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">ThreadLocalMap <span class="title">getMap</span><span class="params">(Thread t)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//返回Thread的一个成员变量</span></span><br><span class="line">    <span class="keyword">return</span> t.threadLocals;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原来是把ThreadLocalMap和Thread绑定起来了，Thread类中有一个ThreadLocalMap为null的变量,那我们现在回到ThreadLocalMap来看，在我们Thread返回的引用来看，如果map为null的情况下，调用了createMap方法.这就为我们的Thread创建了一个能保存在本地线程的map.下面是Thread里面的字段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ThreadLocal values pertaining to this thread. This map is maintained by the ThreadLocal class. */</span></span><br><span class="line"><span class="comment">//ThreadLocal帮助Thread赋值了该字段</span></span><br><span class="line">ThreadLocal.ThreadLocalMap threadLocals = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ThreadLocalMap">3. ThreadLocalMap</h1><p>那么当我们第一次使用ThreadLocal的时候,我们通过getMAP得到的ThreadLocalMap必然是null，我们来看看createMap方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create the map associated with a ThreadLocal. Overridden in</span></span><br><span class="line"><span class="comment"> * InheritableThreadLocal.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> t the current thread</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> firstValue value for the initial entry of the map</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> map the map to store.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createMap</span><span class="params">(Thread t, T firstValue)</span> </span>&#123;</span><br><span class="line">    t.threadLocals = <span class="keyword">new</span> ThreadLocalMap(<span class="keyword">this</span>, firstValue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Construct a new map initially containing(firstKey,firstValue).</span></span><br><span class="line"><span class="comment"> * ThreadLocalMaps are constructed lazily, so we only create</span></span><br><span class="line"><span class="comment"> * one when we have at least one entry to put in it.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">ThreadLocalMap(ThreadLocal firstKey, Object firstValue) &#123;</span><br><span class="line">    table = <span class="keyword">new</span> Entry[INITIAL_CAPACITY];</span><br><span class="line">    <span class="keyword">int</span> i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - <span class="number">1</span>);</span><br><span class="line">    table[i] = <span class="keyword">new</span> Entry(firstKey, firstValue);</span><br><span class="line">    size = <span class="number">1</span>;</span><br><span class="line">    setThreshold(INITIAL_CAPACITY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在CreatMap中会直接new 一个ThreadLocalMap,里面传入的是当前ThreadLocal#this.然后创建一个大小为INITIAL_CAPACITY的Entry。关于这个INITIAL_CAPACITY为什么是2的N次方,这在HashMap里面也是有体现的,这里INITIAL_CAPACITY为16那么16-1=15在二进制中就是1111.当他和TheadLocal的INITIAL_CAPACITY相与的时候，得到的数绝对是&lt;=INITIAL_CAPACITY.这和threadLocalHashCode%INITIAL_CAPACITY的效果是一样的，但是效率比前者好处很多倍。<br>ok，这里不再赘述，此时我们已经得到一个下标位置，我们直接new了一个Entry(ThreadLocal,Object)，放入该table数组当中，这个时候把table的size置为1，阈值职位INITIAL_CAPACITY的2/3（达到最大长度的2/3的时候会扩容）.代码就不贴了。</p>
 <p>这里小结一下，现在我们应该能够理清ThreadLocal和Thread的关系了，大致是这样的:</p>
 <div class="note primary"><p>Thread里面有一个类似MAP的东西，但是初始化的时候为null，当我们使用ThreadLocal的时候，ThreadLocal会帮助当前线程初始化这个MAP，并且把我们需要和线程绑定的值放入改Map中。map的key为当前ThreadLocal。那么这样和我们才开始的想法有什么不一样呢，才开始我们的想法是在ThreadLocal当中维护一个mao，key为Thread表示，value为值。和这样的方式有什么差别呢，为什么要这样做？话说在jdk1.3之前就是用这种方式做的，但是之后就改成了现在的这种做法。这样做法的优点之一是，value放在了线程当中，随着线程的生命周期生存，线程死亡，value回收。之二是性能提高了，想想一下在有很多请求的应用中，如果按照之前的做法，HashMap该多大？，性能应该会比较低，而换成后者这种方法，map的大小变得比较小，和Threadlocal的数量相同（有多少个ThreadLocal，线程当中的map实际存储的就有多少个）。</p>
 </div>
+
 <h1 id="可能存在的问题">4. 可能存在的问题</h1><p>上文看似我们已经渐渐的明白了ThreadLocal的本质，实际上Threadlocal可能会存在一些些问题</p>
-<p>关于Entry,这里说一下,jdk中Entry的key值其实是弱引用的,这代表他将会很快被GC掉<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * The entries in this hash map extend WeakReference, using</div><div class="line"> * its main ref field as the key (which is always a</div><div class="line"> * ThreadLocal object).  Note that null keys (i.e. entry.get()</div><div class="line"> * == null) mean that the key is no longer referenced, so the</div><div class="line"> * entry can be expunged from table.  Such entries are referred to</div><div class="line"> * as "stale entries" in the code that follows.</div><div class="line"> */</div><div class="line"> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">/** The value associated with this ThreadLocal. */</span></div><div class="line">    Object value;</div><div class="line"> </div><div class="line">    Entry(ThreadLocal k, Object v) &#123;</div><div class="line">        <span class="keyword">super</span>(k);</div><div class="line">        value = v;</div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>关于Entry,这里说一下,jdk中Entry的key值其实是弱引用的,这代表他将会很快被GC掉</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The entries in this hash map extend WeakReference, using</span></span><br><span class="line"><span class="comment"> * its main ref field as the key (which is always a</span></span><br><span class="line"><span class="comment"> * ThreadLocal object).  Note that null keys (i.e. entry.get()</span></span><br><span class="line"><span class="comment"> * == null) mean that the key is no longer referenced, so the</span></span><br><span class="line"><span class="comment"> * entry can be expunged from table.  Such entries are referred to</span></span><br><span class="line"><span class="comment"> * as "stale entries" in the code that follows.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/** The value associated with this ThreadLocal. */</span></span><br><span class="line">    Object value;</span><br><span class="line"> </span><br><span class="line">    Entry(ThreadLocal k, Object v) &#123;</span><br><span class="line">        <span class="keyword">super</span>(k);</span><br><span class="line">        value = v;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>如下图(摘自网络),ThreadLocalMap使用ThreadLocal的弱引用作为key，如果一个ThreadLocal没有外部强引用引用他，那么系统gc的时候，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链,这就会造成很多人都认为的内存泄露，其实我认为是不会发生的。继续往下看。</p>
 <p>按照道理来说，如果我们使用的线程池方式，当一个线程使用完的时候，线程并没有死亡，而是回归线程池继续使用，这个时候和该线程的bind其实并有没什么意义呢，但是呢？value并不会被回收，这也算导致了内存泄露，还有一种情况就是上述所说的，当弱引用被回收吊，null无法访问value，也导致了相同的问题。那么？这是真的吗？先卖一个关子，我们先来看看一些其他的东西</p>
-<h2 id="ThreadLocal小片段">4.1. ThreadLocal小片段</h2><p>ThreadLocal之间是如何区分的呢？给每个ThreadLocal一个标识符？这确实是一种思路，jdk里面是这样做的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//每个对象都有一个HashCode来标示自己的唯一性</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> threadLocalHashCode = nextHashCode();</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * The next hash code to be given out. Updated atomically. Starts at</div><div class="line"> * zero.</div><div class="line"> */</div><div class="line"> <span class="comment">//原子类保证线程安全，保证每个对象的hashcode唯一，并且是静态的</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger nextHashCode =</div><div class="line">    <span class="keyword">new</span> AtomicInteger();</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * The difference between successively generated hash codes - turns</div><div class="line"> * implicit sequential thread-local IDs into near-optimally spread</div><div class="line"> * multiplicative hash values for power-of-two-sized tables.</div><div class="line"> 为什么是这个数，暂时没探究</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> HASH_INCREMENT = <span class="number">0x61c88647</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Returns the next hash code.</div><div class="line"> 返回原始值，加上上面那个数</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextHashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> nextHashCode.getAndAdd(HASH_INCREMENT);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>比如我第一个ThreadLocal的hashCode就是0,那么我在定义一个他的hashCode就是0的基础上加上HASH_INCREMENT。这样在map中他们的hahscode不一样，但是这个时候虽然hashcode不一样，但是计算出来的下标i可能是一样的，这就造成了hash冲突，在ThreadLocal里面用的解决Hash冲突是用的线性探查法(Linear Probing)来解决的，当i下标有值的时候则找到i+1处，然后依次往下推。看看set、get<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Returns the value in the current thread's copy of this</div><div class="line"> * thread-local variable.  If the variable has no value for the</div><div class="line"> * current thread, it is first initialized to the value returned</div><div class="line"> * by an invocation of the &#123;<span class="doctag">@link</span> #initialValue&#125; method.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@return</span> the current thread's value of this thread-local</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    <span class="comment">//map不为null.直接在map中取</span></div><div class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>) &#123;</div><div class="line">        ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);</div><div class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>)</div><div class="line">            <span class="keyword">return</span> (T)e.value;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//map为null，需要从初始化的地方取值</span></div><div class="line">    <span class="keyword">return</span> setInitialValue();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Variant of set() to establish initialValue. Used instead</div><div class="line"> * of set() in case user has overridden the set() method.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@return</span> the initial value</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> T <span class="title">setInitialValue</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//初始化值的方法,大部分情况我们会重写这个方法</span></div><div class="line">    T value = initialValue();</div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</div><div class="line">    <span class="comment">//放入map</span></div><div class="line">        map.set(<span class="keyword">this</span>, value);</div><div class="line">    <span class="keyword">else</span></div><div class="line">    <span class="comment">//新建map</span></div><div class="line">        createMap(t, value);</div><div class="line">    <span class="keyword">return</span> value;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Sets the current thread's copy of this thread-local variable</div><div class="line"> * to the specified value.  Most subclasses will have no need to</div><div class="line"> * override this method, relying solely on the &#123;<span class="doctag">@link</span> #initialValue&#125;</div><div class="line"> * method to set the values of thread-locals.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> value the value to be stored in the current thread's copy of</div><div class="line"> *        this thread-local.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">    <span class="comment">//和上面大致相同</span></div><div class="line">    Thread t = Thread.currentThread();</div><div class="line">    ThreadLocalMap map = getMap(t);</div><div class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</div><div class="line">        map.set(<span class="keyword">this</span>, value);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        createMap(t, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>粗略上来看，这是一个非常简单的对map的add、get、init操作,但是我们来看看ThreadLocalMap#set方法的一些细节<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(ThreadLocal key, Object value)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// We don't use a fast path as with get() because it is at</span></div><div class="line">    <span class="comment">// least as common to use set() to create new entries as</span></div><div class="line">    <span class="comment">// it is to replace existing ones, in which case, a fast</span></div><div class="line">    <span class="comment">// path would fail more often than not.</span></div><div class="line">    <span class="comment">//得到应该与运算之后应该得到的下标</span></div><div class="line">    Entry[] tab = table;</div><div class="line">    <span class="keyword">int</span> len = tab.length;</div><div class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 得到entry,如果e不为null,调用父类Reference的get方法得到 ThreadLocal对象,</div><div class="line">     * 虽然下标相同。但是很可能不是同一个ThreadLocal对象，</div><div class="line">     * 如果是同一个对象，k==key。就替换Entry里面的value值，该下标的对象k为null。</div><div class="line">     * 就放入改位置，如果有其他的，就往下一个i+1位置上找            </div><div class="line">     */</div><div class="line">    <span class="keyword">for</span> (Entry e = tab[i];</div><div class="line">         e != <span class="keyword">null</span>;</div><div class="line">         e = tab[i = nextIndex(i, len)]) &#123;</div><div class="line">        ThreadLocal k = e.get();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (k == key) &#123;</div><div class="line">            e.value = value;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</div><div class="line">            replaceStaleEntry(key, value, i);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 如果计算后的坐标获取到的entry为null，就new一个Entry对象并保存进去，然后调用</div><div class="line">     * cleanSomeSlots()对table进行清理，如果没有任何Entry被清理，</div><div class="line">     * 并且表的size超过了阈值，就会调用rehash()方法。</div><div class="line">     * cleanSomeSlots()会调用expungeStaleEntry清理陈旧过时的Entry。</div><div class="line">     * rehash则会调用expungeStaleEntries()方法清理所有的陈旧的Entry，</div><div class="line">     * 然后在size大于阈值的3/4时调用resize()方法进行扩容。</div><div class="line">     * 代码如下</div><div class="line">     */</div><div class="line">    tab[i] = <span class="keyword">new</span> Entry(key, value);</div><div class="line">    <span class="keyword">int</span> sz = ++size;</div><div class="line">    <span class="keyword">if</span> (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold)</div><div class="line">        rehash();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在get中getEntry()方法通过计算出的下标从table中取出entry，如果取得的entry为null或它的key值不相等，就调用getEntryAfterMiss()方法，否则返回。<br>而在getEntryAfterMiss()是当通过key与table的长度取模得到的下标取得entry后，entry里没有该key时所调用的。这时，如果获取的entry为null，即没有保存，就直接返回null，否则进入循环不，计算下一个坐标并获取对应的entry，并且当key相等时（表明找到了之前保存的值）返回entry，或是entry为null时退出循环，并返回null。expungeStaleEntries方法会清楚所有key未null的Entry<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Expunge all stale entries in the table.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">expungeStaleEntries</span><span class="params">()</span> </span>&#123;</div><div class="line">    Entry[] tab = table;</div><div class="line">    <span class="keyword">int</span> len = tab.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">        Entry e = tab[j];</div><div class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span> &amp;&amp; e.get() == <span class="keyword">null</span>)</div><div class="line">            expungeStaleEntry(j);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="总结">5. 总结</h1><p>到了最后,上面我们留下的问题大致也都得到了答案：<br><div class="note primary"><p>在我们调用set或者get的时候，ThreadLocal会自动的清除key为null的值，不会造成内存泄露。而当使用线程池的时候，我们应该在改线程使用完该ThreadLocal的时候自觉地调用remove方法清空Entry，这会是一个非常好的习惯。</p>
-</div></p>
+<h2 id="ThreadLocal小片段">4.1. ThreadLocal小片段</h2><p>ThreadLocal之间是如何区分的呢？给每个ThreadLocal一个标识符？这确实是一种思路，jdk里面是这样做的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//每个对象都有一个HashCode来标示自己的唯一性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> threadLocalHashCode = nextHashCode();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The next hash code to be given out. Updated atomically. Starts at</span></span><br><span class="line"><span class="comment"> * zero.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">//原子类保证线程安全，保证每个对象的hashcode唯一，并且是静态的</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AtomicInteger nextHashCode =</span><br><span class="line">    <span class="keyword">new</span> AtomicInteger();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The difference between successively generated hash codes - turns</span></span><br><span class="line"><span class="comment"> * implicit sequential thread-local IDs into near-optimally spread</span></span><br><span class="line"><span class="comment"> * multiplicative hash values for power-of-two-sized tables.</span></span><br><span class="line"><span class="comment"> 为什么是这个数，暂时没探究</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> HASH_INCREMENT = <span class="number">0x61c88647</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the next hash code.</span></span><br><span class="line"><span class="comment"> 返回原始值，加上上面那个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextHashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> nextHashCode.getAndAdd(HASH_INCREMENT);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如我第一个ThreadLocal的hashCode就是0,那么我在定义一个他的hashCode就是0的基础上加上HASH_INCREMENT。这样在map中他们的hahscode不一样，但是这个时候虽然hashcode不一样，但是计算出来的下标i可能是一样的，这就造成了hash冲突，在ThreadLocal里面用的解决Hash冲突是用的线性探查法(Linear Probing)来解决的，当i下标有值的时候则找到i+1处，然后依次往下推。看看set、get</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the value in the current thread's copy of this</span></span><br><span class="line"><span class="comment"> * thread-local variable.  If the variable has no value for the</span></span><br><span class="line"><span class="comment"> * current thread, it is first initialized to the value returned</span></span><br><span class="line"><span class="comment"> * by an invocation of the &#123;<span class="doctag">@link</span> #initialValue&#125; method.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the current thread's value of this thread-local</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="comment">//map不为null.直接在map中取</span></span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> (T)e.value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//map为null，需要从初始化的地方取值</span></span><br><span class="line">    <span class="keyword">return</span> setInitialValue();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Variant of set() to establish initialValue. Used instead</span></span><br><span class="line"><span class="comment"> * of set() in case user has overridden the set() method.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the initial value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> T <span class="title">setInitialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//初始化值的方法,大部分情况我们会重写这个方法</span></span><br><span class="line">    T value = initialValue();</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">    <span class="comment">//放入map</span></span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="comment">//新建map</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sets the current thread's copy of this thread-local variable</span></span><br><span class="line"><span class="comment"> * to the specified value.  Most subclasses will have no need to</span></span><br><span class="line"><span class="comment"> * override this method, relying solely on the &#123;<span class="doctag">@link</span> #initialValue&#125;</span></span><br><span class="line"><span class="comment"> * method to set the values of thread-locals.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value the value to be stored in the current thread's copy of</span></span><br><span class="line"><span class="comment"> *        this thread-local.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//和上面大致相同</span></span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>粗略上来看，这是一个非常简单的对map的add、get、init操作,但是我们来看看ThreadLocalMap#set方法的一些细节</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(ThreadLocal key, Object value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We don't use a fast path as with get() because it is at</span></span><br><span class="line">    <span class="comment">// least as common to use set() to create new entries as</span></span><br><span class="line">    <span class="comment">// it is to replace existing ones, in which case, a fast</span></span><br><span class="line">    <span class="comment">// path would fail more often than not.</span></span><br><span class="line">    <span class="comment">//得到应该与运算之后应该得到的下标</span></span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到entry,如果e不为null,调用父类Reference的get方法得到 ThreadLocal对象,</span></span><br><span class="line"><span class="comment">     * 虽然下标相同。但是很可能不是同一个ThreadLocal对象，</span></span><br><span class="line"><span class="comment">     * 如果是同一个对象，k==key。就替换Entry里面的value值，该下标的对象k为null。</span></span><br><span class="line"><span class="comment">     * 就放入改位置，如果有其他的，就往下一个i+1位置上找            </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">for</span> (Entry e = tab[i];</span><br><span class="line">         e != <span class="keyword">null</span>;</span><br><span class="line">         e = tab[i = nextIndex(i, len)]) &#123;</span><br><span class="line">        ThreadLocal k = e.get();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == key) &#123;</span><br><span class="line">            e.value = value;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</span><br><span class="line">            replaceStaleEntry(key, value, i);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果计算后的坐标获取到的entry为null，就new一个Entry对象并保存进去，然后调用</span></span><br><span class="line"><span class="comment">     * cleanSomeSlots()对table进行清理，如果没有任何Entry被清理，</span></span><br><span class="line"><span class="comment">     * 并且表的size超过了阈值，就会调用rehash()方法。</span></span><br><span class="line"><span class="comment">     * cleanSomeSlots()会调用expungeStaleEntry清理陈旧过时的Entry。</span></span><br><span class="line"><span class="comment">     * rehash则会调用expungeStaleEntries()方法清理所有的陈旧的Entry，</span></span><br><span class="line"><span class="comment">     * 然后在size大于阈值的3/4时调用resize()方法进行扩容。</span></span><br><span class="line"><span class="comment">     * 代码如下</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    tab[i] = <span class="keyword">new</span> Entry(key, value);</span><br><span class="line">    <span class="keyword">int</span> sz = ++size;</span><br><span class="line">    <span class="keyword">if</span> (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold)</span><br><span class="line">        rehash();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在get中getEntry()方法通过计算出的下标从table中取出entry，如果取得的entry为null或它的key值不相等，就调用getEntryAfterMiss()方法，否则返回。<br>而在getEntryAfterMiss()是当通过key与table的长度取模得到的下标取得entry后，entry里没有该key时所调用的。这时，如果获取的entry为null，即没有保存，就直接返回null，否则进入循环不，计算下一个坐标并获取对应的entry，并且当key相等时（表明找到了之前保存的值）返回entry，或是entry为null时退出循环，并返回null。expungeStaleEntries方法会清楚所有key未null的Entry</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Expunge all stale entries in the table.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">expungeStaleEntries</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">        Entry e = tab[j];</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span> &amp;&amp; e.get() == <span class="keyword">null</span>)</span><br><span class="line">            expungeStaleEntry(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结">5. 总结</h1><p>到了最后,上面我们留下的问题大致也都得到了答案：</p>
+<div class="note primary"><p>在我们调用set或者get的时候，ThreadLocal会自动的清除key为null的值，不会造成内存泄露。而当使用线程池的时候，我们应该在改线程使用完该ThreadLocal的时候自觉地调用remove方法清空Entry，这会是一个非常好的习惯。</p>
+</div>
+
 <p>被废弃了的ThreadLocal所绑定对象的引用，会在以下4情况被清理：</p>
 <ul>
 <li>Thread结束时。</li>
@@ -512,7 +533,7 @@
 <li>向Thread的ThreadLocalMap中存放一个ThreadLocal，hash算法没有命中既有Entry,而需要新建一个Entry时。</li>
 <li>手工通过ThreadLocal的remove()方法或set(null)。</li>
 </ul>
-<h1 id="备注">6. 备注</h1><p>转自谢神的博客，为防止原文链接失效，所以转到自己博客，非常感谢谢大神！<br>原文地址：<a href="http://xiezhaodong.me/2016/03/05/ThreadLocal%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E8%A7%A3%E5%AF%86/" target="_blank" rel="external">博客原文地址</a></p>
+<h1 id="备注">6. 备注</h1><p>转自谢神的博客，为防止原文链接失效，所以转到自己博客，非常感谢谢大神！<br>原文地址：<a href="http://xiezhaodong.me/2016/03/05/ThreadLocal%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E8%A7%A3%E5%AF%86/" target="_blank" rel="noopener">博客原文地址</a></p>
 
       
     </div>
@@ -521,7 +542,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
     <div>分享技术，分享生活，来吧，为了生活，扫码撩我！</div>
 </div>
 
@@ -540,13 +561,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay"/>
+          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay"/>
+          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -679,7 +700,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -689,10 +710,8 @@
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/siteimages/avatar.png"
-               alt="wxweven" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/siteimages/avatar.png" alt="wxweven">
           <p class="site-author-name" itemprop="name">wxweven</p>
            
               <p class="site-description motion-element" itemprop="description">分享技术 享受生活</p>
@@ -703,7 +722,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -842,10 +861,10 @@
       <div class="footer-inner">
         <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright" >
+<div class="copyright">
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -863,7 +882,7 @@
     NexT.Mist
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">共104.9k字</span>
+  <span class="post-count">共108.6k字</span>
 </div>
 
 
