@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git配置多个SSH-Key]]></title>
+    <url>%2F2019%2F10%2F25%2FGit%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key%2F</url>
+    <content type="text"><![CDATA[为了安全性，个人的github和公司的gitlab需要配置不同的SSH-Key。具体步骤如下： 1. 切换到系统的SSH目录1cd ~/.ssh 2. 为个人的github生成SSH-Key（若还没有）1ssh-keygen -t rsa -C "your_mail@example.com" -f github_rsa 然后，前往github添加SSH公钥。 3. 为公司的gitlab生成SSH-Key（若还没有）1ssh-keygen -t rsa -C "your_mail@company.com" -f company_rsa 然后，前往gitlab添加SSH公钥。 4. 添加配置文件（若当前还没有config文件）1touch config 5. 为配置文件config添加如下内容1234567891011# github.comHost github.comHostName github.comPreferredAuthentications publickeyIdentityFile ~/.ssh/github_rsa# gitlab.company.comHost gitlab.company.comHostName gitlab.company.comPreferredAuthentications publickeyIdentityFile ~/.ssh/company_rsa #测试 1ssh -T git@github.com 输出 1Hi YourName! You've successfully authenticated, but GitHub does not provide shell access. 以上表示成功连接到了个人的github。然后可以用同样方式测试公司的gitlab。]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>ssh-key</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2019读书清单]]></title>
     <url>%2F2019%2F10%2F25%2F2019%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95%2F</url>
     <content type="text"><![CDATA[12 1. 2019年的读书清单烨哥推荐了几本书，好好看看！]]></content>
