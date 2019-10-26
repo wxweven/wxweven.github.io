@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[iTerm2使用大全]]></title>
+    <url>%2F2019%2F10%2F26%2FiTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8%2F</url>
+    <content type="text"><![CDATA[1. 标签1234567新建标签：command + t关闭标签：command + w切换标签：command + 数字 command + 左右方向键切换全屏：command + enter 2. 分屏123456789垂直分屏：command + d水平分屏：command + shift + d切换屏幕：command + option + 方向键 command + [ 或 command + ]查看历史命令：command + ;查看剪贴板历史：command + shift + h 3. 删除123456789101112131415删除当前光标的字符：ctrl + d删除光标之前的字符：ctrl + h删除光标之前的单词：ctrl + w删除到文本末尾：ctrl + k清除当前行：ctrl + u永久清屏：command + k （清屏后，往前翻是没有内容的）清屏1：command + r (清屏后，往前翻，历史内容还在，相当于clear)清屏2：ctrl + l 4. 其他1234567891011到行首：ctrl + a到行尾：ctrl + e前进后退：ctrl + f/b (相当于左右方向键)上一条命令：ctrl + p搜索命令历史：ctrl + r交换光标处文本：ctrl + t 5. 自带有哪些很实用的功能/快捷键123456789⌘ + 数字在各 tab 标签直接来回切换选择即复制 + 鼠标中键粘贴，这个很实用⌘ + f 所查找的内容会被自动复制输入开头命令后 按 ⌘ + ; 会自动列出输入过的命令⌘ + shift + h 会列出剪切板历史 6. 自定义的快捷键6.1. 设置行首/行尾跳转的快捷键iterm 默认的 command + ← / command + → 是用于左右切换标签的，我们将其改为跳到行首行尾： 1 先更改原来的左右切换标签的快捷键为 command + alt + ← / command + alt + → 2 配置行首/行尾跳转快捷键：keys &gt; 加号 &gt; 设置快捷键 FOR ACTION SEND ⌘← Send Hex Code 0x01 ⌘→ Send Hex Code 0x05 如下图： 6.2. 设置单词跳转的快捷键单词跳转通常的快捷键是 alt + 方向键，但是iterm默认的alt + 方向键是别的没什么用的功能，需要修改：在 preferencs &gt; profiles 里，找到 ⌥← 和 ⌥→，修改对应的快捷键： FOR ACTION SEND ⌥← Send Escape Sequence b ⌥→ Send Escape Sequence f 如下图：]]></content>
+      <categories>
+        <category>devtool</category>
+      </categories>
+      <tags>
+        <tag>iTerm2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git配置多个SSH-Key]]></title>
     <url>%2F2019%2F10%2F25%2FGit%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key%2F</url>
     <content type="text"><![CDATA[为了安全性，个人的github和公司的gitlab需要配置不同的SSH-Key。具体步骤如下： 1. 切换到系统的SSH目录1cd ~/.ssh 2. 为个人的github生成SSH-Key（若还没有）1ssh-keygen -t rsa -C "your_mail@example.com" -f github_rsa 然后，前往github添加SSH公钥。 3. 为公司的gitlab生成SSH-Key（若还没有）1ssh-keygen -t rsa -C "your_mail@company.com" -f company_rsa 然后，前往gitlab添加SSH公钥。 4. 添加配置文件（若当前还没有config文件）1touch config 5. 为配置文件config添加如下内容1234567891011# github.comHost github.comHostName github.comPreferredAuthentications publickeyIdentityFile ~/.ssh/github_rsa# gitlab.company.comHost gitlab.company.comHostName gitlab.company.comPreferredAuthentications publickeyIdentityFile ~/.ssh/company_rsa #测试 1ssh -T git@github.com 输出 1Hi YourName! You've successfully authenticated, but GitHub does not provide shell access. 以上表示成功连接到了个人的github。然后可以用同样方式测试公司的gitlab。]]></content>
