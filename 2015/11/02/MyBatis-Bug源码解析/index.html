@@ -113,23 +113,23 @@
 
 
 
-<meta name="description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：  这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：">
+<meta name="description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：">
 <meta name="keywords" content="mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis-Bug源码解析">
 <meta property="og:url" content="http://wxweven.win/2015/11/02/MyBatis-Bug源码解析/index.html">
 <meta property="og:site_name" content="wxweven 梦想之家">
-<meta property="og:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：  这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：">
+<meta property="og:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wxweven.win/img/mybatis-bug-1.png">
 <meta property="og:image" content="http://wxweven.win/img/mybatis-bug-2.png">
 <meta property="og:image" content="http://wxweven.win/img/mybatis-bug-2.png">
 <meta property="og:image" content="http://wxweven.win/img/mybatis-bug-ok.png">
 <meta property="og:image" content="http://wxweven.win/img/mybatis-bug-fix.png">
-<meta property="og:updated_time" content="2017-07-07T15:17:28.000Z">
+<meta property="og:updated_time" content="2019-10-28T03:51:28.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis-Bug源码解析">
-<meta name="twitter:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：  这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：">
+<meta name="twitter:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：">
 <meta name="twitter:image" content="http://wxweven.win/img/mybatis-bug-1.png">
 
 
@@ -441,10 +441,10 @@
 
       
         <h2 id="BUG概述">0.1. BUG概述</h2><p>MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：</p>
-<p><img src="/img/mybatis-bug-1.png" alt="mybatis-bug" title="mybatis-bug"></p>
-<p>这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：</p>
 <a id="more"></a>
 
+<p><img src="/img/mybatis-bug-1.png" alt="mybatis-bug" title="mybatis-bug"></p>
+<p>这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：</p>
 <p><img src="/img/mybatis-bug-2.png" alt="mybatis-bug" title="mybatis-bug"></p>
 <h2 id="BUG源码解析">0.2. BUG源码解析</h2><p>初看这个异常的时候，会感觉到很奇怪，为什么最终抛出的 NumberFormatException，即试图将字符串 “Y”解析为Double。为什么Mybatis在解析 if 标签的时候，要把 “Y” 解析为 Double类型呢？</p>
 <p>关于这个问题，网上也有一些资料，但是感觉还是没有说到问题的关键。这些资料大都只是说明了解决方案，如把 ‘Y’改为’1’等，但是这并没有解释为什么会产生 NumberFormatException，即 mybatis 为何要把 “Y” 解析为 Double类型。 带着这个问题，我们来看mybatis解析的源码。还是那句话，源码是最好的学习资料，也是解决问题的最好资料，源码面前，一切没有秘密！</p>

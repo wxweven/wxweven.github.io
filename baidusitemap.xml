@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2019-10-28T03:51:28.056Z</lastmod>
+    <data>
+        <display>
+        <title>MyBatis-Bug源码解析</title>
+        <pubTime>2015-11-02T05:43:23.000Z</pubTime>
+        
+        <tag>mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="mybatis" url="http://wxweven.win/categories/mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2019/10/26/iTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
     <lastmod>2019-10-26T06:32:46.999Z</lastmod>
     <data>
@@ -725,26 +745,6 @@
            
              
               <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2017-07-07T15:17:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>MyBatis-Bug源码解析</title>
-        <pubTime>2015-11-02T05:43:23.000Z</pubTime>
-        
-        <tag>mybatis</tag>
-         
-         
-           
-             
-              <breadCrumb title="mybatis" url="http://wxweven.win/categories/mybatis/"/>
           
         </display>
     </data>
