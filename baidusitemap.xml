@@ -4,8 +4,184 @@
 
     
   <url>
+    <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
+    <lastmod>2019-10-28T04:36:35.657Z</lastmod>
+    <data>
+        <display>
+        <title>魔方教程</title>
+        <pubTime>2016-03-10T09:57:45.000Z</pubTime>
+        
+        <tag>魔方</tag>
+         
+         
+           
+             
+              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/16/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E4%B8%80%E8%87%B4%E6%80%A7/</loc>
+    <lastmod>2019-10-28T04:36:30.576Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（三）——顺序一致性</title>
+        <pubTime>2016-10-16T08:02:44.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/16/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E9%87%8D%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2019-10-28T04:36:27.311Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（二）——重排序</title>
+        <pubTime>2016-10-16T07:48:11.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/12/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACallable%E3%80%81Future%E5%92%8CFutureTask/</loc>
+    <lastmod>2019-10-28T04:36:13.196Z</lastmod>
+    <data>
+        <display>
+        <title>Java并发编程：Callable、Future和FutureTask</title>
+        <pubTime>2016-10-12T10:46:08.000Z</pubTime>
+        
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%94%81/</loc>
+    <lastmod>2019-10-28T04:35:34.874Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（五）——锁</title>
+        <pubTime>2016-10-17T12:01:23.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94volatile/</loc>
+    <lastmod>2019-10-28T04:35:31.208Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（四）——volatile</title>
+        <pubTime>2016-10-17T04:26:34.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
+    <lastmod>2019-10-28T04:35:27.460Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（一）——基础篇</title>
+        <pubTime>2016-10-15T12:45:54.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2015/11/01/BAT%E7%AD%89%E4%BA%92%E8%81%94%E7%BD%91%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2019-10-28T04:28:01.402Z</lastmod>
+    <data>
+        <display>
+        <title>BAT等互联网公司面试分享</title>
+        <pubTime>2015-11-01T14:10:10.000Z</pubTime>
+        
+        <tag>笔试</tag>
+         
+        <tag>面试</tag>
+         
+        <tag>面经</tag>
+         
+        <tag>BAT</tag>
+         
+         
+           
+             
+              <breadCrumb title="面经" url="http://wxweven.win/categories/%E9%9D%A2%E7%BB%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2019-10-28T03:51:28.056Z</lastmod>
+    <lastmod>2019-10-28T04:24:44.479Z</lastmod>
     <data>
         <display>
         <title>MyBatis-Bug源码解析</title>
@@ -119,66 +295,6 @@
            
              
               <breadCrumb title="Java" url="http://wxweven.win/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2017/09/08/2017%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92/</loc>
-    <lastmod>2019-10-25T07:14:42.730Z</lastmod>
-    <data>
-        <display>
-        <title>2017读书计划</title>
-        <pubTime>2017-09-08T15:03:08.000Z</pubTime>
-        
-        <tag>读书计划</tag>
-         
-         
-           
-             
-              <breadCrumb title="学习计划" url="http://wxweven.win/categories/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2018/08/10/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2019-10-25T07:02:23.684Z</lastmod>
-    <data>
-        <display>
-        <title>学习</title>
-        <pubTime>2018-08-10T09:53:08.000Z</pubTime>
-        
-        <tag>娱乐</tag>
-         
-         
-           
-             
-              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/03/01/Activity-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
-    <lastmod>2019-10-25T06:38:52.397Z</lastmod>
-    <data>
-        <display>
-        <title>Activity 生命周期</title>
-        <pubTime>2016-03-01T07:49:41.000Z</pubTime>
-        
-        <tag>Activity</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
           
         </display>
     </data>
@@ -334,32 +450,6 @@
 
     
   <url>
-    <loc>http://wxweven.win/2015/11/01/BAT%E7%AD%89%E4%BA%92%E8%81%94%E7%BD%91%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2018-02-28T01:52:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>BAT等互联网公司面试分享</title>
-        <pubTime>2015-11-01T14:10:10.000Z</pubTime>
-        
-        <tag>笔试</tag>
-         
-        <tag>面试</tag>
-         
-        <tag>面经</tag>
-         
-        <tag>BAT</tag>
-         
-         
-           
-             
-              <breadCrumb title="面经" url="http://wxweven.win/categories/%E9%9D%A2%E7%BB%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wxweven.win/2016/09/22/Java%E8%A6%81%E6%B1%82/</loc>
     <lastmod>2018-02-28T01:52:02.000Z</lastmod>
     <data>
@@ -375,72 +465,6 @@
            
              
               <breadCrumb title="面经" url="http://wxweven.win/categories/%E9%9D%A2%E7%BB%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
-    <lastmod>2018-02-03T10:27:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（一）——基础篇</title>
-        <pubTime>2016-10-15T12:45:54.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94volatile/</loc>
-    <lastmod>2018-02-03T10:00:17.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（四）——volatile</title>
-        <pubTime>2016-10-17T04:26:34.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94%E9%94%81/</loc>
-    <lastmod>2017-12-12T08:28:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（五）——锁</title>
-        <pubTime>2016-10-17T12:01:23.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -732,26 +756,6 @@
 
     
   <url>
-    <loc>http://wxweven.win/2016/02/22/Android-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2017-07-07T15:33:31.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android 数据库操作</title>
-        <pubTime>2016-02-22T04:02:07.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wxweven.win/2016/10/21/ShadowsocksX%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2017-07-07T15:14:54.000Z</lastmod>
     <data>
@@ -785,26 +789,6 @@
            
              
               <breadCrumb title="register-code" url="http://wxweven.win/categories/register-code/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/12/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%EF%BC%9ACallable%E3%80%81Future%E5%92%8CFutureTask/</loc>
-    <lastmod>2017-07-07T15:13:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java并发编程：Callable、Future和FutureTask</title>
-        <pubTime>2016-10-12T10:46:08.000Z</pubTime>
-        
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -874,90 +858,6 @@
 
     
   <url>
-    <loc>http://wxweven.win/2016/02/11/Android-%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/</loc>
-    <lastmod>2017-07-07T15:11:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android 文件保存位置</title>
-        <pubTime>2016-02-11T12:14:39.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2015/11/25/Andriod%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-07-07T15:10:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>Andriod学习笔记</title>
-        <pubTime>2015-11-25T13:35:24.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://wxweven.win/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/16/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E9%87%8D%E6%8E%92%E5%BA%8F/</loc>
-    <lastmod>2017-07-07T15:09:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（二）——重排序</title>
-        <pubTime>2016-10-16T07:48:11.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/10/16/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E4%B8%80%E8%87%B4%E6%80%A7/</loc>
-    <lastmod>2017-07-07T15:09:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（三）——顺序一致性</title>
-        <pubTime>2016-10-16T08:02:44.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发编程" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wxweven.win/2015/11/22/%E5%9B%BD%E5%86%85%E6%97%A0%E7%BC%9D%E6%9B%B4%E6%96%B0Android-SDK/</loc>
     <lastmod>2017-07-07T15:09:21.000Z</lastmod>
     <data>
@@ -999,45 +899,5 @@
     
     
     
-    
-  <url>
-    <loc>http://wxweven.win/2015/12/07/%E5%90%AF%E5%8A%A8android%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99/</loc>
-    <lastmod>2017-04-21T06:18:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>启动android模拟器报错</title>
-        <pubTime>2015-12-07T05:36:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android工具" url="http://wxweven.win/categories/Android%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
-    <lastmod>2017-04-21T06:18:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>魔方教程</title>
-        <pubTime>2016-03-10T09:57:45.000Z</pubTime>
-        
-        <tag>魔方</tag>
-         
-         
-           
-             
-              <breadCrumb title="娱乐" url="http://wxweven.win/categories/%E5%A8%B1%E4%B9%90/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
 </urlset>
