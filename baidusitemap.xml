@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wxweven.win/2018/05/01/MySQL-Explain%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2019-10-28T08:33:04.274Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL Explain详解</title>
+        <pubTime>2018-05-01T04:27:43.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>explain</tag>
+         
+         
+           
+             
+              <breadCrumb title="MySQL" url="http://wxweven.win/categories/MySQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2016/03/10/%E9%AD%94%E6%96%B9/</loc>
     <lastmod>2019-10-28T04:36:35.657Z</lastmod>
     <data>
@@ -248,26 +270,6 @@
         <display>
         <title>2019读书清单</title>
         <pubTime>2019-10-25T08:11:10.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://wxweven.win/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2018/05/01/MySQL-Explain%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2019-10-25T08:08:57.161Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL Explain详解</title>
-        <pubTime>2018-05-01T04:27:43.000Z</pubTime>
         
         <tag>Java</tag>
          
@@ -831,26 +833,6 @@
            
              
               <breadCrumb title="Java" url="http://wxweven.win/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2015/11/22/%E5%9B%BD%E5%86%85%E6%97%A0%E7%BC%9D%E6%9B%B4%E6%96%B0Android-SDK/</loc>
-    <lastmod>2017-07-07T15:09:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android开发更新 SDK 的国内镜像</title>
-        <pubTime>2015-11-22T15:22:52.000Z</pubTime>
-        
-        <tag>SDK</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android工具" url="http://wxweven.win/categories/Android%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
