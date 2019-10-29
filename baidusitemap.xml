@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://wxweven.win/2019/10/26/iTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
+    <lastmod>2019-10-28T11:29:20.723Z</lastmod>
+    <data>
+        <display>
+        <title>iTerm2使用大全</title>
+        <pubTime>2019-10-26T03:31:02.000Z</pubTime>
+        
+        <tag>iTerm2</tag>
+         
+         
+           
+             
+              <breadCrumb title="devtool" url="http://wxweven.win/categories/devtool/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94volatile/</loc>
+    <lastmod>2019-10-28T09:24:14.029Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解Java内存模型（四）——volatile</title>
+        <pubTime>2016-10-17T04:26:34.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2018/05/01/MySQL-Explain%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2019-10-28T08:33:04.274Z</lastmod>
     <data>
@@ -132,28 +174,6 @@
 
     
   <url>
-    <loc>http://wxweven.win/2016/10/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%9B%9B%EF%BC%89%E2%80%94%E2%80%94volatile/</loc>
-    <lastmod>2019-10-28T04:35:31.208Z</lastmod>
-    <data>
-        <display>
-        <title>深入理解Java内存模型（四）——volatile</title>
-        <pubTime>2016-10-17T04:26:34.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>并发</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java并发" url="http://wxweven.win/categories/Java%E5%B9%B6%E5%8F%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://wxweven.win/2016/10/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
     <lastmod>2019-10-28T04:35:27.460Z</lastmod>
     <data>
@@ -215,26 +235,6 @@
            
              
               <breadCrumb title="mybatis" url="http://wxweven.win/categories/mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2019/10/26/iTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
-    <lastmod>2019-10-26T06:32:46.999Z</lastmod>
-    <data>
-        <display>
-        <title>iTerm2使用大全</title>
-        <pubTime>2019-10-26T03:31:02.000Z</pubTime>
-        
-        <tag>iTerm2</tag>
-         
-         
-           
-             
-              <breadCrumb title="devtool" url="http://wxweven.win/categories/devtool/"/>
           
         </display>
     </data>
