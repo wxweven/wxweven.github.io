@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mac 使用手册]]></title>
+    <url>%2F2019%2F11%2F03%2FMac-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%2F</url>
+    <content type="text"><![CDATA[本文列出Mac下常见的一些使用问题的解决办法。 1. 系统相关1.1. 快捷键首先认识下Mac中快捷键和对应的符号： Command（或 Cmd）⌘ Shift ⇧ Option（或 Alt）⌥ Control（或 Ctrl）⌃ 常用的快捷键参见Apple官网：https://support.apple.com/zh-cn/HT201236 1.2. 系统设置1.2.1. MAC的三指拖拽手势怎么设置Mac的触控板手势可以让OS X的体验更加完善，其点按方式和多指手势更是受到了广泛的欢迎，三指拖拽手势更是其中的佼佼者。 不过在OS X El Capitan中，不少用户都表示苹果已经移除了三指拖拽的手势，因为在原来的位置“系统偏好设置”-“触控板”中已经找不到相关的设置。经过仔细查找才发现，苹果并没有将这个实用的手势操作移除，而是选项的位置发生了变动。 在OS X El Capitan中要通过以下步骤才能开启三指拖拽： 打开系统偏好设置 点击辅助功能 点击鼠标&amp;触控板 点击触控板选项 点击开启拖拽 在下拉框中选择“三指拖拽” 如下图： 三指拖拽手势不仅仅可以让你在窗口和其它桌面项目中使用，同时也可以让你选择文本，属于非常有用的手势。 1.2.2. 查看端口Mac查看某个端口被哪个程序占用及杀进程方法： 1234# 查看使用 8080 端口的进程信息sudo lsof -i :8080sudo kill -9 pid 1.3. 软件1.3.1. Mac应用已损坏安装某些软件后，打开时会遇到“Mac应用”已损坏，打不开解决办法：系统偏好设置 &gt; 安全与隐私 &gt; 通用 &gt; 允许从以下位置下载的应用： 勾选『任何来源』 如果选项中没有『任何来源』，执行以下命令： 1sudo spctl --master-disable 然后再勾选『任何来源』。如果需要关闭『任何来源』选项（处于安全考虑），执行以下命令： 1sudo spctl --master-enable]]></content>
+      <categories>
+        <category>devtool</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vim常用快捷键]]></title>
     <url>%2F2019%2F11%2F01%2Fvim%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
     <content type="text"><![CDATA[记录常用的vim快捷键 1. 移动 h: 左移 l: 右移 j: 下移 k: 上移 0(数字0): 移动到行首 $: 移动到行尾 1 + shift + g: 移动到第一行 n + shift + g: 移动到第n行 ctrl + f: 向下滚动一屏 ctrl + b: 向上滚动一屏 2. 编辑 i: 在当前位置前插入 a: 在当前位置后插入 I: 在当前行首插入 A: 在当前行尾插入 o(小写字母o): 在当前行之后插入一行 O(大写字母O): 在当前行之前插入一行 u: 撤销 ctrl + r: 重做 U: 撤销对整个行的操作 3. 查找/替换 /text: (从前往后)查找text，按n查找下一个，N查找前一个 ?text: 从后往前查找text，按n查找下一个，N查找前一个 %s/old/new/g: 将old替换成new，替换当前行的所有匹配 3.1. 常用错误日志查找命令1234less error.log # less打开的文件，支持往后和往前查看shift + g # 跳到最后一行?Exception # 查找有异常的日志n # 从后往前查找下一个Exception 4. 复制/删除 x: 删除当前字符 dd: 删除当前行 10d: 删除从当前行开始的10行 yy: 复制当前行 p: 在当前光标后粘贴，如果之前用yy复制了某一行，那么在当前行的下一行进行粘贴 5. 其他 set number: 显示行号 :wq: 保存并退出 :!q: 强制退出]]></content>
@@ -15,7 +26,7 @@
   <entry>
     <title><![CDATA[iTerm2使用大全]]></title>
     <url>%2F2019%2F10%2F26%2FiTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8%2F</url>
-    <content type="text"><![CDATA[iTerm2 可以说是 Mac 下最好用的终端了，本文介绍下 iTerm2的一些基本使用教程（不含安装教程，安装教程请自行谷歌） 1. 标签1234567新建标签：command + t关闭标签：command + w切换标签：command + 数字 command + 左右方向键切换全屏：command + enter 2. 分屏123456789垂直分屏：command + d水平分屏：command + shift + d切换屏幕：command + option + 方向键 command + [ 或 command + ]查看历史命令：command + ;查看剪贴板历史：command + shift + h 3. 删除123456789101112131415删除当前光标的字符：ctrl + d删除光标之前的字符：ctrl + h删除光标之前的单词：ctrl + w删除到文本末尾：ctrl + k清除当前行：ctrl + u永久清屏：command + k （清屏后，往前翻是没有内容的）清屏1：command + r (清屏后，往前翻，历史内容还在，相当于clear)清屏2：ctrl + l 4. 其他1234567891011到行首：ctrl + a到行尾：ctrl + e前进后退：ctrl + f/b (相当于左右方向键)上一条命令：ctrl + p搜索命令历史：ctrl + r交换光标处文本：ctrl + t 5. 自带有哪些很实用的功能/快捷键123456789⌘ + 数字在各 tab 标签直接来回切换选择即复制 + 鼠标中键粘贴，这个很实用⌘ + f 所查找的内容会被自动复制输入开头命令后 按 ⌘ + ; 会自动列出输入过的命令⌘ + shift + h 会列出剪切板历史 6. 自定义的快捷键6.1. 设置行首/行尾跳转的快捷键iterm 默认的 command + ← / command + → 是用于左右切换标签的，我们将其改为跳到行首行尾： 1 先更改原来的左右切换标签的快捷键为 command + alt + ← / command + alt + → 2 配置行首/行尾跳转快捷键：keys &gt; 加号 &gt; 设置快捷键 FOR ACTION SEND ⌘← Send Hex Code 0x01 ⌘→ Send Hex Code 0x05 如下图： 6.2. 设置单词跳转的快捷键单词跳转通常的快捷键是 alt + 方向键，但是iterm默认的alt + 方向键是别的没什么用的功能，需要修改：在 preferencs &gt; profiles 里，找到 ⌥← 和 ⌥→，修改对应的快捷键： FOR ACTION SEND ⌥← Send Escape Sequence b ⌥→ Send Escape Sequence f 如下图：]]></content>
+    <content type="text"><![CDATA[iTerm2 可以说是 Mac 下最好用的终端了，本文介绍下 iTerm2的一些基本使用教程（不含安装教程，安装教程请自行谷歌） 1. 标签1234567新建标签：command + t关闭标签：command + w切换标签：command + 数字 command + 左右方向键切换全屏：command + enter 2. 分屏123456789垂直分屏：command + d水平分屏：command + shift + d切换屏幕：command + option + 方向键 command + [ 或 command + ]查看历史命令：command + ;查看剪贴板历史：command + shift + h 3. 删除123456789101112131415删除当前光标的字符：ctrl + d删除光标之前的字符：ctrl + h删除光标之前的单词：ctrl + w删除到文本末尾：ctrl + k清除当前行：ctrl + u永久清屏：command + k （清屏后，往前翻是没有内容的）清屏1：command + r (清屏后，往前翻，历史内容还在，相当于clear)清屏2：ctrl + l 4. 其他1234567891011到行首：ctrl + a到行尾：ctrl + e前进后退：ctrl + f/b (相当于左右方向键)上一条命令：ctrl + p搜索命令历史：ctrl + r交换光标处文本：ctrl + t 5. 自带有哪些很实用的功能/快捷键123456789⌘ + 数字在各 tab 标签直接来回切换选择即复制 + 鼠标中键粘贴，这个很实用⌘ + f 所查找的内容会被自动复制输入开头命令后 按 ⌘ + ; 会自动列出输入过的命令⌘ + shift + h 会列出剪切板历史 6. 自定义的快捷键6.1. 设置行首/行尾跳转的快捷键iterm 默认的 command + ← / command + → 是用于左右切换标签的，我们将其改为跳到行首行尾： 1 先更改原来的左右切换标签的快捷键为 command + alt + ← / command + alt + → 2 配置行首/行尾跳转快捷键：keys &gt; 加号 &gt; 设置快捷键 FOR ACTION SEND ⌘← Send Hex Code 0x01 ⌘→ Send Hex Code 0x05 如下图： 6.2. 设置单词跳转的快捷键单词跳转通常的快捷键是 alt + 方向键，但是iterm默认的alt + 方向键是别的没什么用的功能，需要修改：在 preferencs &gt; profiles 里，找到 ⌥← 和 ⌥→，修改对应的快捷键： FOR ACTION SEND ⌥← Send Escape Sequence b ⌥→ Send Escape Sequence f 如下图： 7. 设置默认的工作目录默认情况下，启动iTerm、新建iTerm窗口、iTerm分屏时，默认跳转到home目录，可以更改设置：在 Profiles &gt; General &gt; Working Directory &gt; Advanced Configuration 里设置： 第一个是新建窗口的时候进入的目录，可以是Home,session记录的上一次目录,或指定位置 第二个是新建Tab 第三个是分隔窗口的时候位置]]></content>
       <categories>
         <category>devtool</category>
       </categories>
@@ -33,17 +44,6 @@
       <tags>
         <tag>ssh-key</tag>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[2019读书清单]]></title>
-    <url>%2F2019%2F10%2F25%2F2019%E8%AF%BB%E4%B9%A6%E6%B8%85%E5%8D%95%2F</url>
-    <content type="text"><![CDATA[12 1. 2019年的读书清单烨哥推荐了几本书，好好看看！]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
