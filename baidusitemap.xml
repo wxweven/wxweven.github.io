@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://wxweven.win/2019/11/03/Mac-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</loc>
-    <lastmod>2019-11-06T07:56:56.378Z</lastmod>
+    <lastmod>2019-11-18T06:35:14.017Z</lastmod>
     <data>
         <display>
         <title>Mac 使用手册</title>
@@ -17,6 +17,28 @@
            
              
               <breadCrumb title="devtool" url="http://wxweven.win/categories/devtool/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wxweven.win/2019/11/10/Unix%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2019-11-10T07:52:44.860Z</lastmod>
+    <data>
+        <display>
+        <title>Unix操作系统设计</title>
+        <pubTime>2019-11-10T07:05:40.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>Unix</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://wxweven.win/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -335,9 +357,9 @@
         <title>Mac下brew设置国内源</title>
         <pubTime>2018-04-15T03:46:46.000Z</pubTime>
         
-        <tag>brew</tag>
-         
         <tag>mac</tag>
+         
+        <tag>brew</tag>
          
          
            
@@ -461,9 +483,9 @@
         <title>Java要求</title>
         <pubTime>2016-09-22T03:25:54.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>面经</tag>
+         
+        <tag>Java</tag>
          
          
            
