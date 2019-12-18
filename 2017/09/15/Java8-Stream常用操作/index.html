@@ -121,12 +121,12 @@
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wxweven.win/img/15242019939236.jpg">
-<meta property="og:updated_time" content="2018-12-21T03:56:43.000Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png">
+<meta property="og:updated_time" content="2019-12-18T10:33:48.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8 Stream常用操作">
 <meta name="twitter:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
-<meta name="twitter:image" content="http://wxweven.win/img/15242019939236.jpg">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png">
 
 
 
@@ -314,7 +314,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wxweven">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/siteimages/avatar.png">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/12/18/QHkm1f.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -514,7 +514,7 @@
 
 <h1 id="Map转化">3. Map转化</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, List&gt; maps = getMap();</span><br><span class="line">Map&lt;Integer, String&gt; maps2 = maps.entrySet()</span><br><span class="line">                                 .stream()</span><br><span class="line">                                 .collect(Collectors.toMap(</span><br><span class="line">                                    Map.Entry::getKey,</span><br><span class="line">                                    entry -&gt; entry.getValue(),</span><br><span class="line">                                    (v1, v2) -&gt; v2</span><br><span class="line">                             ));</span><br></pre></td></tr></table></figure>
 
-<h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><img src="/img/15242019939236.jpg" alt=""></p>
+<h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><a href="https://imgchr.com/i/QHA9Cq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png" alt="QHA9Cq.md.png"></a></p>
 <p>假设我们有两个List：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">List&lt;Integer&gt; list2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
 
@@ -532,7 +532,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="https://s2.ax1x.com/2019/12/18/QHk3As.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
     <div>分享技术，分享生活，来吧，为了生活，扫码撩我！</div>
 </div>
 
@@ -551,13 +551,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay">
+          <img id="wechat_qr" src="https://i.loli.net/2019/12/18/muKt2DNwIlovXBT.jpg" alt="wxweven WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay">
+          <img id="alipay_qr" src="https://s2.ax1x.com/2019/12/18/QHFjt1.jpg" alt="wxweven Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -703,7 +703,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/siteimages/avatar.png" alt="wxweven">
+          <img class="site-author-image" itemprop="image" src="https://s2.ax1x.com/2019/12/18/QHkm1f.jpg" alt="wxweven">
           <p class="site-author-name" itemprop="name">wxweven</p>
            
               <p class="site-description motion-element" itemprop="description">分享技术 享受生活</p>

@@ -121,17 +121,17 @@
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="想必很多朋友对ThreadLocal并不陌生，今天我们就来一起探讨下ThreadLocal实现原理和相关源码。首先，本文先介绍一下ThreadLocal以及底层结构，然后从ThreadLocal相关的API入手，详细分析ThreadLocal源码和使用时需要注意的地方，最后分析下ThreadLocal中的内存泄露问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wxweven.win/img/15207382102972.jpg">
-<meta property="og:image" content="http://wxweven.win/img/15207387415630.jpg">
-<meta property="og:image" content="http://wxweven.win/img/15207500053074.png">
-<meta property="og:image" content="http://wxweven.win/img/15207551785678.jpg">
-<meta property="og:image" content="http://wxweven.win/img/15207685731521.jpg">
-<meta property="og:image" content="http://wxweven.win/img/15207598329849.png">
-<meta property="og:updated_time" content="2018-03-23T05:58:12.000Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHAArF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHA8qe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHAtIA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHAaGt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHABM8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHAyZQ.png">
+<meta property="og:updated_time" content="2019-12-18T10:37:52.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal源码深度解析">
 <meta name="twitter:description" content="想必很多朋友对ThreadLocal并不陌生，今天我们就来一起探讨下ThreadLocal实现原理和相关源码。首先，本文先介绍一下ThreadLocal以及底层结构，然后从ThreadLocal相关的API入手，详细分析ThreadLocal源码和使用时需要注意的地方，最后分析下ThreadLocal中的内存泄露问题。">
-<meta name="twitter:image" content="http://wxweven.win/img/15207382102972.jpg">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/18/QHAArF.png">
 
 
 
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wxweven">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/siteimages/avatar.png">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/12/18/QHkm1f.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -455,14 +455,14 @@
 <li>ThreadLocal</li>
 <li>ThreadLocalMap</li>
 </ul>
-<p>他们之间的关系如下图：<br><img src="/img/15207382102972.jpg" alt=""></p>
+<p>他们之间的关系如下图：<br><img src="https://s2.ax1x.com/2019/12/18/QHAArF.png" alt="QHAArF.png"></p>
 <p>java.lang.Thread 内有个 ThreadLocalMap ：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal.ThreadLocalMap threadLocals = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
 
 <p>ThreadLocalMap 存储了所有跟该 Thread 绑定的 ThreadLocal 对象到该 ThreadLocal 对象对应 Value 的映射。每次在读取一个 ThreadLocal 对象的值的时候，就是通过 ThreadLocalMap 来查看 ThreadLocal 对象对应的值是什么。因为每个 Thread 都有自己的 ThreadLocalMap，所以同一个 ThreadLocal 对象在不同的 Thread 里能对应不同的 Value。从而实现 ThreadLocal 的功能。</p>
 <p>ThreadLocalMap，从字面意义上来看，它是一个Map，大家可以类比下Java中常见的HashMap，在基本原理以及使用方式上，两者比较类似。</p>
 <p>ThreadLocalMap在实现方式上，是通过数组实现 Map 功能的。数组的元素是 Entry，是个装有 Key Value 的对象。Key 是个弱引用，所以上图用虚线表示，指向一个 ThreadLocal 对象，Value 是强引用指向跟该 ThreadLocal 对象绑定的 Value 值。</p>
-<p>再看一张网络上的图片，应该可以更好的理解，如下图：<br><img src="/img/15207387415630.jpg" alt=""></p>
+<p>再看一张网络上的图片，应该可以更好的理解，如下图：<br><img src="https://s2.ax1x.com/2019/12/18/QHA8qe.png" alt="QHA8qe.png"></p>
 <h2 id="ThreadLocal-API">2.2. ThreadLocal API</h2><p>下面将详细分析ThreadLocal的源码，我们从ThreadLocal提供的API入手。</p>
 <h3 id="ThreadLocal-的-set-方法">2.2.1. ThreadLocal 的 set 方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Sets the current thread's copy of this thread-local variable</span></span><br><span class="line"><span class="comment"> * to the specified value.  Most subclasses will have no need to</span></span><br><span class="line"><span class="comment"> * override this method, relying solely on the &#123;<span class="doctag">@link</span> #initialValue&#125;</span></span><br><span class="line"><span class="comment"> * method to set the values of thread-locals.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value the value to be stored in the current thread's copy of</span></span><br><span class="line"><span class="comment"> *        this thread-local.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 获得当前线程</span></span><br><span class="line">    Thread t = Thread.currentThread(); </span><br><span class="line">    <span class="comment">// 2. 拿到当前线程对应的ThreadLocalMap</span></span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="comment">// 3. 判断map是否为null</span></span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -551,7 +551,7 @@
 </blockquote>
 <p>每一个 ThreadLocal 对象都有一个 threadLocalHashCode，在将 ThreadLocal 对象及其对应 Value 放入 ThreadLocalMap 时，先根据 threadLocalHashCode 和 ThreadLocalMap 内数组大小用类似于 threadLocalHashCode % ThreadLocalMap.length() 的方法计算出来该 threadLocalHashCode 对应的哪一个 Slot 的 index，再构造 Entry 放入该 index 指向的 ThreadLocalMap 的 Slot 中。</p>
 <p>因为 ThreadLocalMap 内数组大小有限，类似于 <code>threadLocalHashCode % ThreadLocalMap.length()</code> 计算 index 的方法可能出现两个不同的 ThreadLocal 对象带着两个不同的 threadLocalHashCode 但被 Hash 到同一个 Slot 的情况（即发生Hash冲突），如下图 ThreadLocalA ThreadLocalB ThreadLocalC 都具有相同的 threadLocalHashCode，在插入 ThreadLocalC 时，根据其 threadLocalHashCode 先被 Hash 到 ThreadLocalA 的 Slot，发现 Slot 不为空，于是 <code>index + 1</code> 再判断临近的已经存了 ThreadLocalB 的 Slot 是否为空，不为空则继续 <code>index + 1</code> 直到找到一个空的 Slot 将 ThreadLocalC 存入。</p>
-<p><img src="/img/15207500053074.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2019/12/18/QHAtIA.png" alt="QHAtIA.png"></p>
 <p>也就是说，ThreadLocalMap发生Hash冲突时，会顺着当前Hash桶往下找（index + 1），直到找到一个为空的桶，然后将Entry放入。</p>
 <p>这种碰撞处理方式也就导致:</p>
 <blockquote>
@@ -595,8 +595,8 @@
 <h3 id="ThreadLocalMap的remove方法">3.2.4. ThreadLocalMap的remove方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Remove the entry for key.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ThreadLocal&lt;?&gt; key)</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 1. 定位Hash桶位置</span></span><br><span class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2. 遍历找出key对应的Entry，</span></span><br><span class="line">    <span class="keyword">for</span> (Entry e = tab[i]; e != <span class="keyword">null</span>; e = tab[i = nextIndex(i, len)]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.get() == key) &#123;</span><br><span class="line">            <span class="comment">// 3. 找到对应的Entry后，清理该Entry的弱引用</span></span><br><span class="line">            e.clear();</span><br><span class="line">            <span class="comment">// 4. 特殊处理：清除过期的Entry</span></span><br><span class="line">            expungeStaleEntry(i);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>remove方法，根据key去删除map中的元素。这一过程中的特殊处理，也是跟内存泄露相关，会在内存泄露章节介绍。</p>
-<h1 id="ThreadLocal的内存泄露">4. ThreadLocal的内存泄露</h1><h2 id="内存泄露原理分析">4.1. 内存泄露原理分析</h2><p>我们再回过头来看看ThreadLocal的底层实现：<br><img src="/img/15207551785678.jpg" alt=""></p>
-<p>在 ThreadLocal 的生命周期中，都存在这些引用。如下图：实线代表强引用，虚线代表弱引用。<br><img src="/img/15207685731521.jpg" alt=""></p>
+<h1 id="ThreadLocal的内存泄露">4. ThreadLocal的内存泄露</h1><h2 id="内存泄露原理分析">4.1. 内存泄露原理分析</h2><p>我们再回过头来看看ThreadLocal的底层实现：<br><img src="https://s2.ax1x.com/2019/12/18/QHAaGt.png" alt="QHAaGt.png"></p>
+<p>在 ThreadLocal 的生命周期中，都存在这些引用。如下图：实线代表强引用，虚线代表弱引用。<br><img src="https://s2.ax1x.com/2019/12/18/QHABM8.png" alt="QHABM8.png"></p>
 <p>ThreadLocal 的实现是这样的：每个 Thread 维护一个 ThreadLocalMap 映射表，这个映射表的 key 是 ThreadLocal实例本身，value 是真正需要存储的 Object。</p>
 <p>也就是说 ThreadLocal 本身并不存储值，它只是作为一个 key 来让线程从 ThreadLocalMap 获取 value。值得注意的是图中的虚线，表示 ThreadLocalMap 是使用 ThreadLocal 的弱引用作为 Key 的，弱引用的对象在 GC 时会被回收。</p>
 <blockquote>
@@ -648,7 +648,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Heuristically scan some cells looking for stale entries.</span></span><br><span class="line"><span class="comment"> * This is invoked when either a new element is added, or</span></span><br><span class="line"><span class="comment"> * another stale one has been expunged. It performs a</span></span><br><span class="line"><span class="comment"> * logarithmic number of scans, as a balance between no</span></span><br><span class="line"><span class="comment"> * scanning (fast but retains garbage) and a number of scans</span></span><br><span class="line"><span class="comment"> * proportional to number of elements, that would find all</span></span><br><span class="line"><span class="comment"> * garbage but would cause some insertions to take O(n) time.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> i a position known NOT to hold a stale entry. The</span></span><br><span class="line"><span class="comment"> * scan starts at the element after i.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n scan control: &#123;<span class="doctag">@code</span> log2(n)&#125; cells are scanned,</span></span><br><span class="line"><span class="comment"> * unless a stale entry is found, in which case</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> log2(table.length)-1&#125; additional cells are scanned.</span></span><br><span class="line"><span class="comment"> * When called from insertions, this parameter is the number</span></span><br><span class="line"><span class="comment"> * of elements, but when from replaceStaleEntry, it is the</span></span><br><span class="line"><span class="comment"> * table length. (Note: all this could be changed to be either</span></span><br><span class="line"><span class="comment"> * more or less aggressive by weighting n instead of just</span></span><br><span class="line"><span class="comment"> * using straight log n. But this version is simple, fast, and</span></span><br><span class="line"><span class="comment"> * seems to work well.)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> true if any stale entries have been removed.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">cleanSomeSlots</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> removed = <span class="keyword">false</span>;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        i = nextIndex(i, len);</span><br><span class="line">        Entry e = tab[i];</span><br><span class="line">        <span class="comment">// 1. 清理当前已经失效的Entry</span></span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span> &amp;&amp; e.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            n = len;</span><br><span class="line">            removed = <span class="keyword">true</span>;</span><br><span class="line">            <span class="comment">// 2. 清理过期的Entry，前文讲过</span></span><br><span class="line">            i = expungeStaleEntry(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> ( (n &gt;&gt;&gt;= <span class="number">1</span>) != <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> removed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>是在当前新添加的 Entry 所在 Slot 之后，连续的找 log N 个 Slot，判断这些 Slot 内存储的 Entry 是否指向一个已经被 GC 的 ThreadLocal 对象，是的话就对这个 Slot 执行 <code>expungeStaleEntry</code>，做清理。其中 N 是当前 ThreadLocalMap 内存储的 ThreadLocal 对象总数。</p>
-<p>对于上面第 2 种情况中使用的 <code>replaceStaleEntry</code> 其实现还比较复杂，拿下图来说：<br><img src="/img/15207598329849.png" alt=""></p>
+<p>对于上面第 2 种情况中使用的 <code>replaceStaleEntry</code> 其实现还比较复杂，拿下图来说：<br><img src="https://s2.ax1x.com/2019/12/18/QHAyZQ.png" alt="QHAyZQ.png"></p>
 <p>假设当前要存的是 ThreadLocalB，并且 ThreadLocalA B C 在这个 ThreadLocalMap 都具有相同的 Hash 值，从而都 Hash 到同一个 Slot 即现在 ThreadLocalA 所在的 Slot。也正因为碰撞所以 ThreadLocalB C 都是紧挨着 ThreadLocalA 存储的。3 号位 Slot 指向 null 表示它本来是存一个 ThreadLocal 对象的，但这个对象被 GC 了，所以按照上面对 set 方法的描述，再次 set ThreadLocalB 的时候发现 3 号位是 null 就会执行 replaceStaleEntry，希望将 3 号位 replace 为 ThreadLocalB 并绑定上最新的 Value。</p>
 <p>但是因为我们只检查到 3 号位，我们只能确认 2 3 两个位置没有 ThreadLocalB 对象，但 ThreadLocalB 对象可能存在于 3 号位之后的 Slot 中，所以直接将 ThreadLocalB 存入 3 号位是不行的，需要从 3 号位向后遍历着查找一下看看 3 号位之后还有没有 ThreadLocalB 对象了，如上图所示 3 号位之后还确实是有 ThreadLocalB 对象，并且因为发现 3 号位原来的 ThreadLocal 对象已经被 GC，所以 replaceStaleEntry 需要将 4 号位的 ThreadLocalB 挪到 3 号位，并且将该 ThreadLocalB 对象绑定上新的 Value。交换之后 4 号位我们知道是需要被清理的，所以会调用 <code>expungeStaleEntry</code> 将该位置的 Slot 清理，并且将 4 号位之后的 Slot 都进行 rehash。</p>
 <p>当前面 expungeStaleEntry 执行之后，还是会调用 cleanSomeSlots 来探测当前 run 之后，也即 6 号位 Slot 之后 log N 个 Slot 看看有没有被 GC 掉的 ThreadLocal，有的话就用 expungeStaleEntry 做清理。</p>
@@ -692,7 +692,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/siteimages/wechat_gzh.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="https://s2.ax1x.com/2019/12/18/QHk3As.jpg" alt="wxweven wechat" style="width: 200px; max-width: 100%;">
     <div>分享技术，分享生活，来吧，为了生活，扫码撩我！</div>
 </div>
 
@@ -711,13 +711,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/siteimages/wechatpay.jpeg" alt="wxweven WeChat Pay">
+          <img id="wechat_qr" src="https://i.loli.net/2019/12/18/muKt2DNwIlovXBT.jpg" alt="wxweven WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/siteimages/alipay.jpeg" alt="wxweven Alipay">
+          <img id="alipay_qr" src="https://s2.ax1x.com/2019/12/18/QHFjt1.jpg" alt="wxweven Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -863,7 +863,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/siteimages/avatar.png" alt="wxweven">
+          <img class="site-author-image" itemprop="image" src="https://s2.ax1x.com/2019/12/18/QHkm1f.jpg" alt="wxweven">
           <p class="site-author-name" itemprop="name">wxweven</p>
            
               <p class="site-description motion-element" itemprop="description">分享技术 享受生活</p>
