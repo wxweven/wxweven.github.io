@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wxweven.win/2017/07/14/Guava-Cache%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2019-12-18T10:46:48.203Z</lastmod>
+    <data>
+        <display>
+        <title>Guava Cache使用简介</title>
+        <pubTime>2017-07-14T15:28:38.000Z</pubTime>
+        
+        <tag>Guava</tag>
+         
+        <tag>缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="缓存" url="http://wxweven.win/categories/%E7%BC%93%E5%AD%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wxweven.win/2017/09/18/Git%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</loc>
     <lastmod>2019-12-18T10:43:42.261Z</lastmod>
     <data>
@@ -525,9 +547,9 @@
         <title>Java要求</title>
         <pubTime>2016-09-22T03:25:54.000Z</pubTime>
         
-        <tag>面经</tag>
-         
         <tag>Java</tag>
+         
+        <tag>面经</tag>
          
          
            
@@ -729,28 +751,6 @@
            
              
               <breadCrumb title="Git" url="http://wxweven.win/categories/Git/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wxweven.win/2017/07/14/Guava-Cache%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2017-08-26T06:25:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Guava Cache使用简介</title>
-        <pubTime>2017-07-14T15:28:38.000Z</pubTime>
-        
-        <tag>Guava</tag>
-         
-        <tag>缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="缓存" url="http://wxweven.win/categories/%E7%BC%93%E5%AD%98/"/>
           
         </display>
     </data>
