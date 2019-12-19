@@ -121,12 +121,12 @@
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png">
-<meta property="og:updated_time" content="2019-12-18T10:33:48.313Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.png">
+<meta property="og:updated_time" content="2019-12-19T06:37:42.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java8 Stream常用操作">
 <meta name="twitter:description" content="Java8提供了强大的Stream API，对于操作集合、数组等，非常方便也非常优雅。本文主要整理下平时常用的一些操作。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/18/QHA9Cq.png">
 
 
 
@@ -514,8 +514,7 @@
 
 <h1 id="Map转化">3. Map转化</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, List&gt; maps = getMap();</span><br><span class="line">Map&lt;Integer, String&gt; maps2 = maps.entrySet()</span><br><span class="line">                                 .stream()</span><br><span class="line">                                 .collect(Collectors.toMap(</span><br><span class="line">                                    Map.Entry::getKey,</span><br><span class="line">                                    entry -&gt; entry.getValue(),</span><br><span class="line">                                    (v1, v2) -&gt; v2</span><br><span class="line">                             ));</span><br></pre></td></tr></table></figure>
 
-<h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><a href="https://imgchr.com/i/QHA9Cq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/12/18/QHA9Cq.md.png" alt="QHA9Cq.md.png"></a></p>
-<p>假设我们有两个List：</p>
+<h1 id="flatMap">4. flatMap</h1><p>flatMap用户将几个小的list合并到一个大的list，即『打平』的意思，看下面的图：<br><img src="https://s2.ax1x.com/2019/12/18/QHA9Cq.png" alt="QHA9Cq.png"><br>假设我们有两个List：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">List&lt;Integer&gt; list2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
 
 <p>如果我们想把list1和list2合并成一个List，新的List值为：<code>[1, 2, 3, 4, 5, 6]</code>, 那么可以用 <code>flatMap</code> 来实现。完整例子如下：</p>

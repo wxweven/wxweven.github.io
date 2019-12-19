@@ -121,16 +121,16 @@
 <meta property="og:site_name" content="wxweven 梦想之家">
 <meta property="og:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wxweven.win/img/mybatis-bug-1.png">
-<meta property="og:image" content="http://wxweven.win/img/mybatis-bug-2.png">
-<meta property="og:image" content="http://wxweven.win/img/mybatis-bug-2.png">
-<meta property="og:image" content="http://wxweven.win/img/mybatis-bug-ok.png">
-<meta property="og:image" content="http://wxweven.win/img/mybatis-bug-fix.png">
-<meta property="og:updated_time" content="2019-10-28T04:24:44.479Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqKlE6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqKJ8e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqK2Ks.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqKhV0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqKTGF.png">
+<meta property="og:updated_time" content="2019-12-19T06:44:18.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis-Bug源码解析">
 <meta name="twitter:description" content="0.1. BUG概述MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：">
-<meta name="twitter:image" content="http://wxweven.win/img/mybatis-bug-1.png">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/19/QqKlE6.png">
 
 
 
@@ -433,9 +433,9 @@
         <h2 id="BUG概述">0.1. BUG概述</h2><p>MyBatis的这个BUG，出现在条件判断标签中，当试图一个定义为String的属性跟一个英文单词比较时，就会出现bug，具体见下图：</p>
 <a id="more"></a>
 
-<p><img src="/img/mybatis-bug-1.png" alt="mybatis-bug" title="mybatis-bug"></p>
+<p><img src="https://s2.ax1x.com/2019/12/19/QqKlE6.png" alt="mybatis-bug"></p>
 <p>这里我们定义的brandWord是String类型，当我们试图将其与单词 ‘Y’ 比较的时候，就会有下面的异常：</p>
-<p><img src="/img/mybatis-bug-2.png" alt="mybatis-bug" title="mybatis-bug"></p>
+<p><img src="https://s2.ax1x.com/2019/12/19/QqKJ8e.png" alt="mybatis-bug"></p>
 <h2 id="BUG源码解析">0.2. BUG源码解析</h2><p>初看这个异常的时候，会感觉到很奇怪，为什么最终抛出的 NumberFormatException，即试图将字符串 “Y”解析为Double。为什么Mybatis在解析 if 标签的时候，要把 “Y” 解析为 Double类型呢？</p>
 <p>关于这个问题，网上也有一些资料，但是感觉还是没有说到问题的关键。这些资料大都只是说明了解决方案，如把 ‘Y’改为’1’等，但是这并没有解释为什么会产生 NumberFormatException，即 mybatis 为何要把 “Y” 解析为 Double类型。 带着这个问题，我们来看mybatis解析的源码。还是那句话，源码是最好的学习资料，也是解决问题的最好资料，源码面前，一切没有秘密！</p>
 <p>关于分析bug源码，我们可以看异常抛出的栈，顺着异常栈，由外往里看：</p>
@@ -470,7 +470,7 @@
 <p>关键点在于 OgnlCache.getValue，我们接着看它的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getValue</span><span class="params">(String expression, Object root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Map&lt;Object, OgnlClassResolver&gt; context = Ognl.createDefaultContext(root, <span class="keyword">new</span> OgnlClassResolver());</span><br><span class="line">        <span class="keyword">return</span> Ognl.getValue(parseExpression(expression), context, root);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (OgnlException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> BuilderException(<span class="string">"Error evaluating expression '"</span> + expression + <span class="string">"'. Cause: "</span> + e, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看到，在OgnlCache.getValue中调用了Ognl.getValue，那我们接着来看Ognl.getValue。不过这里需要注意的一点是：由前面的异常栈图：<br><img src="/img/mybatis-bug-2.png" alt="mybatis-bug" title="mybatis-bug"><br>我们知道，OgnlCache.getValue紧接着调用的是 org.apache.ibatis.ognl.Ognl 这个类的getValue方法，而这个类的源码，mybatis本身并没有提供，它的源码在ibatis的源码包中。</p>
+<p>可以看到，在OgnlCache.getValue中调用了Ognl.getValue，那我们接着来看Ognl.getValue。不过这里需要注意的一点是：由前面的异常栈图：<br><img src="https://s2.ax1x.com/2019/12/19/QqK2Ks.png" alt="mybatis-bug"><br>我们知道，OgnlCache.getValue紧接着调用的是 org.apache.ibatis.ognl.Ognl 这个类的getValue方法，而这个类的源码，mybatis本身并没有提供，它的源码在ibatis的源码包中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getValue</span><span class="params">(Object tree, Map context, Object root, Class resultType)</span> <span class="keyword">throws</span> OgnlException </span>&#123;</span><br><span class="line">    Object result;</span><br><span class="line">    OgnlContext ognlContext = (OgnlContext) addDefaultContext(root, context);</span><br><span class="line">    </span><br><span class="line">    result = ((Node) tree).getValue(ognlContext, root);</span><br><span class="line">    <span class="keyword">if</span> (resultType != <span class="keyword">null</span>) &#123;</span><br><span class="line">        result = getTypeConverter(context).convertValue(context, root, <span class="keyword">null</span>, <span class="keyword">null</span>, result, resultType);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -519,9 +519,9 @@
 <p>代码看到这里，一切都一目了然了：Double.parseDouble(“Y”) 当然会抛异常。</p>
 <p>好了，漫长的源码分析之旅完成了，下面总结下出现这个bug（或者异常）的原因： mybatis之所以会出现这个异常，我觉得主要还是在代码说明四那里：</p>
 <h3 id="异常原因">0.3.7. 异常原因</h3><p><strong>当一个非数值型和一个数值型比较时，mybatis想着把他们都转化成Double来比较，而这个非数值型又不能被解析为Double，这时候，异常就产生了</strong>。</p>
-<p>所以这也就能解释为什么 下面这种情况可以通过：<br><img src="/img/mybatis-bug-ok.png" alt="mybatis-bug" title="mybatis-bug"></p>
+<p>所以这也就能解释为什么 下面这种情况可以通过：<br><img src="https://s2.ax1x.com/2019/12/19/QqKhV0.png" alt="mybatis-bug"></p>
 <p>当 brandWord = “1”时，字符串 “1”可以被解析为Double，就没有异常了。 总的来说，对于上述的异常，有以下几种解决办法：</p>
-<h3 id="解决办法">0.3.8. 解决办法</h3><p><img src="/img/mybatis-bug-fix.png" alt="mybatis-bug" title="mybatis-bug"></p>
+<h3 id="解决办法">0.3.8. 解决办法</h3><p><img src="https://s2.ax1x.com/2019/12/19/QqKTGF.png" alt="mybatis-bug"></p>
 
       
     </div>

@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2019-12-19T06:44:18.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wxweven.win/2019/10/26/iTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
+    
+    <lastmod>2019-12-19T06:38:42.645Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2019-12-19T06:37:42.319Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wxweven.win/2017/07/14/Guava-Cache%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B/</loc>
     
     <lastmod>2019-12-18T10:46:48.203Z</lastmod>
@@ -47,20 +68,6 @@
     <loc>http://wxweven.win/2018/05/01/MySQL-Explain%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2019-12-18T10:33:52.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wxweven.win/2017/09/15/Java8-Stream%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2019-12-18T10:33:48.313Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wxweven.win/2019/10/26/iTerm2%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
-    
-    <lastmod>2019-12-18T10:29:55.715Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>http://wxweven.win/2016/10/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
     
     <lastmod>2019-10-28T04:35:27.460Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wxweven.win/2015/11/02/MyBatis-Bug%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2019-10-28T04:24:44.479Z</lastmod>
     
   </url>
   
