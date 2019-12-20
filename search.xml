@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[idea 高效之路]]></title>
+    <url>%2F2019%2F12%2F20%2Fidea-%E9%AB%98%E6%95%88%E4%B9%8B%E8%B7%AF%2F</url>
+    <content type="text"><![CDATA[本文介绍idea高效工作的一些技巧 1. 1 设置篇1.1. 1.1 idea设置重命名作用的范围重命名时，idea默认会『自作聪明』，对整个工程生效，导致很多不必要甚至错误的重命名（比如一些xml，property配置文件也被重命名了），按重命名快捷键『shifit + F6』后，再按『shifit + F6』，会出现下面的dialog（参考如下文章：https://www.jetbrains.com/help/idea/rename-refactorings.html） 上面全都不要选中！！！以后重命名的时候，就默认只对当前文件生效了！]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Unix操作系统设计]]></title>
     <url>%2F2019%2F11%2F10%2FUnix%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%2F</url>
     <content type="text"><![CDATA[1. 第一章系统设计鼓励程序员编写小程序，每个小程序都只做几个操作但做得很好，然后再使用管道及I/O重定向把这些小程序组合起来，已完成更复杂的处理。 12]]></content>
