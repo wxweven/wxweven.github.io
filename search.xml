@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vim 常用命令]]></title>
+    <url>%2F2020%2F10%2F21%2Fvim-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[vimc常用命令 1. vim常用命令 h：左移一个字符 l：右移一个字符 k：下移一个字符 j：上移一个字符 冒号后，set number：显示行号 shift + g：移动到最后一行 1 + shift + g：移动到第一行 n + shift + g：移动到第 n 行 0：移动到行首 $：移动到行尾 I：在行首插入 A：在行尾插入 i：在当前位置前插入 a：在当前位置后插入 o：在当前行之后插入一行 O：在当前行之前插入一行 /text：查找text，按 n 查找下一个，按 N 查找前一个 ?text：反向查找text，按 n 查找下一个，按 N 查找前一个 % s/old/new/g：将old替换成new，替换当前行的所有匹配项 Ctrl + f：向下滚动一屏 ctrl + b：向上滚动一屏 u：撤销 U：撤销对整行的操作 ctrl + r：重做，即该撤销的撤销 x：删除当前字符 dd：删除当前行 10d：删除从当前行开始的10行 yy：复制当前行 p：在当前光标后粘贴，如果之前使用了yy复制了某一行，那么在当前行的下一行进行粘贴 冒号后，wq：退出 冒号后，q!：强制退出 2. vim 常用案例2.1. 在日志中查找文本可以用grep，但是grep不太容易看到上下文（可以用-c参数，但是还是不够清晰） 1234567891011# less打开日志文件less error.log# 跳到最后一行shift + g# 反向查找文本，即从后往前查找?Exception# 查找下一个n]]></content>
+      <categories>
+        <category>Vim</category>
+      </categories>
+      <tags>
+        <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[已存在的项目添加Git]]></title>
+    <url>%2F2020%2F10%2F21%2F%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0Git%2F</url>
+    <content type="text"><![CDATA[前提：先去gitlab或github网站上创建一个新项目。 1、打开终端​，cd到已存在项目的目录 ​​​2、输入以下命令行，初始化一个本地仓库：git init 3、修改文件后提交： 12git add .git commit -m "Initial commit"​ ​​4、输入以下命令，添加远程仓库地址： 1234git remote add origin 你的仓库地址# 例如：git remote add origin https://github.com/wxweven/gitdemo.git 如果出现fatal: remote origin already exists.​说明你已经添加过远程仓库了，输入以下命令删除远程仓库：git remote rm origin 然后再次执行第5步。 5、​输入以下命令，把文件提交到远程仓库：git push -u origin master​ 然后你就等着它提交完成就完事了。 6、假如第6部失败的话再执行 git pull –rebase origin master 命令，然后再执行 git push -u origin master 即可上传成功。 7、完事后假如还是不能拉代码的话再重启项目执行： 12345# 让本地的master分支跟踪远程仓库的master分支git branch –set-upstream master origin/master# 或者git branch -u origin/master 即可。]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git 重写历史]]></title>
+    <url>%2F2020%2F10%2F21%2FGit-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2%2F</url>
+    <content type="text"><![CDATA[1. 重写历史 1.1. 修改最后一次提交 git commit –amend：修改最后一次提交并修改提交信息 git commit –amend –no-edit：修改最后一次提交，但是不改提交信息 1.2. 修改多个提交使用 git commit –amend 只能修改最后一次提交，如果想要修改最近三次提交，或者最近三次提交中的任意一个提交，可以使用交互式变基： 1git rebase -i HEAD~3 需要注意的是，交互式变基命令，会使得最近三次提交被重写，无论你是否修改信息。所以变基命令不要涉及到已经推送到远程仓库的提交！ 运行这个命令会在文本编辑器上给你一个提交的列表，看起来像下面这样： 12345678910111213141516171819202122pick 93b2809 Initial commitpick 76da34e macair add 1.txtpick 3c7f123 macair add 4.txt# Rebase 73b2649..3c7f123 onto 73b2649 (3 command(s))## Commands:# p, pick = use commit# r, reword = use commit, but edit the commit message# e, edit = use commit, but stop for amending# s, squash = use commit, but meld into previous commit# f, fixup = like "squash", but discard this commit's log message# x, exec = run command (the rest of the line) using shell# d, drop = remove commit## These lines can be re-ordered; they are executed from top to bottom.## If you remove a line here THAT COMMIT WILL BE LOST.## However, if you remove everything, the rebase will be aborted.## Note that empty commits are commented out 会从旧到新展示最近3次提交信息（最老提交的在最上面，与git log 命令的输出顺序正好相反），如果想要修改某一次提交，就将这次提交前面的『pick』改为『edit』或者『e』。 举例来说，假设说我们想要修改『76da34e』这次提交，那么就将前面的『pick』改为『e』，保存退出后，会有如下输出： 12345Stopped at 76da34e1331826c594351381279f4bb99f14e9fc... macair add 1.txtYou can amend the commit now, with git commit --amendOnce you are satisfied with your changes, run git rebase --continue 可以看到提示，现在你可以对这次提交做改动，改完以后，运行『git commit –amend』来修改这一次提交，即『76da34e』。修改这次提交后，使用『git rebase –continue』来完成交互式变基。 步骤总结如下： 修改内容 git commit –amend git rebase –continue 假设我们现在修改下文件，然后将commit msg改为『rebase test』。完成之后，我们用git log来看下： 132e4b3 - (HEAD -&gt; macair) macair add 4.txt (4 seconds ago) 0750efb - rebase test (16 seconds ago) 93b2809 - Initial commit (22 minutes ago) 可以看到，我们已经对历史提交做了修改，需要注意的是，交互式rebase，会产生新的commit（可以看到提交前面的哈希变成了0750efb）。 2. 更多交互式变基的demo2.1. 合并多次提交123456789# 合并多次提交pick f7f3f6d v1.1 changed my name a bit pick 310154e v1.2 updated README formatting and added blame pick a5f4a0d v1.3 added cat-file# 改为下面的：pick f7f3f6d v1.1 changed my name a bitsquash 310154e v1.2 updated README formatting and added blame squash a5f4a0d v1.3 added cat-file 2.2. 调整提交顺序123456789# 调整提交顺序，本来是 v1.1 -&gt; v1.2 -&gt; v1.3，想要调整为 v1.1 -&gt; v1.3 -&gt; v1.2pick f7f3f6d v1.1 changed my name a bit pick 310154e v1.2 updated README formatting and added blame pick a5f4a0d v1.3 added cat-file# 改为下面的：（即调整顺序，其他不变）pick f7f3f6d v1.1 changed my name a bit pick a5f4a0d v1.3 added cat-filepick 310154e v1.2 updated README formatting and added blame]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git Rebase]]></title>
     <url>%2F2020%2F10%2F21%2FGit-Rebase%2F</url>
     <content type="text"><![CDATA[1. 变基1.1. 合并假设现在的分支提交情况如下： 如果想把master分支的改动，『合并』到experiment分支，通常我们用 git merge 命令，如下： 12345# 1. 先切换到experiment分支git checkout experiment# 2. 合并master分支到当前分支git merge master 合并后的结果如下： 可以看到，多出了一个『C5』的提交，将master上的提交快照合并到experiment上。合并后可以看到各个分支的改动历史。 2. 变基同样，还是想把master分支的改动，『合并』到experiment分支，我们还可以使用『变基』，操作如下： 123456789# 1. 先切换到experiment分支git checkout experiment# 2. 变基mastergit rebase master# 3. 会有如下输出# First, rewinding head to replay your work on top of it...# Applying: added staged command 变基后的结果如下： 变基的原理是首先找到这两个分支（即当前分支 experiment 、变基操作的目标基底分支 master ）的最近共同祖先 C2 ，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底 C3 , 最后以此将之前另存为临时文件的修改依序应用。 git rebase 从最终结果上来看，跟 git merge 一样，都是将另外一个分支的内容『合并』到本分支， 不同的是， 在查看经过变基的分支的历史记录时会发现：尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。 一般我们这样做的目的是为了确保在向远程分支推送时能保持提交历史的整洁—例如向某个其他人维护的项目贡献代码时。在这种情况下，你首先在自己的分支里进行开发，当开发完成时你需要先将你的代码变基到 origin/master 上，然后再向主项目提交修改。 这样的话，该项目的维护者就不再需要进行整合工作，只需要快进合并便可。 请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。 3. rebase理解在当前分支（假设为experiment） git rebase master，相当于说再一次以最新的master分支为基础，新建experiment分支，然后再把当前experiment分支的commit续上去。]]></content>
